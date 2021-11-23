@@ -276,13 +276,13 @@ namespace ClothingStore
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl allreviews;
 
         /// <summary>
-        /// gvReviews control.
+        /// lvReviews control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvReviews;
+        protected global::System.Web.UI.WebControls.ListView lvReviews;
 
         /// <summary>
         /// writereview control.

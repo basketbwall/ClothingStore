@@ -11,7 +11,7 @@ namespace ClothingStore
 {
 
 
-    public partial class PastOrders
+    public partial class ManageRefunds
     {
 
         /// <summary>

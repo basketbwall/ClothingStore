@@ -11,6 +11,9 @@
     <title></title>
 
     <style>
+        nav {
+            padding-top: 10px;
+        }
         #imageDiv {
             text-align: center;
         }

@@ -32,5 +32,17 @@ namespace Classes
             }
             return output;
         }
+
+        public Boolean HasUserReviewed(int userID)
+        {
+            foreach (Review r in reviews)
+            {
+                if (r.UserID == userID)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

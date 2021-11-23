@@ -15,6 +15,8 @@ namespace ReviewsAPI.Models
         public int ComfortRating { get; set; }
         public int UserID { get; set; }
         public int ClothingID { get; set; }
+        public string UserName { get; set; }
+
 
         public Review() { }
 

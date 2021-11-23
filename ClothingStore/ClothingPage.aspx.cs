@@ -23,14 +23,36 @@ namespace ClothingStore
                 {
                     btnPurchaseHistory.Visible = true;
                     btnCheckOut.Visible = true;
+                    shoppingOptions.Visible = true;
                     lblUser.Text = "Hello " + "Rewards Customer";
                     btnSignOut.Visible = true;
+                    //if they already have a review for this clothing, then only show edit otherwise show the write review
+                    WebRequest request = WebRequest.Create("https://localhost:44385/api/Reviews/GetReviews");
+                    WebResponse response = request.GetResponse();
+
+                    Stream theDataStream = response.GetResponseStream();
+                    StreamReader reader = new StreamReader(theDataStream);
+                    String data = reader.ReadToEnd();
+                    reader.Close();
+                    response.Close();
+
+                    JavaScriptSerializer js = new JavaScriptSerializer();
+                    Review[] reviews = js.Deserialize<Review[]>(data);
+                    ReviewList rlist = new ReviewList(reviews); //create reviewlist
+                    if (rlist.HasUserReviewed(int.Parse(Session["UserID"].ToString()))) {
+                        btnMyReview.Visible = true;
+                    } else
+                    {
+                        btnAddReview.Visible = true;
+                    }
+
                 }
                 else if (Session["Role"].ToString() == "Administrator")
                 {
                     btnManageRefunds.Visible = true;
                     lblUser.Text = "Hello " + "Administrator";
                     btnSignOut.Visible = true;
+                    btnManage.Visible = true;
                 }
                 else
                 {
@@ -38,6 +60,7 @@ namespace ClothingStore
                     btnCheckOut.Visible = true;
                     lblUser.Text = "Hello " + "Visitor";
                     btnSignIn.Visible = true;
+                    shoppingOptions.Visible = true;
                 }
 
                 Session.Add("ReviewOperation", null);
@@ -95,14 +118,19 @@ namespace ClothingStore
             Review[] reviews = js.Deserialize<Review[]>(data);
             ReviewList rlist = new ReviewList(reviews); //create reviewlist
             int clothingID = int.Parse(Request.QueryString["ClothingID"].ToString());
-            gvReviews.DataSource = rlist.getReviewByClothingID(clothingID);
-            gvReviews.DataBind();
+            lvReviews.DataSource = rlist.getReviewByClothingID(clothingID);
+            lvReviews.DataBind();
         }
 
         protected void btnAddReview_Click(object sender, EventArgs e)
         {
             allreviews.Visible = false;
             writereview.Visible = true;
+            //clear fields
+            txtReviewContent.Text = "";
+            ddlComfort.SelectedValue = "1";
+            ddlCost.SelectedValue = "1";
+            ddlQuality.SelectedValue = "1";
             Session["ReviewOperation"] = "Add";
         }
 
@@ -149,6 +177,9 @@ namespace ClothingStore
                     if (data == "true")
                     {
                         lblSubmitReviewDisplay.Text = "Review was successfully saved to the database";
+                        //hide write review button and show edit review
+                        btnAddReview.Visible = false;
+                        btnMyReview.Visible = true;
                     }
                     else
                     {
@@ -248,6 +279,10 @@ namespace ClothingStore
                 if (data == "true")
                 {
                     lblSubmitReviewDisplay.Text = "Review was successfully removed from the database";
+                    btnDelete.Visible = false;
+                    writereview.Visible = false;
+                    btnMyReview.Visible = false;
+                    btnAddReview.Visible = true;
                 }
                 else
                 {

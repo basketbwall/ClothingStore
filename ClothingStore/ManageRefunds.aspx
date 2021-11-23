@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PastOrders.aspx.cs" Inherits="ClothingStore.PastOrders" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ManageRefunds.aspx.cs" Inherits="ClothingStore.ManageRefunds" %>
 
 <!DOCTYPE html>
 
@@ -56,16 +56,16 @@
             <asp:Label ID="lblCompany" runat="server" Text="CompanyName" class="h6"></asp:Label>
             <ul class="col-md-5" style="display: inline-block">
                 <asp:Button ID="btnCatalog" runat="server" Text="Catalog" class="btn btn-outline-dark" Style="margin-right: 1rem;" OnClick="btnCatalog_Click" />
-                <asp:Button ID="btnClearance" runat="server" Text="Clearance" class="btn btn-outline-dark" Style="margin-right: 1rem;" />
-                <asp:Button ID="btnPurchaseHistory" runat="server" Text="Purchase History" class="btn btn-outline-dark" Style="margin-right: 1rem;" OnClick="btnPurchaseHistory_Click" />
+                <asp:Button ID="btnClearance" runat="server" Text="Clearance" class="btn btn-outline-dark" Style="margin-right: 1rem;" OnClick="btnClearance_Click" />
+                <asp:Button ID="btnPurchaseHistory" runat="server" Text="Purchase History" class="btn btn-outline-dark" Style="margin-right: 1rem;" OnClick="btnPurchaseHistory_Click1" />
                 <asp:Button ID="btnManageRefunds" runat="server" Text="Manage Refunds" class="btn btn-outline-dark" Style="margin-right: 1rem;" OnClick="btnManageRefunds_Click" />
             </ul>
             <ul class="text-end col-md-5" style="display: inline-block">
                 <asp:ImageButton ID="btnCheckOut" runat="server" ImageUrl="~/Images/black-24dp/2x/outline_shopping_bag_black_24dp.png" data-toggle="tooltip" data-placement="top"
-                    title="Check Out" Style="margin-right: 1rem;" />
+                    title="Check Out" Style="margin-right: 1rem;" OnClick="btnCheckOut_Click" />
                 <asp:Label ID="lblUser" runat="server" Text="Hello Customer" Style="margin-right: 1rem;"></asp:Label>
-                <asp:Button ID="Button1" runat="server" Text="Sign In" class="btn btn-outline-success" Style="margin-right: 1rem;" />
-                <asp:Button ID="Button2" runat="server" Text="Sign Out" class="btn btn-outline-danger" />
+                <asp:Button ID="Button1" runat="server" Text="Sign In" class="btn btn-outline-success" Style="margin-right: 1rem;" OnClick="Button1_Click" />
+                <asp:Button ID="Button2" runat="server" Text="Sign Out" class="btn btn-outline-danger" OnClick="Button2_Click" />
 
             </ul>
         </nav>
@@ -80,9 +80,7 @@
 
                 <th>Order Date</th>
 
-                <th>Refund Request Status</th>
-
-                <th>Request Refund</th>
+                <th>Confirm Refund</th>
 
             </tr>
 
@@ -112,12 +110,7 @@
 
                         </td>
                         <td>
-
-                            <asp:Label ID="Label1" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "refundRequested") %>'></asp:Label>
-
-                        </td>
-                        <td>
-                            <asp:Button ID="Button3" runat="server" Text="Initiate Refund Request" class="btn btn-dark"/>
+                            <asp:Button ID="Button3" runat="server" Text="Confirm Refund Request" class="btn btn-dark"/>
                         </td>
 
                     </tr>

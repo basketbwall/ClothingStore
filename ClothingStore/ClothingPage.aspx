@@ -15,6 +15,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
     <title></title>
     <style>
+        nav {
+            padding-top: 10px;
+        }
+
         #imageDiv {
             text-align: center;
         }
@@ -49,7 +53,7 @@
 </head>
 <body>
     <form id="form1" runat="server" class="text-center">
-                <nav id="navbar" class="text-start">
+        <nav id="navbar" class="text-start">
             <asp:Label ID="lblCompany" runat="server" Text="CompanyName" class="h6"></asp:Label>
             <ul class="col-md-5" style="display: inline-block">
                 <asp:Button ID="btnCatalog" runat="server" Text="Catalog" class="btn btn-outline-dark" Style="margin-right: 1rem;" OnClick="btnCatalog_Click1" />
@@ -79,7 +83,7 @@
             <asp:Label ID="lblPrice" runat="server" Text="Price: "></asp:Label>
             <br />
             <asp:Label ID="lblBrand" runat="server" Text="Brand: "></asp:Label>
-            <div runat="server" id="shoppingOptions" visible ="false">
+            <div runat="server" id="shoppingOptions" visible="false">
                 <asp:Label ID="lblSize" runat="server" Text="Choose Size: "></asp:Label>
                 <uc1:SizePicker runat="server" ID="SizePicker" />
                 <asp:Label ID="lblQuantity" runat="server" Text="Choose Quantity To Add: "></asp:Label>
@@ -100,7 +104,34 @@
         <br />
         <div runat="server" id="allreviews">
             <!-- Display reviews here!-->
-            <asp:GridView ID="gvReviews" runat="server" class="text-center" Style="margin: auto; width: 75%"></asp:GridView>
+            <%--            <asp:GridView ID="gvReviews" runat="server" class="text-center" Style="margin: auto; width: 75%"></asp:GridView>--%>
+            <asp:ListView ID="lvReviews" runat="server" Style="text-align: left">
+                <EmptyDataTemplate>
+                    There are no reviews for this clothing item.
+                </EmptyDataTemplate>
+                <ItemTemplate>
+                    <div class="list">
+                        <table style="border: solid black 0.5px; width: 70%; margin: auto;">
+                            <tr>
+                                <td>User Name: <%#Eval("userName")%></td>
+                            </tr>
+                            <tr>
+                                <td>User Review: <%#Eval("reviewContent")%></td>
+                            </tr>
+                            <br />
+                            <tr>
+                                <td>Comfort Rating: <%#Eval("comfortRating")%></td>
+                            </tr>
+                            <tr>
+                                <td>Quality Rating: <%#Eval("qualityRating")%></td>
+                            </tr>
+                            <tr>
+                                <td>Cost Rating: <%#Eval("costRating")%></td>
+                            </tr>
+                        </table>
+                    </div>
+                </ItemTemplate>
+            </asp:ListView>
         </div>
 
         <div runat="server" id="writereview" class="col-6" style="margin: auto;" visible="false">
@@ -137,8 +168,8 @@
                 <asp:ListItem>4</asp:ListItem>
                 <asp:ListItem Value="5"></asp:ListItem>
             </asp:DropDownList>
-            <asp:Button ID="btnSubmitReview" runat="server" Text="Submit Review" class="btn btn-dark" OnClick="btnSubmitReview_Click"/>
-            <asp:Button ID="btnDelete" runat="server" Text="Delete Review" class="btn btn-danger" OnClick="btnDelete_Click"/>
+            <asp:Button ID="btnSubmitReview" runat="server" Text="Submit Review" class="btn btn-dark" OnClick="btnSubmitReview_Click" />
+            <asp:Button ID="btnDelete" runat="server" Text="Delete Review" Visible="false" class="btn btn-danger" OnClick="btnDelete_Click" />
             <br />
             <asp:Label ID="lblSubmitReviewDisplay" runat="server" Text=""></asp:Label>
         </div>

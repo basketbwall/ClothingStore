@@ -38,6 +38,22 @@ namespace ReviewsAPI.Controllers
                 review.ComfortRating = int.Parse(record["comfortRating"].ToString());
                 review.UserID = int.Parse(record["userID"].ToString());
                 review.ClothingID = int.Parse(record["clothingID"].ToString());
+
+                cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "TP_GetUserByID";
+                cmd.Parameters.AddWithValue("@theUserID", review.UserID);
+                myDataSet = DB.GetDataSetUsingCmdObj(cmd);
+
+                if (myDataSet.Tables[0].Rows.Count == 0)
+                {
+                    review.UserName = "";
+                }
+                else
+                {
+                    review.UserName = myDataSet.Tables[0].Rows[0]["userName"].ToString();
+                }
+
                 reviews.Add(review);
             }
             //access stored procedure to get all cars

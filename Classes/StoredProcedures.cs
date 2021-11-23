@@ -101,6 +101,24 @@ namespace Classes
             }
         }
 
+        public string GetUsername(int userid)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "TP_GetUserByID";
+            cmd.Parameters.AddWithValue("@theUserID", userid);
+            DataSet myDataSet = DB.GetDataSetUsingCmdObj(cmd);
+
+            if (myDataSet.Tables[0].Rows.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return myDataSet.Tables[0].Rows[0]["userName"].ToString();
+            }
+        }
+
         //get clothing information
         //write stored procedure for clothing table
         //write clothing class
@@ -217,6 +235,16 @@ namespace Classes
                 }
             }
             return retVal;
+        }
+
+        public DataSet GetOrders()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "TP_GetOrders";
+            DataSet myDataSet = DB.GetDataSetUsingCmdObj(cmd);
+
+            return myDataSet;
         }
     }
 }

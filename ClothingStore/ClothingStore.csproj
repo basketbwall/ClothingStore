@@ -78,6 +78,7 @@
     <Content Include="Images\Preppy V Neck.png" />
     <Content Include="Images\shopping_bag_black_24dp.svg" />
     <Content Include="Login.aspx" />
+    <Content Include="ManageRefunds.aspx" />
     <Content Include="PastOrders.aspx" />
     <Content Include="Web.config" />
     <Content Include="SizePicker.ascx" />
@@ -104,6 +105,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManageRefunds.aspx.cs">
+      <DependentUpon>ManageRefunds.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageRefunds.aspx.designer.cs">
+      <DependentUpon>ManageRefunds.aspx</DependentUpon>
     </Compile>
     <Compile Include="PastOrders.aspx.cs">
       <DependentUpon>PastOrders.aspx</DependentUpon>
