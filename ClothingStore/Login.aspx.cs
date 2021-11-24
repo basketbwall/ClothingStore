@@ -23,9 +23,11 @@ namespace ClothingStore
                 Session.Add("UserID", null);
                 Session.Add("SecurityAnswer", null);
                 Session.Add("Role", null);
+                Session.Add("Cart", null);
                 if (Request.Cookies["LoginCookie"] != null)
                 {
                     txtUsername.Text = Request.Cookies["LoginCookie"].Values["Username"].ToString();
+                    txtPassword.Text = Request.Cookies["LoginCookie"].Values["Password"].ToString();
                     chkSaveUsername.Checked = true;
                 }
 
@@ -46,7 +48,8 @@ namespace ClothingStore
             {
                 HttpCookie myCookie = new HttpCookie("LoginCookie");
                 myCookie.Values["Username"] = txtUsername.Text;
-                myCookie.Expires = new DateTime(2025, 1, 1);
+                myCookie.Values["Password"] = txtPassword.Text;
+                myCookie.Expires = new DateTime().AddMonths(1);
 
                 Response.Cookies.Add(myCookie);
             } else

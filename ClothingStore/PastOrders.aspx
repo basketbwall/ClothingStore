@@ -48,27 +48,50 @@
         td {
             width: 10%;
         }
+        .auto-style1 {
+            height: 29px;
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <nav id="navbar" class="text-start">
             <asp:Label ID="lblCompany" runat="server" Text="CompanyName" class="h6"></asp:Label>
-            <ul class="col-md-5" style="display: inline-block">
-                <asp:Button ID="btnCatalog" runat="server" Text="Catalog" class="btn btn-outline-dark" Style="margin-right: 1rem;" OnClick="btnCatalog_Click" />
-                <asp:Button ID="btnClearance" runat="server" Text="Clearance" class="btn btn-outline-dark" Style="margin-right: 1rem;" />
-                <asp:Button ID="btnPurchaseHistory" runat="server" Text="Purchase History" class="btn btn-outline-dark" Style="margin-right: 1rem;" OnClick="btnPurchaseHistory_Click" />
-                <asp:Button ID="btnManageRefunds" runat="server" Text="Manage Refunds" class="btn btn-outline-dark" Style="margin-right: 1rem;" OnClick="btnManageRefunds_Click" />
-            </ul>
-            <ul class="text-end col-md-5" style="display: inline-block">
-                <asp:ImageButton ID="btnCheckOut" runat="server" ImageUrl="~/Images/black-24dp/2x/outline_shopping_bag_black_24dp.png" data-toggle="tooltip" data-placement="top"
-                    title="Check Out" Style="margin-right: 1rem;" />
-                <asp:Label ID="lblUser" runat="server" Text="Hello Customer" Style="margin-right: 1rem;"></asp:Label>
-                <asp:Button ID="Button1" runat="server" Text="Sign In" class="btn btn-outline-success" Style="margin-right: 1rem;" />
-                <asp:Button ID="Button2" runat="server" Text="Sign Out" class="btn btn-outline-danger" />
+            <ul class="col-md-5" style="display: inline-block; list-style-type: none;">
+                <li style="display: inline-block;"><a href="Catalog.aspx" class="btn btn-outline-dark">Catalog</a></li>
+
+                <li style="display: inline-block;"><a href="Clearance.aspx" class="btn btn-outline-dark">Clearance</a></li>
+
+                <li style="display: inline-block;">
+                    <a runat="server" id="navPurchaseHistory" visible="false" href="PastOrders.aspx" class="btn btn-outline-dark">Purchase History</a></li>
+
+                <li style="display: inline-block;"><a runat="server" id="navManageRefunds" visible="false" href="ManageRefunds.aspx" class="btn btn-outline-dark">Manage Refunds</a></li>
 
             </ul>
+            <ul class="text-end col-md-5" style="display: inline-block; list-style-type: none;">
+                <li style="display: inline-block;">
+                    <a runat="server" id="navCheckoutPage" visible="false" href="CheckoutPage.aspx">
+                        <img src="/Images/black-24dp/2x/outline_shopping_bag_black_24dp.png" /></a>
+                </li>
+
+                <asp:Label ID="lblUser" runat="server" Text="" Style="margin-right: 1rem;"></asp:Label>
+
+                <li style="display: inline-block;"><a runat="server" id="navSignIn" visible="false" href="Login.aspx" class="btn btn-outline-success">Sign In</a></li>
+                <li style="display: inline-block;"><a runat="server" id="navSignOut" visible="false" href="Login.aspx" class="btn btn-outline-danger">Sign Out</a></li>
+            </ul>
         </nav>
+
+
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" class="text-center" style="width: 70%; margin: auto;">
+            <Columns>
+                <asp:BoundField DataField="ClothingName" HeaderText="Name" />
+                <asp:BoundField DataField="ClothingColor" HeaderText="Color" />
+                <asp:BoundField DataField="ClothingSize" HeaderText="Size" />
+                <asp:BoundField DataField="ClothingPrice" HeaderText="Price" />
+                <asp:BoundField DataField="ClothingQuantity" HeaderText="Quantity Purchased" />
+            </Columns>
+        </asp:GridView>
+
         <asp:Label ID="lblDisplay" runat="server" Text=""></asp:Label>
         <table style="width: 70%; margin: auto;">
 
@@ -82,7 +105,7 @@
 
                 <th>Refund Request Status</th>
 
-                <th>Request Refund</th>
+                <th>View Order</th>
 
             </tr>
 
@@ -118,8 +141,6 @@
                         </td>
                         <td>
                             <asp:Button ID="Button3" runat="server" Text="Initiate Refund Request" class="btn btn-dark"/>
-                        </td>
-
                     </tr>
 
                 </ItemTemplate>
@@ -129,6 +150,9 @@
 
 
         </table>
+
+
+
     </form>
 </body>
 </html>

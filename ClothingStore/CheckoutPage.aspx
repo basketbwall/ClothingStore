@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Catalog.aspx.cs" Inherits="ClothingStore.Catalog" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CheckoutPage.aspx.cs" Inherits="ClothingStore.CheckoutPage" %>
 
 <!DOCTYPE html>
 
@@ -74,9 +74,11 @@
             </ul>
         </nav>
         <div>
-            Dummy page
-            <asp:Button ID="btnClothing" runat="server" Text="Clothing" OnClick="btnClothing_Click" class="btn btn-dark"/>
+            <asp:Button ID="btnSubmitOrder" runat="server" Text="Submit Order" class="btn btn-primary" OnClick="btnSubmitOrder_Click"/>
+                <asp:Label ID="lblCartSubmitDisplay" runat="server" Text=""></asp:Label>
         </div>
+        <asp:GridView ID="gvOrder" runat="server">
+        </asp:GridView>
     </form>
 </body>
 </html>

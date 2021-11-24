@@ -16,23 +16,23 @@ namespace ClothingStore
                 //check role and update label on top right and set visibility of buttons
                 if (Session["Role"].ToString() == "RewardsCustomer")
                 {
-                    btnPurchaseHistory.Visible = true;
-                    btnCheckOut.Visible = true;
+                    navPurchaseHistory.Visible = true;
+                    navCheckoutPage.Visible = true;
                     lblUser.Text = "Hello " + "Rewards Customer";
-                    btnSignOut.Visible = true;
+                    navSignOut.Visible = true;
                 }
                 else if (Session["Role"].ToString() == "Administrator")
                 {
-                    btnManageRefunds.Visible = true;
+                    navManageRefunds.Visible = true;
                     lblUser.Text = "Hello " + "Administrator";
-                    btnSignOut.Visible = true;
+                    navSignOut.Visible = true;
                 }
                 else
                 {
                     //visitor
-                    btnCheckOut.Visible = true;
+                    navCheckoutPage.Visible = true;
                     lblUser.Text = "Hello " + "Visitor";
-                    btnSignIn.Visible = true;
+                    navSignIn.Visible = true;
                 }
             }
         }
@@ -43,19 +43,5 @@ namespace ClothingStore
             Response.Redirect("ClothingPage.aspx" + "?ClothingID=" + id);
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Login.aspx");
-        }
-
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Login.aspx");
-        }
-
-        protected void btnPurchaseHistory_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("PastOrders.aspx");
-        }
     }
 }

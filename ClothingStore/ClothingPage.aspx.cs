@@ -8,6 +8,8 @@ using System.Web.Script.Serialization; //JSON serializers
 using System.IO; //Stream and StreamReader
 using System.Net; //needed for web request
 using Classes; //needed for review class
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Data;
 
 namespace ClothingStore
 {
@@ -21,11 +23,11 @@ namespace ClothingStore
                 //check role and update label on top right and set visibility of buttons
                 if (Session["Role"].ToString() == "RewardsCustomer")
                 {
-                    btnPurchaseHistory.Visible = true;
-                    btnCheckOut.Visible = true;
+                    navPurchaseHistory.Visible = true;
+                    navCheckoutPage.Visible = true;
                     shoppingOptions.Visible = true;
                     lblUser.Text = "Hello " + "Rewards Customer";
-                    btnSignOut.Visible = true;
+                    navSignOut.Visible = true;
                     //if they already have a review for this clothing, then only show edit otherwise show the write review
                     WebRequest request = WebRequest.Create("https://localhost:44385/api/Reviews/GetReviews");
                     WebResponse response = request.GetResponse();
@@ -49,17 +51,17 @@ namespace ClothingStore
                 }
                 else if (Session["Role"].ToString() == "Administrator")
                 {
-                    btnManageRefunds.Visible = true;
+                    navManageRefunds.Visible = true;
                     lblUser.Text = "Hello " + "Administrator";
-                    btnSignOut.Visible = true;
+                    navSignOut.Visible = true;
                     btnManage.Visible = true;
                 }
                 else
                 {
                     //visitor
-                    btnCheckOut.Visible = true;
+                    navCheckoutPage.Visible = true;
                     lblUser.Text = "Hello " + "Visitor";
-                    btnSignIn.Visible = true;
+                    navSignIn.Visible = true;
                     shoppingOptions.Visible = true;
                 }
 
@@ -95,10 +97,7 @@ namespace ClothingStore
 
         }
 
-        protected void btnCatalog_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Catalog.aspx");
-        }
+
 
         protected void btnLoadReview_Click(object sender, EventArgs e)
         {
@@ -295,43 +294,83 @@ namespace ClothingStore
             }
         }
 
-        protected void btnPurchaseHistory_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnManageRefunds_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnClearance_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnCatalog_Click1(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnCheckOut_Click(object sender, ImageClickEventArgs e)
-        {
-
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         protected void btnManage_Click(object sender, EventArgs e)
         {
+
+        }
+
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+            Classes.Clothing clothing = SP.GetClothingByID(int.Parse(Request.QueryString["ClothingID"].ToString()));
+            string size = SizePicker.CurrentSize;
+            clothing.ClothingSize = size;
+            int quantity = QuantityPicker.CurrentQuantity;
+            clothing.ClothingQuantity = quantity;
+
+            //check if there is enough quantity in that size before adding to the cart
+            if (size == "")
+            {
+                lblPurchaseWarning.Text = "Items were not added to your cart. Please choose a size";
+                return;
+            }
+            if(size == "Small")
+            {
+                if(quantity > clothing.SmallStock)
+                {
+                    lblPurchaseWarning.Text = "Items were not added to your cart. There are only " + clothing.SmallStock + " smalls left";
+                    return;
+                }
+            }
+            if (size == "Medium")
+            {
+                if (quantity > clothing.MediumStock)
+                {
+                    lblPurchaseWarning.Text = "Items were not added to your cart. There are only " + clothing.MediumStock + " mediums left";
+                    return;
+                }
+            }
+            if (size == "Large")
+            {
+                if (quantity > clothing.LargeStock)
+                {
+                    lblPurchaseWarning.Text = "Items were not added to your cart. There are only " + clothing.LargeStock + " larges left";
+                    return;
+                }
+            }
+
+            //instantiate arraylist of cart items from session if null
+            List<Classes.Clothing> Cart;
+
+            if (Session["Cart"] == null)
+            {
+                Cart = new List<Classes.Clothing>();
+            } else
+            {
+                Cart = (List<Classes.Clothing>)Session["Cart"]; //instantiate using previous cart info
+            }
+            bool addedFlag = false;
+            //search for existing order item that has the same clothing in the same size, just increment the quantity for that  if possible
+            foreach(Classes.Clothing o in Cart)
+            {
+                if (o.ClothingID == clothing.ClothingID && o.ClothingSize == size)
+                {
+                    o.ClothingQuantity += quantity;
+                    addedFlag = true;
+                }
+            }
+
+            if (addedFlag == false)
+            {
+                //create cart item with clothing
+                Cart.Add(clothing);
+            }
+
+
+            //save into session
+            Session["Cart"] = Cart;
+            lblPurchaseWarning.Text = "Items were successfully added to your cart";
+
+
 
         }
     }

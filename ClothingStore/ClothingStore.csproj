@@ -72,6 +72,8 @@
     <Content Include="assets\css\Navigation-with-Button.css" />
     <Content Include="assets\css\styles.css" />
     <Content Include="Catalog.aspx" />
+    <Content Include="CheckoutPage.aspx" />
+    <Content Include="Clearance.aspx" />
     <Content Include="ClothingPage.aspx" />
     <Content Include="Images\black-24dp\1x\outline_shopping_bag_black_24dp.png" />
     <Content Include="Images\black-24dp\2x\outline_shopping_bag_black_24dp.png" />
@@ -91,6 +93,20 @@
     </Compile>
     <Compile Include="Catalog.aspx.designer.cs">
       <DependentUpon>Catalog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CheckoutPage.aspx.cs">
+      <DependentUpon>CheckoutPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CheckoutPage.aspx.designer.cs">
+      <DependentUpon>CheckoutPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Clearance.aspx.cs">
+      <DependentUpon>Clearance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Clearance.aspx.designer.cs">
+      <DependentUpon>Clearance.aspx</DependentUpon>
     </Compile>
     <Compile Include="ClothingPage.aspx.cs">
       <DependentUpon>ClothingPage.aspx</DependentUpon>

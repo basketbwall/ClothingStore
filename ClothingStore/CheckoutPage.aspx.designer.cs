@@ -11,7 +11,7 @@ namespace ClothingStore
 {
 
 
-    public partial class ManageRefunds
+    public partial class CheckoutPage
     {
 
         /// <summary>
@@ -87,39 +87,30 @@ namespace ClothingStore
         protected global::System.Web.UI.HtmlControls.HtmlAnchor navSignOut;
 
         /// <summary>
-        /// ScriptManager1 control.
+        /// btnSubmitOrder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.WebControls.Button btnSubmitOrder;
 
         /// <summary>
-        /// UpdatePanel1 control.
+        /// lblCartSubmitDisplay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.WebControls.Label lblCartSubmitDisplay;
 
         /// <summary>
-        /// lblDisplay control.
+        /// gvOrder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDisplay;
-
-        /// <summary>
-        /// rptOrders control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptOrders;
+        protected global::System.Web.UI.WebControls.GridView gvOrder;
     }
 }

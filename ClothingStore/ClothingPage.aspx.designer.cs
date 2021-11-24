@@ -33,49 +33,31 @@ namespace ClothingStore
         protected global::System.Web.UI.WebControls.Label lblCompany;
 
         /// <summary>
-        /// btnCatalog control.
+        /// navPurchaseHistory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCatalog;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor navPurchaseHistory;
 
         /// <summary>
-        /// btnClearance control.
+        /// navManageRefunds control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnClearance;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor navManageRefunds;
 
         /// <summary>
-        /// btnPurchaseHistory control.
+        /// navCheckoutPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPurchaseHistory;
-
-        /// <summary>
-        /// btnManageRefunds control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnManageRefunds;
-
-        /// <summary>
-        /// btnCheckOut control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnCheckOut;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor navCheckoutPage;
 
         /// <summary>
         /// lblUser control.
@@ -87,22 +69,31 @@ namespace ClothingStore
         protected global::System.Web.UI.WebControls.Label lblUser;
 
         /// <summary>
-        /// btnSignIn control.
+        /// navSignIn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSignIn;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor navSignIn;
 
         /// <summary>
-        /// btnSignOut control.
+        /// navSignOut control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSignOut;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor navSignOut;
+
+        /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
         /// clothingImage control.
@@ -159,6 +150,15 @@ namespace ClothingStore
         protected global::System.Web.UI.WebControls.Label lblBrand;
 
         /// <summary>
+        /// btnManage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnManage;
+
+        /// <summary>
         /// shoppingOptions control.
         /// </summary>
         /// <remarks>
@@ -166,6 +166,15 @@ namespace ClothingStore
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl shoppingOptions;
+
+        /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
         /// lblSize control.
@@ -213,6 +222,15 @@ namespace ClothingStore
         protected global::System.Web.UI.WebControls.Button btnAdd;
 
         /// <summary>
+        /// lblPurchaseWarning control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPurchaseWarning;
+
+        /// <summary>
         /// Label1 control.
         /// </summary>
         /// <remarks>
@@ -220,6 +238,15 @@ namespace ClothingStore
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
+
+        /// <summary>
+        /// UpdatePanel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
 
         /// <summary>
         /// reviews control.
@@ -256,15 +283,6 @@ namespace ClothingStore
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnMyReview;
-
-        /// <summary>
-        /// btnManage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnManage;
 
         /// <summary>
         /// allreviews control.

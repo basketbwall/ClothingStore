@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Utilities;
+using System.Runtime.Serialization.Formatters.Binary;       //needed for BinaryFormatter
+using System.IO;                                            //needed for the MemoryStream
 
 namespace Classes
 {
@@ -245,6 +247,29 @@ namespace Classes
             DataSet myDataSet = DB.GetDataSetUsingCmdObj(cmd);
 
             return myDataSet;
+        }
+
+        public int StoreOrderItems(int orderID, Byte[] items)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "TP_StoreOrderItems";
+            cmd.Parameters.AddWithValue("@theOrderID", orderID);
+            cmd.Parameters.AddWithValue("@theOrderItems", items);
+            int retVal = DB.DoUpdateUsingCmdObj(cmd);
+            return retVal;
+
+        }
+
+        public DataSet RetrieveOrderItems(int orderID)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "TP_RetrieveOrderItems";
+            cmd.Parameters.AddWithValue("@theOrderID", orderID);
+            DataSet myDataSet = DB.GetDataSetUsingCmdObj(cmd);
+            return myDataSet;
+
         }
     }
 }

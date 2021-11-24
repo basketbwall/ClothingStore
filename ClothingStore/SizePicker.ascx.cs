@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,9 +12,18 @@ namespace ClothingStore
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
+        [Category("Misc")]
+        public string CurrentSize
+
+        {
+
+            get { return lblSize.Text; }
+
+            set { lblSize.Text = value; }
+
+        }
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(rdbSize.SelectedIndex == 0)

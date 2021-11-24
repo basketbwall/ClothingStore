@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Catalog.aspx.cs" Inherits="ClothingStore.Catalog" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Clearance.aspx.cs" Inherits="ClothingStore.Clearance" %>
 
 <!DOCTYPE html>
 
@@ -74,8 +74,6 @@
             </ul>
         </nav>
         <div>
-            Dummy page
-            <asp:Button ID="btnClothing" runat="server" Text="Clothing" OnClick="btnClothing_Click" class="btn btn-dark"/>
         </div>
     </form>
 </body>

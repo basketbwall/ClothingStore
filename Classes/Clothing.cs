@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Classes
 {
+    [Serializable]
     public class Clothing
     {
         public int ClothingID { get; set; }
@@ -20,6 +21,8 @@ namespace Classes
         public decimal ClearanceDiscountPercent { get; set; }
         public decimal ClothingPrice { get; set; }
         public string ClothingBrand { get; set; }
+        public String ClothingSize { get; set; }
+        public int ClothingQuantity { get; set; }
 
         public Clothing() { }
     }

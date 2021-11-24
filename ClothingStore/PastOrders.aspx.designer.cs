@@ -33,49 +33,31 @@ namespace ClothingStore
         protected global::System.Web.UI.WebControls.Label lblCompany;
 
         /// <summary>
-        /// btnCatalog control.
+        /// navPurchaseHistory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCatalog;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor navPurchaseHistory;
 
         /// <summary>
-        /// btnClearance control.
+        /// navManageRefunds control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnClearance;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor navManageRefunds;
 
         /// <summary>
-        /// btnPurchaseHistory control.
+        /// navCheckoutPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPurchaseHistory;
-
-        /// <summary>
-        /// btnManageRefunds control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnManageRefunds;
-
-        /// <summary>
-        /// btnCheckOut control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnCheckOut;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor navCheckoutPage;
 
         /// <summary>
         /// lblUser control.
@@ -87,22 +69,31 @@ namespace ClothingStore
         protected global::System.Web.UI.WebControls.Label lblUser;
 
         /// <summary>
-        /// Button1 control.
+        /// navSignIn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor navSignIn;
 
         /// <summary>
-        /// Button2 control.
+        /// navSignOut control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor navSignOut;
+
+        /// <summary>
+        /// GridView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
         /// lblDisplay control.
