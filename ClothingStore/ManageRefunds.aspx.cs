@@ -39,7 +39,7 @@ namespace ClothingStore
                 StoredProcedures SP = new StoredProcedures();
                 //call stored procedure to get a dataset of orders that have refundrequest column set to true
                 //set the repeater datasource and databind
-                DataSet orders = SP.GetOrders();
+                DataSet orders = SP.GetRefundRequests();
                 rptOrders.DataSource = orders;
                 rptOrders.DataBind();
 
@@ -57,6 +57,20 @@ namespace ClothingStore
             String orderNumber = myLabel.Text;
 
             lblDisplay.Text = "You selected orderNumber " + orderNumber;
+
+            //call stored procedure to delete a order
+            StoredProcedures SP = new StoredProcedures();
+            int retVal = SP.ConfirmRefund(int.Parse(orderNumber));
+
+            if (retVal == 1)
+            {
+                //let admin know the refund was issued
+                lblRefundResult.Text = "Refund was successfully issued.";
+            } else
+            {
+                //let admin know there was an error and refund was not issued
+                lblRefundResult.Text = "Refund was NOT successfully issued.";
+            }
         }
     }
 }

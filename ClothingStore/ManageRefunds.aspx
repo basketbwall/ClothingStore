@@ -48,6 +48,9 @@
         td {
             width: 10%;
         }
+        .auto-style1 {
+            height: 29px;
+        }
     </style>
 </head>
 <body>
@@ -108,6 +111,10 @@
                         </ItemTemplate>
                     </asp:Repeater>
                 </table>
+                <br />
+                <div class="text-center">
+                    <asp:Label ID="lblRefundResult" runat="server" Text=""></asp:Label>
+                </div>
             </ContentTemplate>
         </asp:UpdatePanel>
     </form>

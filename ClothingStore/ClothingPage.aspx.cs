@@ -74,6 +74,11 @@ namespace ClothingStore
                 lblPrice.Text = lblPrice.Text + c.ClothingPrice;
                 lblBrand.Text = lblBrand.Text + c.ClothingBrand;
                 clothingImage.ImageUrl = c.ClothingImage;
+                DataSet avgReviews = SP.GetAverages(c.ClothingID);
+                lblComfortAv.Text = avgReviews.Tables[0].Rows[0]["comfortRating"].ToString();
+                lblQualityAv.Text = avgReviews.Tables[0].Rows[0]["qualityRating"].ToString();
+                lblCostAv.Text = avgReviews.Tables[0].Rows[0]["costRating"].ToString();
+
 
 
             }
@@ -313,11 +318,11 @@ namespace ClothingStore
                 lblPurchaseWarning.Text = "Items were not added to your cart. Please choose a size";
                 return;
             }
-            if(size == "Small")
+            if (size == "Small")
             {
-                if(quantity > clothing.SmallStock)
+                if (quantity > clothing.SmallStock)
                 {
-                    lblPurchaseWarning.Text = "Items were not added to your cart. There are only " + clothing.SmallStock + " smalls left";
+                    lblPurchaseWarning.Text = "Items not added to cart. There is not enough stock to add your specified quantity.";
                     return;
                 }
             }
@@ -325,7 +330,7 @@ namespace ClothingStore
             {
                 if (quantity > clothing.MediumStock)
                 {
-                    lblPurchaseWarning.Text = "Items were not added to your cart. There are only " + clothing.MediumStock + " mediums left";
+                    lblPurchaseWarning.Text = "Items not added to cart. There is not enough stock to add your specified quantity.";
                     return;
                 }
             }
@@ -333,7 +338,7 @@ namespace ClothingStore
             {
                 if (quantity > clothing.LargeStock)
                 {
-                    lblPurchaseWarning.Text = "Items were not added to your cart. There are only " + clothing.LargeStock + " larges left";
+                    lblPurchaseWarning.Text = "Items not added to cart. There is not enough stock to add your specified quantity.";
                     return;
                 }
             }
@@ -349,26 +354,67 @@ namespace ClothingStore
                 Cart = (List<Classes.Clothing>)Session["Cart"]; //instantiate using previous cart info
             }
             bool addedFlag = false;
+            bool alreadyInCart = false;
             //search for existing order item that has the same clothing in the same size, just increment the quantity for that  if possible
             foreach(Classes.Clothing o in Cart)
             {
                 if (o.ClothingID == clothing.ClothingID && o.ClothingSize == size)
                 {
-                    o.ClothingQuantity += quantity;
-                    addedFlag = true;
+                    alreadyInCart = true;
+                    //check if quantity will go over the stock
+                    if (size == "Small")
+                    {
+                        if (o.SmallStock >= o.ClothingQuantity + quantity)
+                        {
+                            o.ClothingQuantity += quantity;
+                            addedFlag = true;
+                            lblPurchaseWarning.Text = "Items were successfully added to your cart";
+                        }
+                        else
+                        {
+                            lblPurchaseWarning.Text = "Items not added to cart. There is not enough stock to add your specified quantity.";
+                        }
+                    } else if (size == "Medium")
+                    {
+                        if (o.MediumStock >= o.ClothingQuantity + quantity)
+                        {
+                            o.ClothingQuantity += quantity;
+                            addedFlag = true;
+                            lblPurchaseWarning.Text = "Items were successfully added to your cart";
+                        }
+                        else
+                        {
+                            lblPurchaseWarning.Text = "Items not added to cart. There is not enough stock to add your specified quantity.";
+                        }
+                    }
+                    else if (size == "Large")
+                    {
+                        if (o.LargeStock >= o.ClothingQuantity + quantity)
+                        {
+                            o.ClothingQuantity += quantity;
+                            addedFlag = true;
+                            lblPurchaseWarning.Text = "Items were successfully added to your cart";
+                        }
+                        else
+                        {
+                            lblPurchaseWarning.Text = "Items not added to cart. There is not enough stock to add your specified quantity.";
+                        }
+                    }
+
                 }
             }
 
-            if (addedFlag == false)
+            if (addedFlag == false && alreadyInCart == false)
             {
                 //create cart item with clothing
+                //do the same check at this stage to check
                 Cart.Add(clothing);
+                lblPurchaseWarning.Text = "Items were successfully added to your cart";
             }
 
 
             //save into session
             Session["Cart"] = Cart;
-            lblPurchaseWarning.Text = "Items were successfully added to your cart";
 
 
 

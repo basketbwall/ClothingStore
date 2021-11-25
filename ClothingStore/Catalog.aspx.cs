@@ -39,7 +39,7 @@ namespace ClothingStore
 
         protected void btnClothing_Click(object sender, EventArgs e)
         {
-            int id = 2;
+            int id = int.Parse(txtClothingID.Text);
             Response.Redirect("ClothingPage.aspx" + "?ClothingID=" + id);
         }
 

@@ -25,5 +25,13 @@ namespace Classes
         public int ClothingQuantity { get; set; }
 
         public Clothing() { }
+
+        //public GetAverageRating() { }
+
+        //public GetAveragePriceRating() { }
+
+        //public GetAverageComfortRating() { }
+
+        //public GetAverageQualityRating() { }
     }
 }

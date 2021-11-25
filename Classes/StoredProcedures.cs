@@ -271,5 +271,68 @@ namespace Classes
             return myDataSet;
 
         }
+
+        public DataSet GetUserOrders(int userID)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "TP_GetUserOrders";
+            cmd.Parameters.AddWithValue("@theUserID", userID);
+            DataSet myDataSet = DB.GetDataSetUsingCmdObj(cmd);
+            return myDataSet;
+
+        }
+
+        public bool CheckRefundStatus(int orderID)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "TP_CheckRefundStatus";
+            cmd.Parameters.AddWithValue("@theOrderID", orderID);
+
+            bool retval = (bool)DB.GetDataSetUsingCmdObj(cmd).Tables[0].Rows[0]["refundRequested"];
+            return retval;
+
+        }
+
+        public int RequestRefund(int orderID)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "TP_RequestRefund";
+            cmd.Parameters.AddWithValue("@theOrderID", orderID);
+
+            int res = DB.DoUpdateUsingCmdObj(cmd);
+            return res;
+        }
+
+        public DataSet GetRefundRequests()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "TP_GetRefundRequests";
+
+            return DB.GetDataSetUsingCmdObj(cmd);
+        }
+
+        public int ConfirmRefund(int orderID)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "TP_ConfirmRefund";
+            cmd.Parameters.AddWithValue("@theOrderID", orderID);
+
+            int res = DB.DoUpdateUsingCmdObj(cmd);
+            return res;
+        }
+
+        public DataSet GetAverages(int clothingID)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "TP_GetAverages";
+            cmd.Parameters.AddWithValue("@theClothingID", clothingID);
+            return DB.GetDataSetUsingCmdObj(cmd);
+        }
     }
 }

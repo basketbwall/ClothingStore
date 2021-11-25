@@ -64,7 +64,7 @@ namespace ClothingStore
 
             byteArray = memStream.ToArray();
 
-            int retVal = SP.StoreOrderItems(1, byteArray);
+            int retVal = SP.StoreOrderItems(2, byteArray);
             // Check to see whether the update was successful
 
             if (retVal > 0)

@@ -87,6 +87,24 @@ namespace ClothingStore
         protected global::System.Web.UI.HtmlControls.HtmlAnchor navSignOut;
 
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+
+        /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+
+        /// <summary>
         /// GridView1 control.
         /// </summary>
         /// <remarks>
@@ -96,13 +114,31 @@ namespace ClothingStore
         protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
-        /// lblDisplay control.
+        /// divCurrentOrder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDisplay;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCurrentOrder;
+
+        /// <summary>
+        /// lblRefund control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRefund;
+
+        /// <summary>
+        /// btnRefundRequest control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRefundRequest;
 
         /// <summary>
         /// rptOrders control.

@@ -113,6 +113,15 @@
         <br />
         <asp:Label ID="Label1" runat="server" Text="Ratings & Reviews" class="h4 col-sm-3"></asp:Label>
         <br />
+        Average Comfort Rating:
+        <asp:Label ID="lblComfortAv" runat="server" Text=""></asp:Label>
+        <br />
+        Average Quality Rating:
+        <asp:Label ID="lblQualityAv" runat="server" Text=""></asp:Label>
+        <br />
+        Average Cost Rating:
+        <asp:Label ID="lblCostAv" runat="server" Text=""></asp:Label>
+        <br />
         <br />
 
         <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">

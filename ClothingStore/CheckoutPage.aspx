@@ -74,11 +74,36 @@
             </ul>
         </nav>
         <div>
-            <asp:Button ID="btnSubmitOrder" runat="server" Text="Submit Order" class="btn btn-primary" OnClick="btnSubmitOrder_Click"/>
                 <asp:Label ID="lblCartSubmitDisplay" runat="server" Text=""></asp:Label>
         </div>
-        <asp:GridView ID="gvOrder" runat="server">
+        <asp:GridView ID="gvOrder" runat="server" AutoGenerateColumns="False" style="margin:auto; width:75%; margin-top: 2.5%; margin-bottom: 2.5%" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
+                                        <emptydatatemplate>
+                                There are no items in your cart.
+                            </emptydatatemplate>
+            <Columns>
+                <asp:BoundField DataField="ClothingName" HeaderText="Name" />
+                <asp:BoundField DataField="ClothingColor" HeaderText="Color" />
+                <asp:ImageField DataImageUrlField="ClothingImage" HeaderText="Image">
+                    <ControlStyle Height="150px" Width="150px" />
+                </asp:ImageField>
+                <asp:BoundField DataField="OnClearance" HeaderText="Clearance" />
+                <asp:BoundField DataField="ClearanceDiscountPercent" HeaderText="Discount Percent" />
+                <asp:BoundField DataField="ClothingPrice" HeaderText="Price" />
+                <asp:BoundField DataField="ClothingSize" HeaderText="Size" />
+                <asp:BoundField DataField="ClothingQuantity" HeaderText="Quantity" />
+            </Columns>
+                                        <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+                                        <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
+                                        <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
+                                        <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
+                                        <SortedAscendingCellStyle BackColor="#F7F7F7" />
+                                        <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
+                                        <SortedDescendingCellStyle BackColor="#E5E5E5" />
+                                        <SortedDescendingHeaderStyle BackColor="#242121" />
         </asp:GridView>
+        <div class="text-center">
+                        <asp:Button ID="btnSubmitOrder" runat="server" Text="Submit Order" class="btn btn-primary" OnClick="btnSubmitOrder_Click"/>
+        </div>
     </form>
 </body>
 </html>

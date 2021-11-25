@@ -48,6 +48,7 @@
         td {
             width: 10%;
         }
+
         .auto-style1 {
             height: 29px;
         }
@@ -81,75 +82,99 @@
             </ul>
         </nav>
 
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
 
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" class="text-center" style="width: 70%; margin: auto;">
-            <Columns>
-                <asp:BoundField DataField="ClothingName" HeaderText="Name" />
-                <asp:BoundField DataField="ClothingColor" HeaderText="Color" />
-                <asp:BoundField DataField="ClothingSize" HeaderText="Size" />
-                <asp:BoundField DataField="ClothingPrice" HeaderText="Price" />
-                <asp:BoundField DataField="ClothingQuantity" HeaderText="Quantity Purchased" />
-            </Columns>
-        </asp:GridView>
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" class="text-center" Style="width: 70%; margin: auto; margin-top: 5%; margin-bottom: 5%" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
+                    <Columns>
+                        <asp:BoundField DataField="ClothingName" HeaderText="Name" />
+                        <asp:BoundField DataField="ClothingColor" HeaderText="Color" />
+                        <asp:BoundField DataField="ClothingSize" HeaderText="Size" />
+                        <asp:BoundField DataField="ClothingPrice" HeaderText="Price" />
+                        <asp:BoundField DataField="ClothingQuantity" HeaderText="Quantity Purchased" />
+                    </Columns>
+                    <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+                    <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
+                    <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
+                    <SortedAscendingCellStyle BackColor="#F7F7F7" />
+                    <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
+                    <SortedDescendingCellStyle BackColor="#E5E5E5" />
+                    <SortedDescendingHeaderStyle BackColor="#242121" />
+                </asp:GridView>
 
-        <asp:Label ID="lblDisplay" runat="server" Text=""></asp:Label>
-        <table style="width: 70%; margin: auto;">
+                <div runat="server" id="divCurrentOrder" class="text-center" visible="false">
+                    <asp:Label ID="lblRefund" runat="server" Text=""></asp:Label>
+                    <br />
+                    <asp:Button ID="btnRefundRequest" runat="server" Text="Initiate Refund Request" class="btn btn-dark" OnClick="btnRefundRequest_Click" />
+                </div>
 
-            <tr>
-
-                <th>Order ID</th>
-
-                <th>Order Total</th>
-
-                <th>Order Date</th>
-
-                <th>Refund Request Status</th>
-
-                <th>View Order</th>
-
-            </tr>
-
-
-
-            <asp:Repeater ID="rptOrders" runat="server" OnItemCommand="rptOrders_ItemCommand">
-
-                <ItemTemplate>
+                <table style="width: 70%; margin: auto; margin-top:2.5%; margin-bottom: 2.5%">
 
                     <tr>
 
-                        <td>
+                        <th>Order ID</th>
 
-                            <asp:Label ID="lblOrderID" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "orderID") %>'></asp:Label>
+                        <th>Order Total</th>
 
-                        </td>
+                        <th>Order Date</th>
 
-                        <td>
+                        <th>Refund Request Status</th>
 
-                            <asp:Label ID="lblDescription" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "orderTotal", "{0:c}") %>'></asp:Label>
+                        <th>View Order</th>
 
-                        </td>
-
-                        <td>
-
-                            <asp:Label ID="lblPrice" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "orderDate") %>'></asp:Label>
-
-                        </td>
-                        <td>
-
-                            <asp:Label ID="Label1" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "refundRequested") %>'></asp:Label>
-
-                        </td>
-                        <td>
-                            <asp:Button ID="Button3" runat="server" Text="Initiate Refund Request" class="btn btn-dark"/>
                     </tr>
 
-                </ItemTemplate>
-
-            </asp:Repeater>
 
 
+                    <asp:Repeater ID="rptOrders" runat="server" OnItemCommand="rptOrders_ItemCommand">
 
-        </table>
+                        <ItemTemplate>
+
+                            <tr>
+
+                                <td>
+
+                                    <asp:Label ID="lblOrderID" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "orderID") %>'></asp:Label>
+
+                                </td>
+
+                                <td>
+
+                                    <asp:Label ID="lblDescription" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "orderTotal", "{0:c}") %>'></asp:Label>
+
+                                </td>
+
+                                <td>
+
+                                    <asp:Label ID="lblPrice" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "orderDate") %>'></asp:Label>
+
+                                </td>
+                                <td>
+
+                                    <asp:Label ID="Label1" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "refundRequested") %>'></asp:Label>
+
+                                </td>
+                                <td>
+                                    <asp:Button ID="Button3" runat="server" Text="View Order" class="btn btn-dark" />
+                            </tr>
+
+                        </ItemTemplate>
+
+                    </asp:Repeater>
+
+
+
+                </table>
+            </ContentTemplate>
+
+        </asp:UpdatePanel>
+
+
+
+
 
 
 
