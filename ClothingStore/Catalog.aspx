@@ -63,9 +63,15 @@
 
             </ul>
             <ul class="text-end col-md-5" style="display: inline-block; list-style-type: none;">
+
+
                 <li style="display: inline-block;">
-                    <a runat="server" id="navCheckoutPage" visible="false" href="CheckoutPage.aspx">
-                        <img src="/Images/black-24dp/2x/outline_shopping_bag_black_24dp.png" /></a>
+                    <a runat="server" id="navCheckoutPage" type="button" class="btn position-relative"  href="CheckoutPage.aspx">
+                          <img src="/Images/black-24dp/2x/outline_shopping_bag_black_24dp.png" />
+                          <span runat="server" id="CartSpan" class="position-absolute start-50 badge rounded-pill bg-danger">
+                              <asp:Label ID="lblCartTotalQuantity" runat="server" Text="3"></asp:Label>
+                          </span>
+                    </a>
                 </li>
 
                 <asp:Label ID="lblUser" runat="server" Text="" Style="margin-right: 1rem;"></asp:Label>
@@ -78,7 +84,7 @@
             <asp:TextBox ID="txtClothingID" runat="server"></asp:TextBox>
             <asp:Button ID="btnClothing" runat="server" Text="Find Clothing" OnClick="btnClothing_Click" class="btn btn-dark" />
         </div>
-
     </form>
+
 </body>
 </html>

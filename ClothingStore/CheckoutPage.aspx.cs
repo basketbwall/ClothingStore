@@ -63,8 +63,8 @@ namespace ClothingStore
             serializer.Serialize(memStream, Cart);
 
             byteArray = memStream.ToArray();
-
-            int retVal = SP.StoreOrderItems(2, byteArray);
+            int orderID = int.Parse(txtOrderID.Text);
+            int retVal = SP.StoreOrderItems(orderID, byteArray);
             // Check to see whether the update was successful
 
             if (retVal > 0)

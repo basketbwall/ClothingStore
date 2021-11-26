@@ -60,6 +60,26 @@ namespace ClothingStore
                 }
             }
 
+            //check for blank
+            if (txtUsername.Text == "")
+            {
+                usernameValidator.Visible = true;
+            } else
+            {
+                usernameValidator.Visible = false;
+
+            }
+            if (txtPassword.Text == "")
+            {
+                passwordValidator.Visible = true;
+            } else
+            {
+                passwordValidator.Visible = false;
+            }
+
+
+
+
             //check if username and password checks out, call method from storedprocedure class
             if (SP.CheckCredentials(txtUsername.Text, txtPassword.Text))
             {
@@ -99,6 +119,15 @@ namespace ClothingStore
             //if email exists find security question and set visible
                 //select statement for finding user with email
                 //select statement for finding all security questions, randomly choose 1 to display
+            //check for blank
+            if (email == "")
+            {
+                emailValidator.Visible = true;
+            } else
+            {
+                emailValidator.Visible = false;
+            }
+
             if(SP.UserExists(email))
             {
                 List<String> QA = SP.GetSecurityQuestion(txtEmail.Text);
@@ -111,6 +140,15 @@ namespace ClothingStore
 
         protected void btnAnswerSecurity_Click(object sender, EventArgs e)
         {
+            //check for blank
+            if (txtSecurityAnswer.Text == "")
+            {
+                securityQuestionValidator.Visible = true;
+            }
+            else
+            {
+                securityQuestionValidator.Visible = false;
+            }
             //if answer is correct display buttons to recover password and username
 
             if (txtSecurityAnswer.Text == Session["SecurityAnswer"].ToString())

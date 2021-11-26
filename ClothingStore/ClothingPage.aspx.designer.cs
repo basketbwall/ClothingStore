@@ -231,15 +231,6 @@ namespace ClothingStore
         protected global::System.Web.UI.WebControls.Label lblPurchaseWarning;
 
         /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-
-        /// <summary>
         /// lblComfortAv control.
         /// </summary>
         /// <remarks>
@@ -355,6 +346,15 @@ namespace ClothingStore
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtReviewContent;
+
+        /// <summary>
+        /// reviewContentValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl reviewContentValidator;
 
         /// <summary>
         /// lblCostRating control.

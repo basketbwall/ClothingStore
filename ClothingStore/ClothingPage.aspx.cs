@@ -140,6 +140,15 @@ namespace ClothingStore
 
         protected void btnSubmitReview_Click(object sender, EventArgs e)
         {
+            if (txtReviewContent.Text == "")
+            {
+                reviewContentValidator.Visible = true;
+                return;
+            } else
+            {
+                reviewContentValidator.Visible = false;
+            }
+
             if (Session["ReviewOperation"].ToString() == "Add")
             {
                 //figure out how to send a Review class through the body to use POST web api method

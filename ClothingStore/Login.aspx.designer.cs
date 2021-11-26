@@ -42,6 +42,15 @@ namespace ClothingStore
         protected global::System.Web.UI.WebControls.TextBox txtUsername;
 
         /// <summary>
+        /// usernameValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl usernameValidator;
+
+        /// <summary>
         /// btnUsername control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace ClothingStore
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
+
+        /// <summary>
+        /// passwordValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl passwordValidator;
 
         /// <summary>
         /// btnForgotPassword control.
@@ -150,6 +168,15 @@ namespace ClothingStore
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
+        /// emailValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl emailValidator;
+
+        /// <summary>
         /// btnSubmitEmail control.
         /// </summary>
         /// <remarks>
@@ -184,6 +211,15 @@ namespace ClothingStore
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSecurityAnswer;
+
+        /// <summary>
+        /// securityQuestionValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl securityQuestionValidator;
 
         /// <summary>
         /// btnAnswerSecurity control.

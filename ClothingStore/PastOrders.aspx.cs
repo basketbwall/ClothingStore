@@ -16,6 +16,16 @@ namespace ClothingStore
     public partial class PastOrders : System.Web.UI.Page
     {
         StoredProcedures SP;
+
+        protected void Page_PreLoad(object sender, EventArgs e)
+        {
+            if(Session["Role"].ToString() != "RewardsCustomer")
+            {
+                //prevent the page to load the html and give a warning somehow
+                this.Controls.Clear();
+                Response.Write("You are not allowed here buddy");
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

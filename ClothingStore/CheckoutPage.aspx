@@ -91,6 +91,13 @@
                 <asp:BoundField DataField="ClothingPrice" HeaderText="Price" />
                 <asp:BoundField DataField="ClothingSize" HeaderText="Size" />
                 <asp:BoundField DataField="ClothingQuantity" HeaderText="Quantity" />
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:Button ID="btnDecrease" runat="server" Text="-" class="btn btn-success"/>
+                        <asp:Button ID="btnIncrease" runat="server" Text="+" class="btn btn-danger" />
+                        <asp:Button ID="btnDelete" runat="server" Text="Remove" class="btn btn-dark"/>
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
                                         <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
                                         <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
@@ -102,6 +109,7 @@
                                         <SortedDescendingHeaderStyle BackColor="#242121" />
         </asp:GridView>
         <div class="text-center">
+                        <asp:TextBox ID="txtOrderID" runat="server"></asp:TextBox>
                         <asp:Button ID="btnSubmitOrder" runat="server" Text="Submit Order" class="btn btn-primary" OnClick="btnSubmitOrder_Click"/>
         </div>
     </form>
