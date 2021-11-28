@@ -16,18 +16,22 @@ namespace ClothingStore
     public partial class Clothing : System.Web.UI.Page
     {
         StoredProcedures SP = new StoredProcedures();
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            //check role and update label on top right and set visibility of buttons
+            Navbar ctrl = (Navbar)LoadControl("Navbar.ascx");
+            Form.Controls.AddAt(0, ctrl);
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+
                 //check role and update label on top right and set visibility of buttons
                 if (Session["Role"].ToString() == "RewardsCustomer")
                 {
-                    navPurchaseHistory.Visible = true;
-                    navCheckoutPage.Visible = true;
                     shoppingOptions.Visible = true;
-                    lblUser.Text = "Hello " + "Rewards Customer";
-                    navSignOut.Visible = true;
                     //if they already have a review for this clothing, then only show edit otherwise show the write review
                     WebRequest request = WebRequest.Create("https://localhost:44385/api/Reviews/GetReviews");
                     WebResponse response = request.GetResponse();
@@ -51,17 +55,11 @@ namespace ClothingStore
                 }
                 else if (Session["Role"].ToString() == "Administrator")
                 {
-                    navManageRefunds.Visible = true;
-                    lblUser.Text = "Hello " + "Administrator";
-                    navSignOut.Visible = true;
                     btnManage.Visible = true;
                 }
                 else
                 {
                     //visitor
-                    navCheckoutPage.Visible = true;
-                    lblUser.Text = "Hello " + "Visitor";
-                    navSignIn.Visible = true;
                     shoppingOptions.Visible = true;
                 }
 

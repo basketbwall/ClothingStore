@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/css/Navigation-with-Button.css" />
     <link rel="stylesheet" href="assets/css/styles.css/" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title></title>
     <style>
         nav {
@@ -48,6 +49,7 @@
         td {
             width: 10%;
         }
+
         .auto-style1 {
             height: 29px;
         }
@@ -55,36 +57,37 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <nav id="navbar" class="text-start">
-            <asp:Label ID="lblCompany" runat="server" Text="CompanyName" class="h6"></asp:Label>
-            <ul class="col-md-5" style="display: inline-block; list-style-type: none;">
-                <li style="display: inline-block;"><a href="Catalog.aspx" class="btn btn-outline-dark">Catalog</a></li>
 
-                <li style="display: inline-block;"><a href="Clearance.aspx" class="btn btn-outline-dark">Clearance</a></li>
-
-                <li style="display: inline-block;">
-                    <a runat="server" id="navPurchaseHistory" visible="false" href="PastOrders.aspx" class="btn btn-outline-dark">Purchase History</a></li>
-
-                <li style="display: inline-block;"><a runat="server" id="navManageRefunds" visible="false" href="ManageRefunds.aspx" class="btn btn-outline-dark">Manage Refunds</a></li>
-
-            </ul>
-            <ul class="text-end col-md-5" style="display: inline-block; list-style-type: none;">
-                <li style="display: inline-block;">
-                    <a runat="server" id="navCheckoutPage" visible="false" href="CheckoutPage.aspx">
-                        <img src="/Images/black-24dp/2x/outline_shopping_bag_black_24dp.png" /></a>
-                </li>
-
-                <asp:Label ID="lblUser" runat="server" Text="" Style="margin-right: 1rem;"></asp:Label>
-
-                <li style="display: inline-block;"><a runat="server" id="navSignIn" visible="false" href="Login.aspx" class="btn btn-outline-success">Sign In</a></li>
-                <li style="display: inline-block;"><a runat="server" id="navSignOut" visible="false" href="Login.aspx" class="btn btn-outline-danger">Sign Out</a></li>
-            </ul>
-        </nav>
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
+
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-            <asp:Label ID="lblDisplay" runat="server" Text=""></asp:Label>
+
+<!-- Modal -->
+<div class="modal fade" id="modalConfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Order ID: </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Confirm Refund</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+                <asp:Label ID="lblDisplay" runat="server" Text=""></asp:Label>
                 <table style="width: 70%; margin: auto;">
                     <tr>
                         <th>Order ID</th>
@@ -105,7 +108,7 @@
                                     <asp:Label ID="lblPrice" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "orderDate") %>'></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:Button ID="Button3" runat="server" class="btn btn-dark" Text="Confirm Refund Request" />
+                                    <asp:Button ID="Button3" runat="server" class="btn btn-dark" Text="Confirm Refund Request" data-toggle="modal" data-target="#modalConfirm" />
                                 </td>
                             </tr>
                         </ItemTemplate>
@@ -117,6 +120,11 @@
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>
+
     </form>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

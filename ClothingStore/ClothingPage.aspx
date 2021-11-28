@@ -13,8 +13,13 @@
     <link rel="stylesheet" href="assets/css/Navigation-with-Button.css" />
     <link rel="stylesheet" href="assets/css/styles.css/" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+
     <title></title>
     <style>
+        .imgStar {
+  width: 50px;
+}
+
         nav {
             padding-top: 10px;
         }
@@ -54,31 +59,6 @@
 </head>
 <body>
     <form id="form1" runat="server" class="text-center">
-        <nav id="navbar" class="text-start">
-            <asp:Label ID="lblCompany" runat="server" Text="CompanyName" class="h6"></asp:Label>
-            <ul class="col-md-5" style="display: inline-block; list-style-type: none;">
-                <li style="display: inline-block;"><a href="Catalog.aspx" class="btn btn-outline-dark">Catalog</a></li>
-
-                <li style="display: inline-block;"><a href="Clearance.aspx" class="btn btn-outline-dark">Clearance</a></li>
-
-                <li style="display: inline-block;">
-                    <a runat="server" id="navPurchaseHistory" visible="false" href="PastOrders.aspx" class="btn btn-outline-dark">Purchase History</a></li>
-
-                <li style="display: inline-block;"><a runat="server" id="navManageRefunds" visible="false" href="ManageRefunds.aspx" class="btn btn-outline-dark">Manage Refunds</a></li>
-
-            </ul>
-            <ul class="text-end col-md-5" style="display: inline-block; list-style-type: none;">
-                <li style="display: inline-block;">
-                    <a runat="server" id="navCheckoutPage" visible="false" href="CheckoutPage.aspx">
-                        <img src="/Images/black-24dp/2x/outline_shopping_bag_black_24dp.png" /></a>
-                </li>
-
-                <asp:Label ID="lblUser" runat="server" Text="" Style="margin-right: 1rem;"></asp:Label>
-
-                <li style="display: inline-block;"><a runat="server" id="navSignIn" visible="false" href="Login.aspx" class="btn btn-outline-success">Sign In</a></li>
-                <li style="display: inline-block;"><a runat="server" id="navSignOut" visible="false" href="Login.aspx" class="btn btn-outline-danger">Sign Out</a></li>
-            </ul>
-        </nav>
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
         <div id="imageDiv" style="float:left;" class="col-md-6">
@@ -132,13 +112,13 @@
                         <div class="accordion-body">
                             <div class="accordion-body">
                                 Average Comfort Rating:
-        <asp:Label ID="lblComfortAv" runat="server" Text=""></asp:Label>
+        <asp:Label ID="lblComfortAv" runat="server" Text="" class="rating"></asp:Label>
                                 <br />
                                 Average Quality Rating:
-        <asp:Label ID="lblQualityAv" runat="server" Text=""></asp:Label>
+        <asp:Label ID="lblQualityAv" runat="server" Text="" class="rating"></asp:Label>
                                 <br />
                                 Average Cost Rating:
-        <asp:Label ID="lblCostAv" runat="server" Text=""></asp:Label>
+        <asp:Label ID="lblCostAv" runat="server" Text="" class="rating"></asp:Label>
                                 <br />
                                 <br />
 
@@ -147,7 +127,7 @@
                                     <ContentTemplate>
 
                                         <div runat="server" id="reviews" class="row">
-                                            <asp:Button ID="btnLoadReview" runat="server" Text="See Reviews" class="btn btn-dark col-sm-3" Style="margin-right: 1rem;" OnClick="btnLoadReview_Click" />
+                                            <asp:Button ID="btnLoadReview" runat="server" Text="See Reviews" class="btn btn-dark col-sm-3" Style="margin-right: 1rem;" OnClick="btnLoadReview_Click"/>
                                             <asp:Button ID="btnAddReview" runat="server" Text="Write Review" Visible="false" class="btn btn-dark col-sm-3" Style="margin-right: 1rem;" OnClick="btnAddReview_Click" />
                                             <asp:Button ID="btnMyReview" runat="server" Text="Edit Review" Visible="false" class="btn btn-dark col-sm-3" OnClick="btnEditReview_Click" />
                                         </div>
@@ -161,11 +141,13 @@
                                                     <div class="list">
                                                         <table style="border: solid black 0.5px; width: 100%; margin-bottom: 1em; border-radius: 5px; border-collapse: separate !important;">
                                                             <tr>
-                                                                <td>Cost Rating: <%#Eval("costRating")%></td>
-                                                                <td>Comfort Rating: <%#Eval("comfortRating")%></td>
-                                                                <td>Quality Rating: <%#Eval("qualityRating")%></td>
+                                                                <td>Cost Rating:<img src="images/star_black_24dp.svg" alt="Star" width="20"> <%#Eval("costRating")%></td>
+                                                                <td class="rating">Comfort Rating:<img src="images/star_black_24dp.svg" alt="Star" width="20"> <%#Eval("comfortRating")%></td>
+                                                                <td class="rating">Quality Rating:<img src="images/star_black_24dp.svg" alt="Star" width="20"> <%#Eval("qualityRating")%></td>
                                                             </tr>
-                                                            <tr>
+                                                        </table>
+                                                        <table>
+                                                                                                                        <tr>
                                                                 <td>User Name: <%#Eval("userName")%></td>
                                                             </tr>
                                                             <tr>
@@ -183,7 +165,7 @@
                                         <div runat="server" id="writereview" class="" style="margin: auto;" visible="false">
 
                                             <asp:Label ID="lblReviewContent" runat="server" Text="Write Your Review: " class="form-label"></asp:Label>
-                                            <asp:TextBox ID="txtReviewContent" runat="server" class="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtReviewContent" runat="server" class="form-control" TextMode="MultiLine" Rows="3"></asp:TextBox>
                                             <span runat="server" visible="false" id="reviewContentValidator" style="color: red;">* Required Field</span>
              <br />
 
@@ -238,7 +220,34 @@
 
 
     </form>
+    <script>
+        window.onload = function () {
+            showStars();            
+        }
 
+        function showStars() {
+            var ratingsArray = document.getElementsByClassName("rating"); //get all the ratings that are in num form
+            for (let i = 0; i < ratingsArray.length; i++) { //loop through each to modify them
+                var numStars = ratingsArray[i].innerHTML; //select the rating number in the html
+                //ratingsArray[i].innerHTML = "";
+                var newNode = document.createElement("p");
+                for (x = 0; x < numStars; x++) {
+                    var imgStar = document.createElement("img");
+                    imgStar.classList.add("imgStar");
+                    imgStar.src = "Images/star_black_24dp.svg";
+                    newNode.appendChild(imgStar);
+                }
+                for (y = 0; y < 5 - numStars; y++) {
+                    var imgStar = document.createElement("img");
+                    imgStar.classList.add("imgStar");
+                    imgStar.src = "Images/star_outline_black_24dp.svg";
+                    newNode.appendChild(imgStar);
+                }
+                ratingsArray[i].appendChild(newNode);
+            }
+        }
+        
+    </script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

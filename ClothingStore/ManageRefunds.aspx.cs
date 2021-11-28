@@ -11,31 +11,17 @@ namespace ClothingStore
 {
     public partial class ManageRefunds : System.Web.UI.Page
     {
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            //check role and update label on top right and set visibility of buttons
+            Navbar ctrl = (Navbar)LoadControl("Navbar.ascx");
+            Form.Controls.AddAt(0, ctrl);
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                //check role and update label on top right and set visibility of buttons
-                if (Session["Role"].ToString() == "RewardsCustomer")
-                {
-                    navPurchaseHistory.Visible = true;
-                    navCheckoutPage.Visible = true;
-                    lblUser.Text = "Hello " + "Rewards Customer";
-                    navSignOut.Visible = true;
-                }
-                else if (Session["Role"].ToString() == "Administrator")
-                {
-                    navManageRefunds.Visible = true;
-                    lblUser.Text = "Hello " + "Administrator";
-                    navSignOut.Visible = true;
-                }
-                else
-                {
-                    //visitor
-                    navCheckoutPage.Visible = true;
-                    lblUser.Text = "Hello " + "Visitor";
-                    navSignIn.Visible = true;
-                }
+
                 StoredProcedures SP = new StoredProcedures();
                 //call stored procedure to get a dataset of orders that have refundrequest column set to true
                 //set the repeater datasource and databind
@@ -59,18 +45,18 @@ namespace ClothingStore
             lblDisplay.Text = "You selected orderNumber " + orderNumber;
 
             //call stored procedure to delete a order
-            StoredProcedures SP = new StoredProcedures();
-            int retVal = SP.ConfirmRefund(int.Parse(orderNumber));
+            //StoredProcedures SP = new StoredProcedures();
+            //int retVal = SP.ConfirmRefund(int.Parse(orderNumber));
 
-            if (retVal == 1)
-            {
-                //let admin know the refund was issued
-                lblRefundResult.Text = "Refund was successfully issued.";
-            } else
-            {
-                //let admin know there was an error and refund was not issued
-                lblRefundResult.Text = "Refund was NOT successfully issued.";
-            }
+            //if (retVal == 1)
+            //{
+            //    //let admin know the refund was issued
+            //    lblRefundResult.Text = "Refund was successfully issued.";
+            //} else
+            //{
+            //    //let admin know there was an error and refund was not issued
+            //    lblRefundResult.Text = "Refund was NOT successfully issued.";
+            //}
         }
     }
 }

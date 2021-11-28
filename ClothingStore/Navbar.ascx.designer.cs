@@ -11,79 +11,88 @@ namespace ClothingStore
 {
 
 
-    public partial class PastOrders
+    public partial class Navbar
     {
 
         /// <summary>
-        /// form1 control.
+        /// lblCompany control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Label lblCompany;
 
         /// <summary>
-        /// ScriptManager1 control.
+        /// navPurchaseHistory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor navPurchaseHistory;
 
         /// <summary>
-        /// UpdatePanel1 control.
+        /// navManageRefunds control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor navManageRefunds;
 
         /// <summary>
-        /// divCurrentOrder control.
+        /// navCheckoutPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCurrentOrder;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor navCheckoutPage;
 
         /// <summary>
-        /// GridView1 control.
+        /// CartSpan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CartSpan;
 
         /// <summary>
-        /// lblRefund control.
+        /// lblCartTotalQuantity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRefund;
+        protected global::System.Web.UI.WebControls.Label lblCartTotalQuantity;
 
         /// <summary>
-        /// btnRefundRequest control.
+        /// lblUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRefundRequest;
+        protected global::System.Web.UI.WebControls.Label lblUser;
 
         /// <summary>
-        /// rptOrders control.
+        /// navSignIn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptOrders;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor navSignIn;
+
+        /// <summary>
+        /// navSignOut control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor navSignOut;
     }
 }

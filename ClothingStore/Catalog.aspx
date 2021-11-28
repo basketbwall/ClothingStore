@@ -49,7 +49,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <nav id="navbar" class="text-start">
+<%--        <nav id="navbar" class="text-start">
             <asp:Label ID="lblCompany" runat="server" Text="CompanyName" class="h6"></asp:Label>
             <ul class="col-md-5" style="display: inline-block; list-style-type: none;">
                 <li style="display: inline-block;"><a href="Catalog.aspx" class="btn btn-outline-dark">Catalog</a></li>
@@ -79,7 +79,7 @@
                 <li style="display: inline-block;"><a runat="server" id="navSignIn" visible="false" href="Login.aspx" class="btn btn-outline-success">Sign In</a></li>
                 <li style="display: inline-block;"><a runat="server" id="navSignOut" visible="false" href="Login.aspx" class="btn btn-outline-danger">Sign Out</a></li>
             </ul>
-        </nav>
+        </nav>--%>
         <div class="text-center form-inline" style="margin-top: 10%;">
             <asp:TextBox ID="txtClothingID" runat="server"></asp:TextBox>
             <asp:Button ID="btnClothing" runat="server" Text="Find Clothing" OnClick="btnClothing_Click" class="btn btn-dark" />

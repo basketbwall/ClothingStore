@@ -17,45 +17,36 @@ namespace ClothingStore
     {
         StoredProcedures SP;
 
-        protected void Page_PreLoad(object sender, EventArgs e)
+        protected void Page_Init(object sender, EventArgs e)
         {
-            if(Session["Role"].ToString() != "RewardsCustomer")
+            //check role and update label on top right and set visibility of buttons
+            Navbar ctrl = (Navbar)LoadControl("Navbar.ascx");
+            Form.Controls.AddAt(0, ctrl);
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (Session["Role"] == null)
             {
                 //prevent the page to load the html and give a warning somehow
                 this.Controls.Clear();
                 Response.Write("You are not allowed here buddy");
+                return;
             }
-        }
-        protected void Page_Load(object sender, EventArgs e)
-        {
+            else if (Session["Role"].ToString() != "RewardsCustomer")
+            {
+                //prevent the page to load the html and give a warning somehow
+                this.Controls.Clear();
+                Response.Write("You are not allowed here buddy");
+                return;
+            }
+
+
             if (!IsPostBack)
             {
-
-                //check role and update label on top right and set visibility of buttons
-                if (Session["Role"].ToString() == "RewardsCustomer")
-                {
-                    navPurchaseHistory.Visible = true;
-                    navCheckoutPage.Visible = true;
-                    lblUser.Text = "Hello " + "Rewards Customer";
-                    navSignOut.Visible = true;
-                }
-                else if (Session["Role"].ToString() == "Administrator")
-                {
-                    navManageRefunds.Visible = true;
-                    lblUser.Text = "Hello " + "Administrator";
-                    navSignOut.Visible = true;
-                }
-                else
-                {
-                    //visitor
-                    navCheckoutPage.Visible = true;
-                    lblUser.Text = "Hello " + "Visitor";
-                    navSignIn.Visible = true;
-                }
                 //call stored procedure to get order items field from an order based on id
                 //check for null returned in field
                 //de-serialize the binary data to reconstruct order items list
-
 
                 StoredProcedures SP = new StoredProcedures();
                 //call stored procedure to get a dataset of orders that belong to the current user
