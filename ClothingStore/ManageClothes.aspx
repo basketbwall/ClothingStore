@@ -16,12 +16,22 @@
 &nbsp;&nbsp;&nbsp;
             <asp:Label ID="lblPrice" runat="server" Text="Price: "></asp:Label>
 &nbsp;
-            <asp:TextBox ID="TextBox1" runat="server" Width="53px"></asp:TextBox>
+            <asp:TextBox ID="tbPrice" runat="server" Width="53px"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Label ID="lblColor" runat="server" Text="Color: "></asp:Label>
+&nbsp;<asp:TextBox ID="tbColor" runat="server"></asp:TextBox>
+&nbsp;<asp:Label ID="lblBrand" runat="server" Text="Brand: "></asp:Label>
+&nbsp;<asp:TextBox ID="tbBrand" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Label ID="lblURL" runat="server" Text="Image URL: "></asp:Label>
+&nbsp;<asp:TextBox ID="tbURL" runat="server"></asp:TextBox>
             <br />
             <br />
             <asp:Label ID="lblDescription" runat="server" Text="Description: "></asp:Label>
             <br />
-            <asp:TextBox ID="TextBox2" runat="server" Height="50px" Width="250px" Rows="4"></asp:TextBox>
+            <asp:TextBox ID="tbDescription" runat="server" Height="50px" Width="250px" Rows="4"></asp:TextBox>
             <br />
             <br />
             <asp:Label ID="lblClearance" runat="server" Text="On Clearance: "></asp:Label>
@@ -47,9 +57,10 @@
             <asp:TextBox ID="tbLarge" runat="server" Width="40px"></asp:TextBox>
             <br />
             <br />
-            <asp:Button ID="btnBack" runat="server" Height="23px" Text="Back" Width="67px" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnSave" runat="server" Height="23px" Text="Save" Width="67px" />
+            <asp:Button ID="btnBack" runat="server" Height="23px" Text="Back" Width="67px" OnClick="btnBack_Click" />
+&nbsp;&nbsp;&nbsp;<asp:Button ID="btnDelete" runat="server" Height="23px" OnClick="btnDelete_Click" Text="Delete" Width="67px" />
+            &nbsp;&nbsp;&nbsp;
+            <asp:Button ID="btnSave" runat="server" Height="23px" Text="Save" Width="67px" OnClick="btnSave_Click" />
         </div>
     </form>
 </body>

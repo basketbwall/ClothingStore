@@ -357,5 +357,39 @@ namespace Classes
             DBConnect objDB = new DBConnect();
             return objDB.DoUpdateUsingCmdObj(myCommand);
         }
+
+        public int DeleteClothing(string clothingID)
+        {
+
+            DataSet searchDataSet = new DataSet();
+            DBConnect objDB = new DBConnect();
+
+            SqlCommand myCommand = new SqlCommand();
+
+            myCommand.CommandType = CommandType.StoredProcedure;
+            myCommand.CommandText = "TP_DeleteClothing";
+
+            myCommand.Parameters.AddWithValue("@clothingID", clothingID);
+
+            return objDB.DoUpdateUsingCmdObj(myCommand);
+            
+        }
+
+        public int UpdateClothing(string clothingID)
+        {
+
+            DataSet searchDataSet = new DataSet();
+            DBConnect objDB = new DBConnect();
+
+            SqlCommand myCommand = new SqlCommand();
+
+            myCommand.CommandType = CommandType.StoredProcedure;
+            myCommand.CommandText = "TP_UpdateClothing";
+
+            myCommand.Parameters.AddWithValue("@clothingID", clothingID);
+
+            return objDB.DoUpdateUsingCmdObj(myCommand);
+
+        }
     }
 }
