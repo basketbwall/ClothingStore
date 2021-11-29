@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Net;
+using System.Net.Mail;
+
+
 
 namespace ClothingStore
 {
@@ -37,7 +41,7 @@ namespace ClothingStore
 
         protected void btnBack1_Click(object sender, EventArgs e)
         {
-            //Response.Write();     WILL BE USED TO GO TO THE LOG IN PAGE 
+            Response.Redirect("Login.aspx");    
         }
 
         protected void btnBack2_Click(object sender, EventArgs e)
@@ -67,6 +71,7 @@ namespace ClothingStore
             lblEndMsg.Visible = false;
             btnBack2.Visible = false;
             btnSubmit.Visible = false;
+            lblWarning.Visible = false;
 
         }
 
@@ -97,16 +102,38 @@ namespace ClothingStore
             lblEndMsg.Visible = true;
             btnBack2.Visible = true;
             btnSubmit.Visible = true;
+            lblWarning.Visible = true;
 
             var rand = new Random();
-            int verificationCode = rand.Next(1000, 9999);    //Creates a random number to be used as the verifaction code
+            verificationCode = rand.Next(1000, 9999);    //Creates a random number to be used as the verifaction code
 
             string strTo = tbEmail.Text;
             string strFrom = "3342Clothing@gmail.com";
             string subjectEmail = "QuickClothes Verification Code";
             string bodyEmail = "The verification code is " + verificationCode + ".";
 
-            // send email with code
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.EnableSsl = true;
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.Credentials = new NetworkCredential(strFrom, "clothing123!");
+            smtp.Timeout = 20000;
+
+            try
+            {
+                //email.SendMail(strTO, strFROM, strSubject, strMessage);
+                MailMessage message = new MailMessage(strFrom, strTo);
+                message.Subject = subjectEmail;
+                message.Body = bodyEmail;
+                smtp.Send(message);
+                lblWarning.Text = "Email was sent";
+            }
+            catch (Exception ex)
+            {
+                lblWarning.Text = "Error: " + ex.Message;
+
+            }
         }
 
     }

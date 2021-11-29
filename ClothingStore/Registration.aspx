@@ -73,6 +73,9 @@
             <asp:Button ID="btnSubmit1" runat="server" Height="23px" OnClick="btnSubmit1_Click" Text="Submit" Width="67px" />
             <br />
             <br />
+            <asp:Label ID="lblWarning" runat="server" Visible="False"></asp:Label>
+            <br />
+            <br />
             <asp:Label ID="lblEndMsg" runat="server" Text="Please check your email for a verification code. Enter below:" Visible="False"></asp:Label>
             <br />
             <br />
