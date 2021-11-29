@@ -25,7 +25,7 @@
             <br />
             <br />
             <asp:Label ID="lblClearance" runat="server" Text="On Clearance: "></asp:Label>
-            <asp:CheckBox ID="cbClearance" runat="server" OnCheckedChanged="cbClearance_CheckedChanged" Text=" " />
+            <asp:CheckBox ID="cbClearance" runat="server" OnCheckedChanged="cbClearance_CheckedChanged" Text=" " AutoPostBack="True" />
             <asp:Label ID="lblOff" runat="server" Text="Percentage Off: " Visible="False"></asp:Label>
 &nbsp;<asp:TextBox ID="tbPercentageOff" runat="server" Visible="False" Width="29px"></asp:TextBox>
             <br />

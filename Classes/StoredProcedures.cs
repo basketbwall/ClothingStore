@@ -334,5 +334,28 @@ namespace Classes
             cmd.Parameters.AddWithValue("@theClothingID", clothingID);
             return DB.GetDataSetUsingCmdObj(cmd);
         }
+
+        public int AddUser(string userName, string userEmail, string userPassword, decimal totalSpent, int roleID, string question1, string answer1, string question2, string answer2, string question3, string answer3)
+        {
+            SqlCommand myCommand = new SqlCommand();
+
+            myCommand.CommandType = CommandType.StoredProcedure;
+            myCommand.CommandText = "TP_AddUser";
+
+            myCommand.Parameters.AddWithValue("@userName", userName);
+            myCommand.Parameters.AddWithValue("@userEmail", userEmail);
+            myCommand.Parameters.AddWithValue("@userPassword", userPassword);
+            myCommand.Parameters.AddWithValue("@totalSpent", totalSpent);
+            myCommand.Parameters.AddWithValue("@roleID", roleID);
+            myCommand.Parameters.AddWithValue("@securityQuestion1", question1);
+            myCommand.Parameters.AddWithValue("@securityAnswer1", answer1);
+            myCommand.Parameters.AddWithValue("@securityQuestion2", question2);
+            myCommand.Parameters.AddWithValue("@securityAnswer2", answer2);
+            myCommand.Parameters.AddWithValue("@securityQuestion3", question3);
+            myCommand.Parameters.AddWithValue("@securityAnswer3", answer3);
+
+            DBConnect objDB = new DBConnect();
+            return objDB.DoUpdateUsingCmdObj(myCommand);
+        }
     }
 }

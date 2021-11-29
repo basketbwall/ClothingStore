@@ -26,7 +26,6 @@
 &nbsp;
             <asp:Label ID="lblRole" runat="server" Text="Role: "></asp:Label>
 &nbsp;<asp:DropDownList ID="ddlRole" runat="server">
-                <asp:ListItem>Visitor</asp:ListItem>
                 <asp:ListItem>Rewards Member</asp:ListItem>
                 <asp:ListItem>Store Manager</asp:ListItem>
             </asp:DropDownList>
