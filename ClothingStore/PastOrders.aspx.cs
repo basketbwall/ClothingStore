@@ -92,11 +92,7 @@ namespace ClothingStore
             {
                 Byte[] byteArray = (Byte[])orderDataSet.Tables[0].Rows[0]["orderItems"];
                 BinaryFormatter deSerializer = new BinaryFormatter();
-
                 MemoryStream memStream = new MemoryStream(byteArray);
-
-
-
                 List<Classes.Clothing> objOrderItems = (List<Classes.Clothing>)deSerializer.Deserialize(memStream);
                 GridView1.DataSource = objOrderItems;
                 GridView1.DataBind();

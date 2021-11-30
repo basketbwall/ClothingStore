@@ -80,7 +80,10 @@
                 <li style="display: inline-block;"><a runat="server" id="navSignOut" visible="false" href="Login.aspx" class="btn btn-outline-danger">Sign Out</a></li>
             </ul>
         </nav>--%>
+                    <asp:ScriptManager ID="ScriptManager2" runat="server">
+            </asp:ScriptManager>
         <div class="text-center form-inline" style="margin-top: 10%;">
+
             <asp:TextBox ID="txtClothingID" runat="server"></asp:TextBox>
             <asp:Button ID="btnClothing" runat="server" Text="Find Clothing" OnClick="btnClothing_Click" class="btn btn-dark" />
         </div>

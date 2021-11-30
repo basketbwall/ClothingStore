@@ -37,7 +37,7 @@
             <asp:LinkButton ID="btnForgotPassword" runat="server" OnClick="btnForgotPassword_Click">Forgot Your Password?</asp:LinkButton>
             <asp:CheckBox ID="chkSaveUsername" runat="server" Text="Save Login Info" class="form-check" />
             <br />
-            <asp:Button ID="btnRegister" runat="server" Text="Register" class="btn btn-dark" OnClick="btnRegister_Click" />
+            <asp:Button ID="btnRegister" runat="server" Text="Register" class="btn btn-dark" OnClick="btnRegister_Click" UseSubmitBehavior="False" />
             <asp:Button ID="btnLogin" runat="server" Text="Log In" class="btn btn-primary" OnClick="btnLogin_Click" />
             <br />
             <br />

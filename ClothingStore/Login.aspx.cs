@@ -200,7 +200,6 @@ namespace ClothingStore
             catch (Exception ex)
             {
                 lblEmailDisplay.Text = "Error: " + ex.Message;
-
             }
         }
 
@@ -211,7 +210,7 @@ namespace ClothingStore
             //query for password from storedprocedure
             //Email email = new Email();
             String strTO = txtEmail.Text;
-            String strFROM = "3342Clothing@gmail.com";
+            String strFROM = "noreply.quickclothes@gmail.com";
             String strSubject = "Password Recovery";
             String strMessage = "Password: " + SP.GetPassword(txtEmail.Text);
 

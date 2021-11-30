@@ -13,6 +13,7 @@ namespace ClothingStore
         {
             if (!IsPostBack)
             {
+                UpdateCart();
                 //check role and update label on top right and set visibility of buttons
                 if (Session["Role"].ToString() == "RewardsCustomer")
                 {
@@ -34,6 +35,26 @@ namespace ClothingStore
                     lblUser.Text = "Hello " + "Visitor";
                     navSignIn.Visible = true;
                 }
+            }
+        }
+
+        public void UpdateCart()
+        {
+            //check session object for cart
+            if (Session["Cart"] == null || Session["Cart"].ToString() == "0")
+            {
+                CartSpan.Visible = false;
+            }
+            else
+            {
+                List<Classes.Clothing> Cart = (List<Classes.Clothing>)Session["Cart"]; //instantiate using previous cart info
+                int quantity = 0;
+                foreach (Classes.Clothing c in Cart)
+                {
+                    quantity += c.ClothingQuantity;
+                }
+                CartSpan.Visible = true;
+                lblCartTotalQuantity.Text = quantity.ToString();
             }
         }
     }
