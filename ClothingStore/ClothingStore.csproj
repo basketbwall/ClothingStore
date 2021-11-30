@@ -84,9 +84,11 @@
     <Content Include="Images\star_black_24dp.svg" />
     <Content Include="Images\star_outline_black_24dp.svg" />
     <Content Include="Login.aspx" />
+    <Content Include="ManageClothes.aspx" />
     <Content Include="ManageRefunds.aspx" />
     <Content Include="Navbar.ascx" />
     <Content Include="PastOrders.aspx" />
+    <Content Include="Registration.aspx" />
     <Content Include="Web.config" />
     <Content Include="SizePicker.ascx" />
     <Content Include="QuantityPicker.ascx" />
@@ -127,6 +129,13 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ManageClothes.aspx.cs">
+      <DependentUpon>ManageClothes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageClothes.aspx.designer.cs">
+      <DependentUpon>ManageClothes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ManageRefunds.aspx.cs">
       <DependentUpon>ManageRefunds.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -149,6 +158,13 @@
       <DependentUpon>PastOrders.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registration.aspx.cs">
+      <DependentUpon>Registration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registration.aspx.designer.cs">
+      <DependentUpon>Registration.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SizePicker.ascx.cs">
       <DependentUpon>SizePicker.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
