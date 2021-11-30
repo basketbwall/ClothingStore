@@ -15,11 +15,17 @@ namespace ClothingStore
 {
     public partial class ManageClothes : System.Web.UI.Page
     {
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            //check role and update label on top right and set visibility of buttons
+           // Navbar ctrl = (Navbar)LoadControl("Navbar.ascx");
+           // Form.Controls.AddAt(0, ctrl);
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["ver"] = verificationCode.ToString(); //setting up
+           // Session["ver"] = verificationCode.ToString(); //setting up
 
-
+            /*
             string name = (string)(Session["name"]); //receiving
             string color = (string)(Session["color"]); 
             string description = (string)(Session["description"]); 
@@ -31,7 +37,7 @@ namespace ClothingStore
             string precentageOff = (string)(Session["precentageOff"]); 
             string price = (string)(Session["price"]); 
             string brand = (string)(Session["brand"]);
-
+            
             tbName.Text = name;
             tbColor.Text = color;
             tbDescription.Text = description;
@@ -43,6 +49,7 @@ namespace ClothingStore
             tbPercentageOff.Text = precentageOff;
             tbPrice.Text = price;
             tbBrand.Text = brand;
+            */
         }
         protected void cbClearance_CheckedChanged(object sender, EventArgs e)
         {
@@ -65,11 +72,11 @@ namespace ClothingStore
             {
                 tbPercentageOff.Text = "0";
             }
-            string clothingID = (string)(Session["clothingID"]);
+            //string clothingID = (string)(Session["clothingID"]);
 
             StoredProcedures storedProc = new StoredProcedures();
 
-            storedProc.UpdateClothing(clothingID);
+           // storedProc.UpdateClothing(clothingID);
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
@@ -79,11 +86,11 @@ namespace ClothingStore
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            string clothingID = (string)(Session["clothingID"]);
+          //  string clothingID = (string)(Session["clothingID"]);
 
             StoredProcedures storedProc = new StoredProcedures();
 
-            storedProc.DeleteClothing(clothingID);
+         //   storedProc.DeleteClothing(clothingID);
 
             Response.Redirect("Catalog.aspx");
         }

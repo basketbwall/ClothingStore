@@ -391,5 +391,19 @@ namespace Classes
             return objDB.DoUpdateUsingCmdObj(myCommand);
 
         }
+
+        public DataSet GetClothing()
+        {
+            DataSet searchDataSet = new DataSet();
+            DBConnect objDB = new DBConnect();
+
+            SqlCommand myCommand = new SqlCommand();
+
+            myCommand.CommandType = CommandType.StoredProcedure;
+            myCommand.CommandText = "TP_GetClothing";
+
+            return objDB.GetDataSetUsingCmdObj(myCommand);
+            
+        }
     }
 }
