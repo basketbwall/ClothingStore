@@ -80,6 +80,8 @@
                 <li style="display: inline-block;"><a runat="server" id="navSignOut" visible="false" href="Login.aspx" class="btn btn-outline-danger">Sign Out</a></li>
             </ul>
         </nav>--%>
+                    <asp:ScriptManager ID="ScriptManager2" runat="server">
+            </asp:ScriptManager>
         <div class="text-center form-inline" style="margin-top: 10%;">
             <br />
             <br />

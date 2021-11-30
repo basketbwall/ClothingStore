@@ -61,6 +61,7 @@
     <form id="form1" runat="server" class="text-center">
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
+
         <div id="imageDiv" style="float:left;" class="col-md-6">
             <asp:Image ID="clothingImage" runat="server" ImageUrl="~/Images/Preppy V Neck.png" />
         </div>
@@ -106,7 +107,7 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Ratings & Reviews</button>
+                            Ratings & Reviews         Ratings & Reviews</button>
                     </h2>
                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
@@ -122,7 +123,7 @@
                                 <br />
                                 <br />
 
-                                <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
+                                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
 
                                     <ContentTemplate>
 

@@ -69,7 +69,6 @@
         </asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-
                 <div runat="server" id="divCurrentOrder" style="float: right; margin-right:5%; margin-top: 5%;" class="text-center col-md-6" visible="false">
                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" class="text-center" Style="" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" CssClass="GridView">
                     <Columns>
@@ -125,8 +124,22 @@
 
     </form>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+<script type="text/javascript">
 
+    var prm = Sys.WebForms.PageRequestManager.getInstance();
 
+    prm.add_endRequest(function () {
+        createDataTable();
+    });
 
+    createDataTable();
+
+    function createDataTable() {
+        $('#<%= GridView1.ClientID %>').DataTable();
+    }
+</script>
 </body>
 </html>

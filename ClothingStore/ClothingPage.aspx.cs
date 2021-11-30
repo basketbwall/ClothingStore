@@ -16,72 +16,71 @@ namespace ClothingStore
     public partial class Clothing : System.Web.UI.Page
     {
         StoredProcedures SP = new StoredProcedures();
-
+        APICalls APIMethods = new APICalls();
+        Navbar ctrl;
         protected void Page_Init(object sender, EventArgs e)
         {
             //check role and update label on top right and set visibility of buttons
-            Navbar ctrl = (Navbar)LoadControl("Navbar.ascx");
+            ctrl = (Navbar)LoadControl("Navbar.ascx");
             Form.Controls.AddAt(0, ctrl);
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
 
                 //check role and update label on top right and set visibility of buttons
                 if (Session["Role"].ToString() == "RewardsCustomer")
                 {
+
                     shoppingOptions.Visible = true;
-                    //if they already have a review for this clothing, then only show edit otherwise show the write review
-                    WebRequest request = WebRequest.Create("https://localhost:44385/api/Reviews/GetReviews");
-                    WebResponse response = request.GetResponse();
-
-                    Stream theDataStream = response.GetResponseStream();
-                    StreamReader reader = new StreamReader(theDataStream);
-                    String data = reader.ReadToEnd();
-                    reader.Close();
-                    response.Close();
-
-                    JavaScriptSerializer js = new JavaScriptSerializer();
-                    Review[] reviews = js.Deserialize<Review[]>(data);
-                    ReviewList rlist = new ReviewList(reviews); //create reviewlist
-                    if (rlist.HasUserReviewed(int.Parse(Session["UserID"].ToString()))) {
+                    //check if user has even bought this using storedprocedure to look at users orders, look inside each orderitems list to find a clothing id match
+                    //check if the user has reviewed this already
+                    int userID = int.Parse(Session["UserID"].ToString());
+                    int clothingID = int.Parse(Request.QueryString["ClothingID"].ToString());
+                    
+                    if (APIMethods.UserWroteReview(userID, clothingID))
+                    {
                         btnMyReview.Visible = true;
-                    } else
+                    }
+                    else
                     {
                         btnAddReview.Visible = true;
                     }
-
                 }
                 else if (Session["Role"].ToString() == "Administrator")
                 {
                     btnManage.Visible = true;
+
                 }
                 else
                 {
                     //visitor
+
                     shoppingOptions.Visible = true;
                 }
 
                 Session.Add("ReviewOperation", null);
-                //use stored procedure to grab clothing info and populate the labels and image fields on page
-                Classes.Clothing c = SP.GetClothingByID(int.Parse(Request.QueryString["ClothingID"].ToString()));
-                lblName.Text = lblName.Text + c.ClothingName;
-                lblColor.Text = lblColor.Text + c.ClothingColor;
-                lblDescription.Text = lblDescription.Text + c.ClothingDescription;
-                lblPrice.Text = lblPrice.Text + c.ClothingPrice;
-                lblBrand.Text = lblBrand.Text + c.ClothingBrand;
-                clothingImage.ImageUrl = c.ClothingImage;
-                DataSet avgReviews = SP.GetAverages(c.ClothingID);
-                lblComfortAv.Text = avgReviews.Tables[0].Rows[0]["comfortRating"].ToString();
-                lblQualityAv.Text = avgReviews.Tables[0].Rows[0]["qualityRating"].ToString();
-                lblCostAv.Text = avgReviews.Tables[0].Rows[0]["costRating"].ToString();
-
-
-
+                //update labels
+                displayClothingInfo();
             }
         }
-
+        protected void displayClothingInfo()
+        {
+            //use stored procedure to grab clothing info and populate the labels and image fields on page
+            Classes.Clothing c = SP.GetClothingByID(int.Parse(Request.QueryString["ClothingID"].ToString()));
+            lblName.Text = lblName.Text + c.ClothingName;
+            lblColor.Text = lblColor.Text + c.ClothingColor;
+            lblDescription.Text = lblDescription.Text + c.ClothingDescription;
+            lblPrice.Text = lblPrice.Text + c.ClothingPrice;
+            lblBrand.Text = lblBrand.Text + c.ClothingBrand;
+            clothingImage.ImageUrl = c.ClothingImage;
+            DataSet avgReviews = SP.GetAverages(c.ClothingID);
+            lblComfortAv.Text = avgReviews.Tables[0].Rows[0]["comfortRating"].ToString();
+            lblQualityAv.Text = avgReviews.Tables[0].Rows[0]["qualityRating"].ToString();
+            lblCostAv.Text = avgReviews.Tables[0].Rows[0]["costRating"].ToString();
+        }
         protected void btnEditReview_Click(object sender, EventArgs e)
         {
             allreviews.Visible = false;
@@ -106,21 +105,8 @@ namespace ClothingStore
         {
             writereview.Visible = false;
             allreviews.Visible = true;
-
-            WebRequest request = WebRequest.Create("https://localhost:44385/api/Reviews/GetReviews");
-            WebResponse response = request.GetResponse();
-
-            Stream theDataStream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(theDataStream);
-            String data = reader.ReadToEnd();
-            reader.Close();
-            response.Close();
-
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            Review[] reviews = js.Deserialize<Review[]>(data);
-            ReviewList rlist = new ReviewList(reviews); //create reviewlist
             int clothingID = int.Parse(Request.QueryString["ClothingID"].ToString());
-            lvReviews.DataSource = rlist.getReviewByClothingID(clothingID);
+            lvReviews.DataSource = APIMethods.GetClothingReviews(clothingID);
             lvReviews.DataBind();
         }
 
@@ -159,48 +145,26 @@ namespace ClothingStore
                 r.ReviewContent = txtReviewContent.Text;
                 r.UserID = (int)Session["UserID"];
 
-                //serialize Review into JSON string
-                JavaScriptSerializer js = new JavaScriptSerializer();
-                String jsonReview = js.Serialize(r);
-
-                try
+                //add review
+                if (APIMethods.AddReview(r) == 1)
                 {
-                    WebRequest request = WebRequest.Create("https://localhost:44385/api/Reviews/AddReview");
-                    request.Method = "POST";
-                    request.ContentLength = jsonReview.Length;
-                    request.ContentType = "application/json";
+                    lblSubmitReviewDisplay.Text = "Review was successfully saved to the database";
+                    int clothingID = int.Parse(Request.QueryString["ClothingID"].ToString());
+                    lvReviews.DataSource = APIMethods.GetClothingReviews(clothingID);
+                    lvReviews.DataBind();
+                    //hide write review button and show edit review
+                    btnAddReview.Visible = false;
+                    btnMyReview.Visible = true;
+                    displayClothingInfo();
+                    //forcing postback for the stars to update without breaking the ajax
+                    forceReload();
 
-                    //write the JSON data to the web request
-                    StreamWriter writer = new StreamWriter(request.GetRequestStream());
-                    writer.Write(jsonReview);
-                    writer.Flush();
-                    writer.Close();
-
-                    //read data from response
-
-                    WebResponse response = request.GetResponse();
-                    Stream theDataStream = response.GetResponseStream();
-                    StreamReader reader = new StreamReader(theDataStream);
-                    string data = reader.ReadToEnd();
-                    reader.Close();
-                    response.Close();
-
-                    if (data == "true")
-                    {
-                        lblSubmitReviewDisplay.Text = "Review was successfully saved to the database";
-                        //hide write review button and show edit review
-                        btnAddReview.Visible = false;
-                        btnMyReview.Visible = true;
-                    }
-                    else
-                    {
-                        lblSubmitReviewDisplay.Text = "A problem occurred while adding the review to the database. the data wasn't recorded.";
-                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    lblSubmitReviewDisplay.Text = "Error: " + ex.Message;
+                    lblSubmitReviewDisplay.Text = "A problem occurred while adding the review to the database. the data wasn't recorded.";
                 }
+
             } else
             {
                 Review r = SP.GetUserReview(int.Parse(Session["UserID"].ToString()), int.Parse(Request.QueryString["ClothingID"].ToString()));
@@ -212,46 +176,21 @@ namespace ClothingStore
                     r.QualityRating = int.Parse(ddlQuality.SelectedValue.ToString());
                 }
 
-
-                //serialize Review into JSON string
-                JavaScriptSerializer js = new JavaScriptSerializer();
-                String jsonReview = js.Serialize(r);
-
-                try
+                //update review
+                if (APIMethods.UpdateReview(r) == 1)
                 {
-                    WebRequest request = WebRequest.Create("https://localhost:44385/api/Reviews/UpdateReview");
-                    request.Method = "PUT";
-                    request.ContentLength = jsonReview.Length;
-                    request.ContentType = "application/json";
-
-                    //write the JSON data to the web request
-                    StreamWriter writer = new StreamWriter(request.GetRequestStream());
-                    writer.Write(jsonReview);
-                    writer.Flush();
-                    writer.Close();
-
-                    //read data from response
-
-                    WebResponse response = request.GetResponse();
-                    Stream theDataStream = response.GetResponseStream();
-                    StreamReader reader = new StreamReader(theDataStream);
-                    string data = reader.ReadToEnd();
-                    reader.Close();
-                    response.Close();
-
-                    if (data == "true")
-                    {
-                        lblSubmitReviewDisplay.Text = "Review was successfully saved to the database";
-                    }
-                    else
-                    {
-                        lblSubmitReviewDisplay.Text = "A problem occurred while adding the review to the database. the data wasn't recorded.";
-                    }
-                }
-                catch (Exception ex)
+                    lblSubmitReviewDisplay.Text = "Review was successfully saved to the database";
+                    int clothingID = int.Parse(Request.QueryString["ClothingID"].ToString());
+                    lvReviews.DataSource = APIMethods.GetClothingReviews(clothingID);
+                    lvReviews.DataBind();
+                    displayClothingInfo();
+                    //forcing postback for the stars to update without breaking the ajax
+                    forceReload();
+                } else
                 {
-                    lblSubmitReviewDisplay.Text = "Error: " + ex.Message;
+                    lblSubmitReviewDisplay.Text = "A problem occurred while adding the review to the database. the data wasn't recorded.";
                 }
+
             }
 
         }
@@ -262,48 +201,25 @@ namespace ClothingStore
             //delete the review using review passed through body http DELETE method
             //// DELETE api/Reviews/DeleteReview
             //serialize Review into JSON string
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            String jsonReview = js.Serialize(r);
-
-            try
+            if (APIMethods.DeleteReview(r) == 1)
             {
-                WebRequest request = WebRequest.Create("https://localhost:44385/api/Reviews/DeleteReview");
-                request.Method = "DELETE";
-                request.ContentLength = jsonReview.Length;
-                request.ContentType = "application/json";
-
-                //write the JSON data to the web request
-                StreamWriter writer = new StreamWriter(request.GetRequestStream());
-                writer.Write(jsonReview);
-                writer.Flush();
-                writer.Close();
-
-                //read data from response
-
-                WebResponse response = request.GetResponse();
-                Stream theDataStream = response.GetResponseStream();
-                StreamReader reader = new StreamReader(theDataStream);
-                string data = reader.ReadToEnd();
-                reader.Close();
-                response.Close();
-
-                if (data == "true")
-                {
-                    lblSubmitReviewDisplay.Text = "Review was successfully removed from the database";
-                    btnDelete.Visible = false;
-                    writereview.Visible = false;
-                    btnMyReview.Visible = false;
-                    btnAddReview.Visible = true;
-                }
-                else
-                {
-                    lblSubmitReviewDisplay.Text = "A problem occurred while removing the review to the database. the data wasn't updated.";
-                }
-            }
-            catch (Exception ex)
+                lblSubmitReviewDisplay.Text = "Review was successfully removed from the database";
+                btnDelete.Visible = false;
+                writereview.Visible = false;
+                btnMyReview.Visible = false;
+                btnAddReview.Visible = true;
+                int clothingID = int.Parse(Request.QueryString["ClothingID"].ToString());
+                lvReviews.DataSource = APIMethods.GetClothingReviews(clothingID);
+                lvReviews.DataBind();
+                displayClothingInfo();
+                forceReload();
+            } else
             {
-                lblSubmitReviewDisplay.Text = "Error: " + ex.Message;
+                lblSubmitReviewDisplay.Text = "A problem occurred while removing the review to the database. the data wasn't updated.";
             }
+
+
+
         }
 
         protected void btnManage_Click(object sender, EventArgs e)
@@ -423,8 +339,18 @@ namespace ClothingStore
             //save into session
             Session["Cart"] = Cart;
 
+            ctrl.UpdateCart();
+            //forcing postback for the cart numbers to update without breaking the ajax
+            forceReload();
 
 
+        }
+
+        public void forceReload()
+        {
+            //forcing postback for certain items
+            int id = int.Parse(Request.QueryString["ClothingID"].ToString());
+            Response.Redirect("ClothingPage.aspx" + "?ClothingID=" + id);
         }
     }
 }

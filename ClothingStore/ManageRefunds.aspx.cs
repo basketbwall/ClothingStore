@@ -19,6 +19,20 @@ namespace ClothingStore
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Role"] == null)
+            {
+                //prevent the page to load the html and give a warning somehow
+                this.Controls.Clear();
+                Response.Write("You are not allowed here buddy");
+                return;
+            }
+            else if (Session["Role"].ToString() != "Administrator")
+            {
+                //prevent the page to load the html and give a warning somehow
+                this.Controls.Clear();
+                Response.Write("You are not allowed here buddy");
+                return;
+            }
             if (!IsPostBack)
             {
 

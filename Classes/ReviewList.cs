@@ -33,11 +33,11 @@ namespace Classes
             return output;
         }
 
-        public Boolean HasUserReviewed(int userID)
+        public Boolean HasUserReviewed(int userID, int clothingID)
         {
             foreach (Review r in reviews)
             {
-                if (r.UserID == userID)
+                if (r.UserID == userID && r.ClothingID == clothingID)
                 {
                     return true;
                 }
