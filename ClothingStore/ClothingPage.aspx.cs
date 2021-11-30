@@ -224,7 +224,8 @@ namespace ClothingStore
 
         protected void btnManage_Click(object sender, EventArgs e)
         {
-
+            Session["clothingID"] = Request.QueryString["ClothingID"];
+            Response.Redirect("ManageClothes.aspx");
         }
 
         protected void btnAdd_Click(object sender, EventArgs e)
