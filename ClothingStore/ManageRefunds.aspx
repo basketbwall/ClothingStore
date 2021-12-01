@@ -60,31 +60,10 @@
 
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
-
+                        <h2 style="margin-left:5%"> Past Orders </h2>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-
-<!-- Modal -->
-<div class="modal fade" id="modalConfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Order ID: </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Are you sure?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Confirm Refund</button>
-      </div>
-    </div>
-  </div>
-</div>
-                <div style="float: right; margin-top: 5%; width: 50%">
+                <div style="display: inline-block; float:right; margin-top: 5%; margin-right: 2.5%;" class="col-md-6">
                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" class="text-center" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" CssClass="GridView">
                     <Columns>
                         <asp:BoundField DataField="ClothingName" HeaderText="Name" />
@@ -95,11 +74,6 @@
                         <asp:BoundField DataField="ClothingSize" HeaderText="Size" />
                         <asp:BoundField DataField="ClothingPrice" HeaderText="Price" />
                         <asp:BoundField DataField="ClothingQuantity" HeaderText="Quantity Purchased" />
-                        <asp:TemplateField HeaderText="Confirm Refund">
-                            <ItemTemplate>
-                                <asp:Button ID="btnConfirmRefund" runat="server" Text="Confirm Refund" class="btn btn-dark" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
                     </Columns>
                     <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
                     <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
@@ -111,12 +85,14 @@
                     <SortedDescendingHeaderStyle BackColor="#242121" />
                 </asp:GridView>
                                 <div style="text-align: center;">
+                                    <asp:Button ID="btnConfirmRefund" runat="server" Text="Confirm Refund" visible="false" class="btn btn-dark" OnClick="btnConfirmRefund_Click" />
+                                    <br />
                     <asp:Label ID="lblRefundResult" runat="server" Text="" style="margin:auto;"></asp:Label>
                 </div>
                 </div>
                 
 
-                <table style="">
+                <table style="display: inline-block">
                     <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="rptOrders_ItemCommand">
                     <ItemTemplate>
                         <div class="card text-start col-md-3" style="margin-left:5%">
@@ -163,9 +139,22 @@
         </asp:UpdatePanel>
 
     </form>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+<script type="text/javascript">
+
+    var prm = Sys.WebForms.PageRequestManager.getInstance();
+
+    prm.add_endRequest(function () {
+        createDataTable();
+    });
+
+    createDataTable();
+
+    function createDataTable() {
+        $('#<%= GridView1.ClientID %>').DataTable();
+    }
+</script>
 </body>
 </html>

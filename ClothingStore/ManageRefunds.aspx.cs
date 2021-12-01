@@ -80,18 +80,24 @@ namespace ClothingStore
             }
 
             //call stored procedure to delete a order
-            //StoredProcedures SP = new StoredProcedures();
-            //int retVal = SP.ConfirmRefund(int.Parse(orderNumber));
+            SP = new StoredProcedures();
+            int retVal = SP.ConfirmRefund(int.Parse(orderNumber));
 
-            //if (retVal == 1)
-            //{
-            //    //let admin know the refund was issued
-            //    lblRefundResult.Text = "Refund was successfully issued.";
-            //} else
-            //{
-            //    //let admin know there was an error and refund was not issued
-            //    lblRefundResult.Text = "Refund was NOT successfully issued.";
-            //}
+            if (retVal == 1)
+            {
+                //let admin know the refund was issued
+                lblRefundResult.Text = "Refund was successfully issued.";
+            }
+            else
+            {
+                //let admin know there was an error and refund was not issued
+                lblRefundResult.Text = "Refund was NOT successfully issued.";
+            }
+        }
+
+        protected void btnConfirmRefund_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
