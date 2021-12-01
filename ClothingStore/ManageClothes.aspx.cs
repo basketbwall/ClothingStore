@@ -24,32 +24,36 @@ namespace ClothingStore
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            int clothingID = Int32.Parse(Session["ClothingID"].ToString()); //receiving
-
-            StoredProcedures storedProc = new StoredProcedures();
-            Classes.Clothing currentClothing = storedProc.GetClothingByID(clothingID);
-
-
-            tbName.Text = currentClothing.ClothingName;
-            tbColor.Text = currentClothing.ClothingColor;
-            tbDescription.Text = currentClothing.ClothingDescription;
-            tbURL.Text = currentClothing.ClothingImage;
-            tbSmall.Text = currentClothing.SmallStock.ToString();
-            tbMed.Text = currentClothing.MediumStock.ToString();
-            tbLarge.Text = currentClothing.LargeStock.ToString();
-            //on clearance ?
-            if (currentClothing.OnClearance.ToString() == "True")
+            if (!IsPostBack)
             {
-                cbClearance.Checked = true;
-            }
-            else
-            {
-                cbClearance.Checked = false;
-            }
+                int clothingID = Int32.Parse(Session["ClothingID"].ToString()); //receiving
 
-            tbPercentageOff.Text = currentClothing.ClearanceDiscountPercent.ToString();
-            tbPrice.Text = currentClothing.ClothingPrice.ToString();
-            tbBrand.Text = currentClothing.ClothingBrand;
+                StoredProcedures storedProc = new StoredProcedures();
+                Classes.Clothing currentClothing = storedProc.GetClothingByID(clothingID);
+
+
+                tbName.Text = currentClothing.ClothingName;
+                tbColor.Text = currentClothing.ClothingColor;
+                tbDescription.Text = currentClothing.ClothingDescription;
+                tbURL.Text = currentClothing.ClothingImage;
+                tbSmall.Text = currentClothing.SmallStock.ToString();
+                tbMed.Text = currentClothing.MediumStock.ToString();
+                tbLarge.Text = currentClothing.LargeStock.ToString();
+                //on clearance ?
+                if (currentClothing.OnClearance.ToString() == "True")
+                {
+                    cbClearance.Checked = true;
+                }
+                else
+                {
+                    cbClearance.Checked = false;
+                }
+
+                tbPercentageOff.Text = currentClothing.ClearanceDiscountPercent.ToString();
+                tbPrice.Text = currentClothing.ClothingPrice.ToString();
+                tbBrand.Text = currentClothing.ClothingBrand;
+            }
+            
 
         }
 
@@ -77,17 +81,36 @@ namespace ClothingStore
             int clothingID = Int32.Parse(Session["ClothingID"].ToString());
 
             StoredProcedures storedProc = new StoredProcedures();
-            Classes.Clothing currentClothing = storedProc.GetClothingByID(clothingID);
+            //Classes.Clothing currentClothing = storedProc.GetClothingByID(clothingID);
 
             string clearanceStatus = "1";
-
             if (cbClearance.Checked == false)
             {
                 clearanceStatus = "0";
                 tbPercentageOff.Text = "0";
             }
-
-            storedProc.UpdateClothing(clothingID, tbName.Text, tbColor.Text, tbDescription.Text, tbURL.Text, tbSmall.Text, tbMed.Text, tbLarge.Text, clearanceStatus, tbPercentageOff.Text, tbPrice.Text, tbBrand.Text);
+            Classes.Clothing newClothing = new Classes.Clothing();
+            newClothing.ClothingID = clothingID;
+            newClothing.ClothingName = tbName.Text;
+            newClothing.ClothingColor = tbColor.Text;
+            newClothing.ClothingDescription = tbDescription.Text;
+            newClothing.ClothingImage = tbURL.Text;
+            newClothing.SmallStock = int.Parse(tbSmall.Text);
+            newClothing.MediumStock = int.Parse(tbMed.Text);
+            newClothing.LargeStock = int.Parse(tbLarge.Text);
+            newClothing.OnClearance = cbClearance.Checked;
+            newClothing.ClearanceDiscountPercent = decimal.Parse(tbPercentageOff.Text);
+            newClothing.ClothingPrice = decimal.Parse(tbPrice.Text);
+            newClothing.ClothingBrand = tbBrand.Text;
+            int res = storedProc.UpdateClothing(newClothing);
+            if (res == 1)
+            {
+                lblWarning.Text = "Worked";
+            } else
+            {
+                lblWarning.Text = "Not Worked";
+            }
+            //storedProc.UpdateClothing(clothingID, tbName.Text, tbColor.Text, tbDescription.Text, tbURL.Text, tbSmall.Text, tbMed.Text, tbLarge.Text, clearanceStatus, tbPercentageOff.Text, tbPrice.Text, tbBrand.Text);
         }
 
         protected void btnBack_Click(object sender, EventArgs e)

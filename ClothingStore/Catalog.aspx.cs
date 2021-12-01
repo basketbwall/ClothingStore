@@ -39,6 +39,7 @@ namespace ClothingStore
 
                 foreach (DataRow record in Clothes.Tables[0].Rows)
                 {
+                    //dude don't keep the || true exp purposes only
                     if (record["onClearance"].ToString() == "False")
                     {
                         objClothing = new Classes.Clothing();
