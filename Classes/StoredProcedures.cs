@@ -295,18 +295,22 @@ namespace Classes
                 //get order items using the id
                 int orderID = int.Parse(order["orderID"].ToString());
                 DataSet orderItems = RetrieveOrderItems(orderID);
-                Byte[] byteArray = (Byte[])orderItems.Tables[0].Rows[0]["orderItems"]; 
-                BinaryFormatter deSerializer = new BinaryFormatter();
-                MemoryStream memStream = new MemoryStream(byteArray);
-                List<Classes.Clothing> objOrderItems = (List<Classes.Clothing>)deSerializer.Deserialize(memStream);
-                //loop through the clothing list in objOrderItems for match with parameters
-                foreach(Classes.Clothing clothing in objOrderItems)
+                if (orderItems.Tables[0].Rows[0]["orderItems"] != DBNull.Value)
                 {
-                    if (clothing.ClothingID == clothingID)
+                    Byte[] byteArray = (Byte[])orderItems.Tables[0].Rows[0]["orderItems"];
+                    BinaryFormatter deSerializer = new BinaryFormatter();
+                    MemoryStream memStream = new MemoryStream(byteArray);
+                    List<Classes.Clothing> objOrderItems = (List<Classes.Clothing>)deSerializer.Deserialize(memStream);
+                    //loop through the clothing list in objOrderItems for match with parameters
+                    foreach (Classes.Clothing clothing in objOrderItems)
                     {
-                        return true;
+                        if (clothing.ClothingID == clothingID)
+                        {
+                            return true;
+                        }
                     }
                 }
+                
             }
             return false;
         }
@@ -479,23 +483,6 @@ namespace Classes
             myCommand.CommandText = "TP_GetClothing";
 
             return objDB.GetDataSetUsingCmdObj(myCommand);
-
-        }
-
-        public int DeleteClothing(int clothingID)
-        {
-
-            DataSet searchDataSet = new DataSet();
-            DBConnect objDB = new DBConnect();
-
-            SqlCommand myCommand = new SqlCommand();
-
-            myCommand.CommandType = CommandType.StoredProcedure;
-            myCommand.CommandText = "TP_DeleteClothing";
-
-            myCommand.Parameters.AddWithValue("@clothingID", clothingID);
-
-            return objDB.DoUpdateUsingCmdObj(myCommand);
 
         }
 

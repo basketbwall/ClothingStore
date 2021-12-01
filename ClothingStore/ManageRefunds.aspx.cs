@@ -57,8 +57,8 @@ namespace ClothingStore
             Label myLabel = (Label)rptOrders.Items[rowIndex].FindControl("lblOrderID");
 
             String orderNumber = myLabel.Text;
-
-            //lblDisplay.Text = "You selected orderNumber " + orderNumber;
+            btnConfirmRefund.Visible = true;
+            btnConfirmRefund.Text = "Confirm Refund For Order: " + orderNumber;
 
             //display gridview using api call to grab order
             //using order number grab the clothing list and display that in a gridview
@@ -79,25 +79,42 @@ namespace ClothingStore
                 GridView1.HeaderRow.TableSection = TableRowSection.TableHeader;
             }
 
-            //call stored procedure to delete a order
-            SP = new StoredProcedures();
-            int retVal = SP.ConfirmRefund(int.Parse(orderNumber));
 
-            if (retVal == 1)
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            //check if the row is the header row
+            if (e.Row.RowType == DataControlRowType.Header)
             {
-                //let admin know the refund was issued
-                lblRefundResult.Text = "Refund was successfully issued.";
-            }
-            else
-            {
-                //let admin know there was an error and refund was not issued
-                lblRefundResult.Text = "Refund was NOT successfully issued.";
+                //add the thead and tbody section programatically
+                e.Row.TableSection = TableRowSection.TableHeader;
             }
         }
 
         protected void btnConfirmRefund_Click(object sender, EventArgs e)
         {
+            //call stored procedure to delete a order
+            string[] btnText = btnConfirmRefund.Text.Split(' ');
+            String orderNumber = btnText[4];
+            StoredProcedures SP = new StoredProcedures();
+            int retVal = SP.ConfirmRefund(int.Parse(orderNumber));
+            //int retVal = 1;
+            if (retVal == 1)
+            {
+                //let admin know the refund was issued
+                lblRefundResult.Text = "Refund was successfully issued.";
 
+                GridView1.UseAccessibleHeader = true;
+                GridView1.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+            else
+            {
+                //let admin know there was an error and refund was not issued
+                lblRefundResult.Text = "Refund was NOT successfully issued.";
+                GridView1.UseAccessibleHeader = true;
+                GridView1.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
         }
     }
 }
