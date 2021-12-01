@@ -69,7 +69,7 @@
         </asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-                <div runat="server" id="divCurrentOrder" style="float: right; margin-right:5%; margin-top: 5%;" class="text-center col-md-6" visible="false">
+                <div runat="server" id="divCurrentOrder" style="float: right; margin-top: 5%; margin-right: 2.5%;" class="text-center col-md-6" visible="false">
                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" class="text-center" Style="" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" CssClass="GridView">
                     <Columns>
                         <asp:BoundField DataField="ClothingName" HeaderText="Name" />
@@ -97,7 +97,7 @@
                 <h2 style="margin-left:5%"> Past Orders </h2>
                 <asp:Repeater ID="rptOrders" runat="server" OnItemCommand="rptOrders_ItemCommand">
                     <ItemTemplate>
-                        <div class="card text-start col-md-3" style="margin-left:5%">
+                        <div class="card text-start col-md-3" style="margin-left:5% ">
                             <div class="card-body">
                                 <h5 class="card-title"></h5>
                                 <p class="card-text">
