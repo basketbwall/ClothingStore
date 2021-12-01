@@ -420,11 +420,11 @@ namespace Classes
 
             Boolean clearance = false;
 
-            if(onClearance == "1")
+            if (onClearance == "1")
             {
                 clearance = true;
             }
-            
+
 
             myCommand.Parameters.AddWithValue("@clothingID", clothingID);
             myCommand.Parameters.AddWithValue("@clothingName", clothingName);
@@ -443,36 +443,7 @@ namespace Classes
 
         }
 
-        public int UpdateClothing(Classes.Clothing clothing)
-        {
-
-            DataSet searchDataSet = new DataSet();
-            DBConnect objDB = new DBConnect();
-
-            SqlCommand myCommand = new SqlCommand();
-
-            myCommand.CommandType = CommandType.StoredProcedure;
-            myCommand.CommandText = "TP_UpdateClothing";
-
-
-            myCommand.Parameters.AddWithValue("@theID", clothing.ClothingID);
-            myCommand.Parameters.AddWithValue("@theName", clothing.ClothingName);
-            myCommand.Parameters.AddWithValue("@theColor", clothing.ClothingColor);
-            myCommand.Parameters.AddWithValue("@theDescription", clothing.ClothingDescription);
-            myCommand.Parameters.AddWithValue("@theImage", clothing.ClothingImage);
-            myCommand.Parameters.AddWithValue("@theSmall", clothing.SmallStock);
-            myCommand.Parameters.AddWithValue("@theMedium", clothing.MediumStock);
-            myCommand.Parameters.AddWithValue("@theLarge", clothing.LargeStock);
-            myCommand.Parameters.AddWithValue("@theClearance", clothing.OnClearance);
-            myCommand.Parameters.AddWithValue("@theDiscount", clothing.ClearanceDiscountPercent);
-            myCommand.Parameters.AddWithValue("@thePrice", clothing.ClothingPrice);
-            myCommand.Parameters.AddWithValue("@theBrand", clothing.ClothingBrand);
-
-            return objDB.DoUpdateUsingCmdObj(myCommand);
-
-        }
-
-            public DataSet GetClothing()
+        public DataSet GetClothing()
         {
             DataSet searchDataSet = new DataSet();
             DBConnect objDB = new DBConnect();
@@ -485,22 +456,6 @@ namespace Classes
             return objDB.GetDataSetUsingCmdObj(myCommand);
 
         }
-
-        public int UpdateClothing(int clothingID)
-        {
-
-            DataSet searchDataSet = new DataSet();
-            DBConnect objDB = new DBConnect();
-
-            SqlCommand myCommand = new SqlCommand();
-
-            myCommand.CommandType = CommandType.StoredProcedure;
-            myCommand.CommandText = "TP_UpdateClothing";
-
-            myCommand.Parameters.AddWithValue("@clothingID", clothingID);
-
-            return objDB.DoUpdateUsingCmdObj(myCommand);
-
-        }
     }
 }
+
