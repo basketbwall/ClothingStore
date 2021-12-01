@@ -358,7 +358,7 @@ namespace Classes
             return objDB.DoUpdateUsingCmdObj(myCommand);
         }
 
-        public int DeleteClothing(string clothingID)
+        public int DeleteClothing(int clothingID)
         {
 
             DataSet searchDataSet = new DataSet();
@@ -372,10 +372,10 @@ namespace Classes
             myCommand.Parameters.AddWithValue("@clothingID", clothingID);
 
             return objDB.DoUpdateUsingCmdObj(myCommand);
-            
+
         }
 
-        public int UpdateClothing(string clothingID)
+        public int UpdateClothing(int clothingID, string clothingName, string clothingColor, string clothingDescription, string clothingImage, string smallStock, string medStock, string largeStock, string onClearance, string precentOff, string clothingPrice, string clothingBrand)
         {
 
             DataSet searchDataSet = new DataSet();
@@ -386,7 +386,26 @@ namespace Classes
             myCommand.CommandType = CommandType.StoredProcedure;
             myCommand.CommandText = "TP_UpdateClothing";
 
+            Boolean clearance = false;
+
+            if(onClearance == "1")
+            {
+                clearance = true;
+            }
+            
+
             myCommand.Parameters.AddWithValue("@clothingID", clothingID);
+            myCommand.Parameters.AddWithValue("@clothingName", clothingName);
+            myCommand.Parameters.AddWithValue("@clothingColor", clothingColor);
+            myCommand.Parameters.AddWithValue("@clothingDescription", clothingDescription);
+            myCommand.Parameters.AddWithValue("@clothingImage", clothingImage);
+            myCommand.Parameters.AddWithValue("@smallStock", Int32.Parse(smallStock));
+            myCommand.Parameters.AddWithValue("@mediumStock", Int32.Parse(medStock));
+            myCommand.Parameters.AddWithValue("@largeStock", Int32.Parse(largeStock));
+            myCommand.Parameters.AddWithValue("@onClearance", clearance);
+            myCommand.Parameters.AddWithValue("@clearanceDiscountPercent", Int32.Parse(precentOff));
+            myCommand.Parameters.AddWithValue("@clothingPrice", Convert.ToDecimal(clothingPrice));
+            myCommand.Parameters.AddWithValue("@clothingBrand", clothingBrand);
 
             return objDB.DoUpdateUsingCmdObj(myCommand);
 
@@ -403,7 +422,7 @@ namespace Classes
             myCommand.CommandText = "TP_GetClothing";
 
             return objDB.GetDataSetUsingCmdObj(myCommand);
-            
+
         }
     }
 }

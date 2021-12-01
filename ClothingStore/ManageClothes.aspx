@@ -15,13 +15,49 @@
             border: solid black 0.5px;
             padding: 5%;
         }
+        nav {
+            padding-top: 10px;
+        }
+
+        #imageDiv {
+            text-align: center;
+        }
+
+        #clothingImage {
+            width: 100%;
+            padding: 10%;
+        }
+
+        #clothesInfoDiv {
+            display: inline-block;
+            padding: 2.5%;
+        }
+
+        #reviews {
+            padding-left: 5%;
+        }
+
+        #btnCheckOut {
+            position: relative;
+            top: 20px;
+        }
+
+        #navbar {
+            background-color: lightgrey;
+        }
+
+        #lblCompany {
+            margin-left: 2rem;
+        }
+
     </style>
 </head>
 <body>
-        <div id="ClothesManagement" class="text-center col-md-5" style="border-radius: 2.5px">
+       
+    <form id="form1" runat="server">
+         <div id="ClothesManagement" class="text-center col-md-5" style="border-radius: 2.5px">
             <h1>Clothes Management</h1>
             <div>
-    <form id="form1" runat="server">
         <div align="center" runat="server">
             <br />
             <br />
