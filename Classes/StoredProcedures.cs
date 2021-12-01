@@ -358,7 +358,7 @@ namespace Classes
             return objDB.DoUpdateUsingCmdObj(myCommand);
         }
 
-        public int DeleteClothing(string clothingID)
+        public int DeleteClothing(int clothingID)
         {
 
             DataSet searchDataSet = new DataSet();
@@ -372,10 +372,10 @@ namespace Classes
             myCommand.Parameters.AddWithValue("@clothingID", clothingID);
 
             return objDB.DoUpdateUsingCmdObj(myCommand);
-            
+
         }
 
-        public int UpdateClothing(string clothingID)
+        public int UpdateClothing(int clothingID, string clothingName, string clothingColor, string clothingDescription, string clothingImage, string smallStock, string medStock, string largeStock, string onClearance, string precentOff, string clothingPrice, string clothingBrand)
         {
 
             DataSet searchDataSet = new DataSet();
@@ -386,13 +386,61 @@ namespace Classes
             myCommand.CommandType = CommandType.StoredProcedure;
             myCommand.CommandText = "TP_UpdateClothing";
 
+            Boolean clearance = false;
+
+            if(onClearance == "1")
+            {
+                clearance = true;
+            }
+            
+
             myCommand.Parameters.AddWithValue("@clothingID", clothingID);
+            myCommand.Parameters.AddWithValue("@clothingName", clothingName);
+            myCommand.Parameters.AddWithValue("@clothingColor", clothingColor);
+            myCommand.Parameters.AddWithValue("@clothingDescription", clothingDescription);
+            myCommand.Parameters.AddWithValue("@clothingImage", clothingImage);
+            myCommand.Parameters.AddWithValue("@smallStock", Int32.Parse(smallStock));
+            myCommand.Parameters.AddWithValue("@mediumStock", Int32.Parse(medStock));
+            myCommand.Parameters.AddWithValue("@largeStock", Int32.Parse(largeStock));
+            myCommand.Parameters.AddWithValue("@onClearance", clearance);
+            myCommand.Parameters.AddWithValue("@clearanceDiscountPercent", Int32.Parse(precentOff));
+            myCommand.Parameters.AddWithValue("@clothingPrice", Convert.ToDecimal(clothingPrice));
+            myCommand.Parameters.AddWithValue("@clothingBrand", clothingBrand);
 
             return objDB.DoUpdateUsingCmdObj(myCommand);
 
         }
 
-        public DataSet GetClothing()
+        public int UpdateClothing(Classes.Clothing clothing)
+        {
+
+            DataSet searchDataSet = new DataSet();
+            DBConnect objDB = new DBConnect();
+
+            SqlCommand myCommand = new SqlCommand();
+
+            myCommand.CommandType = CommandType.StoredProcedure;
+            myCommand.CommandText = "TP_UpdateClothing";
+
+
+            myCommand.Parameters.AddWithValue("@theID", clothing.ClothingID);
+            myCommand.Parameters.AddWithValue("@theName", clothing.ClothingName);
+            myCommand.Parameters.AddWithValue("@theColor", clothing.ClothingColor);
+            myCommand.Parameters.AddWithValue("@theDescription", clothing.ClothingDescription);
+            myCommand.Parameters.AddWithValue("@theImage", clothing.ClothingImage);
+            myCommand.Parameters.AddWithValue("@theSmall", clothing.SmallStock);
+            myCommand.Parameters.AddWithValue("@theMedium", clothing.MediumStock);
+            myCommand.Parameters.AddWithValue("@theLarge", clothing.LargeStock);
+            myCommand.Parameters.AddWithValue("@theClearance", clothing.OnClearance);
+            myCommand.Parameters.AddWithValue("@theDiscount", clothing.ClearanceDiscountPercent);
+            myCommand.Parameters.AddWithValue("@thePrice", clothing.ClothingPrice);
+            myCommand.Parameters.AddWithValue("@theBrand", clothing.ClothingBrand);
+
+            return objDB.DoUpdateUsingCmdObj(myCommand);
+
+        }
+
+            public DataSet GetClothing()
         {
             DataSet searchDataSet = new DataSet();
             DBConnect objDB = new DBConnect();
@@ -403,7 +451,7 @@ namespace Classes
             myCommand.CommandText = "TP_GetClothing";
 
             return objDB.GetDataSetUsingCmdObj(myCommand);
-            
+
         }
     }
 }

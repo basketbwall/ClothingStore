@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClothingStore {
-    
-    
-    public partial class ManageClothes {
-        
+namespace ClothingStore
+{
+
+
+    public partial class ManageClothes
+    {
+
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+
         /// <summary>
         /// lblName control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblName;
-        
+
         /// <summary>
         /// tbName control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbName;
-        
+
         /// <summary>
         /// lblPrice control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPrice;
-        
+
         /// <summary>
         /// tbPrice control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbPrice;
-        
+
         /// <summary>
         /// lblColor control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblColor;
-        
+
         /// <summary>
         /// tbColor control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbColor;
-        
+
         /// <summary>
         /// lblBrand control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblBrand;
-        
+
         /// <summary>
         /// tbBrand control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbBrand;
-        
+
         /// <summary>
         /// lblURL control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblURL;
-        
+
         /// <summary>
         /// tbURL control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbURL;
-        
+
         /// <summary>
         /// lblDescription control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDescription;
-        
+
         /// <summary>
         /// tbDescription control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbDescription;
-        
+
         /// <summary>
         /// lblClearance control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblClearance;
-        
+
         /// <summary>
         /// cbClearance control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox cbClearance;
-        
+
         /// <summary>
         /// lblOff control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblOff;
-        
+
         /// <summary>
         /// tbPercentageOff control.
         /// </summary>
@@ -164,7 +166,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbPercentageOff;
-        
+
         /// <summary>
         /// lblSmall control.
         /// </summary>
@@ -173,7 +175,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSmall;
-        
+
         /// <summary>
         /// lblMed control.
         /// </summary>
@@ -182,7 +184,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMed;
-        
+
         /// <summary>
         /// lblLarge control.
         /// </summary>
@@ -191,7 +193,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblLarge;
-        
+
         /// <summary>
         /// lblStock control.
         /// </summary>
@@ -200,7 +202,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblStock;
-        
+
         /// <summary>
         /// tbSmall control.
         /// </summary>
@@ -209,7 +211,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbSmall;
-        
+
         /// <summary>
         /// tbMed control.
         /// </summary>
@@ -218,7 +220,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbMed;
-        
+
         /// <summary>
         /// tbLarge control.
         /// </summary>
@@ -227,7 +229,16 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbLarge;
-        
+
+        /// <summary>
+        /// lblWarning control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblWarning;
+
         /// <summary>
         /// btnBack control.
         /// </summary>
@@ -236,7 +247,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBack;
-        
+
         /// <summary>
         /// btnDelete control.
         /// </summary>
@@ -245,7 +256,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnDelete;
-        
+
         /// <summary>
         /// btnSave control.
         /// </summary>
