@@ -84,39 +84,80 @@
     </div>
   </div>
 </div>
+                <div style="float: right; margin-top: 5%; width: 50%">
+                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" class="text-center" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" CssClass="GridView">
+                    <Columns>
+                        <asp:BoundField DataField="ClothingName" HeaderText="Name" />
+                        <asp:ImageField DataImageUrlField="ClothingImage" HeaderText="Image">
+                            <ControlStyle Height="150px" Width="150px" />
+                        </asp:ImageField>
+                        <asp:BoundField DataField="ClothingColor" HeaderText="Color" />
+                        <asp:BoundField DataField="ClothingSize" HeaderText="Size" />
+                        <asp:BoundField DataField="ClothingPrice" HeaderText="Price" />
+                        <asp:BoundField DataField="ClothingQuantity" HeaderText="Quantity Purchased" />
+                        <asp:TemplateField HeaderText="Confirm Refund">
+                            <ItemTemplate>
+                                <asp:Button ID="btnConfirmRefund" runat="server" Text="Confirm Refund" class="btn btn-dark" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                    <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+                    <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
+                    <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
+                    <SortedAscendingCellStyle BackColor="#F7F7F7" />
+                    <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
+                    <SortedDescendingCellStyle BackColor="#E5E5E5" />
+                    <SortedDescendingHeaderStyle BackColor="#242121" />
+                </asp:GridView>
+                                <div style="text-align: center;">
+                    <asp:Label ID="lblRefundResult" runat="server" Text="" style="margin:auto;"></asp:Label>
+                </div>
+                </div>
+                
 
-
-
-                <asp:Label ID="lblDisplay" runat="server" Text=""></asp:Label>
-                <table style="width: 70%; margin: auto;">
-                    <tr>
-                        <th>Order ID</th>
-                        <th>Order Total</th>
-                        <th>Order Date</th>
-                        <th>Confirm Refund</th>
-                    </tr>
+                <table style="">
+                    <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="rptOrders_ItemCommand">
+                    <ItemTemplate>
+                        <div class="card text-start col-md-3" style="margin-left:5%">
+                            <div class="card-body">
+                                <h5 class="card-title"></h5>
+                                <p class="card-text">
+                                    Order ID: <asp:Label ID="lblOrderID" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "orderID") %>'></asp:Label>
+                                    <br />
+                                    Order Total: <asp:Label ID="lblDescription" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "orderTotal", "{0:c}") %>'></asp:Label>
+                                    <br />
+                                    Order Date: <asp:Label ID="lblPrice" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "orderDate") %>'></asp:Label>
+                                    <br />
+                                    Refund Requested: <asp:Label ID="Label1" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "refundRequested") %>'></asp:Label>
+                                </p>
+                                <asp:Button ID="Button3" runat="server" Text="View Order" class="btn btn-dark" />
+                            </div>
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
                     <asp:Repeater ID="rptOrders" runat="server" OnItemCommand="rptOrders_ItemCommand">
-                        <ItemTemplate>
-                            <tr>
-                                <td>
-                                    <asp:Label ID="lblOrderID" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "orderID") %>'></asp:Label>
-                                </td>
-                                <td>
-                                    <asp:Label ID="lblDescription" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "orderTotal", "{0:c}") %>'></asp:Label>
-                                </td>
-                                <td>
-                                    <asp:Label ID="lblPrice" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "orderDate") %>'></asp:Label>
-                                </td>
-                                <td>
-                                    <asp:Button ID="Button3" runat="server" class="btn btn-dark" Text="Confirm Refund Request" data-toggle="modal" data-target="#modalConfirm" />
-                                </td>
-                            </tr>
-                        </ItemTemplate>
+                    <ItemTemplate>
+                        <div class="card text-start col-md-3" style="margin-left:5%">
+                            <div class="card-body">
+                                <h5 class="card-title"></h5>
+                                <p class="card-text">
+                                    Order ID: <asp:Label ID="lblOrderID" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "orderID") %>'></asp:Label>
+                                    <br />
+                                    Order Total: <asp:Label ID="lblDescription" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "orderTotal", "{0:c}") %>'></asp:Label>
+                                    <br />
+                                    Order Date: <asp:Label ID="lblPrice" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "orderDate") %>'></asp:Label>
+                                    <br />
+                                    Refund Requested: <asp:Label ID="Label1" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "refundRequested") %>'></asp:Label>
+                                </p>
+                                <asp:Button ID="Button3" runat="server" Text="View Order" class="btn btn-dark" />
+                            </div>
+                        </div>
+                    </ItemTemplate>
                     </asp:Repeater>
                 </table>
                 <br />
                 <div class="text-center">
-                    <asp:Label ID="lblRefundResult" runat="server" Text=""></asp:Label>
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>

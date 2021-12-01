@@ -125,6 +125,8 @@ namespace ClothingStore
             if (SP.CheckRefundStatus(orderID))
             {
                 lblRefund.Text = "Refund already requested for order ID: " + orderID;
+                GridView1.UseAccessibleHeader = true;
+                GridView1.HeaderRow.TableSection = TableRowSection.TableHeader;
             }
             else
             {
@@ -137,6 +139,8 @@ namespace ClothingStore
                     DataSet orders = SP.GetUserOrders(userID);
                     rptOrders.DataSource = orders;
                     rptOrders.DataBind();
+                    GridView1.UseAccessibleHeader = true;
+                    GridView1.HeaderRow.TableSection = TableRowSection.TableHeader;
                 }
             }
 

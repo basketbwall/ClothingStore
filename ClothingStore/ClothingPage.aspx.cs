@@ -33,20 +33,27 @@ namespace ClothingStore
                 //check role and update label on top right and set visibility of buttons
                 if (Session["Role"].ToString() == "RewardsCustomer")
                 {
+                    int userID = int.Parse(Session["UserID"].ToString());
+                    int clothingID = int.Parse(Request.QueryString["ClothingID"].ToString());
 
                     shoppingOptions.Visible = true;
                     //check if user has even bought this using storedprocedure to look at users orders, look inside each orderitems list to find a clothing id match
-                    //check if the user has reviewed this already
-                    int userID = int.Parse(Session["UserID"].ToString());
-                    int clothingID = int.Parse(Request.QueryString["ClothingID"].ToString());
                     
+
+                    
+                    
+                    //check if the user has reviewed this already
+
                     if (APIMethods.UserWroteReview(userID, clothingID))
                     {
                         btnMyReview.Visible = true;
                     }
                     else
                     {
-                        btnAddReview.Visible = true;
+                        if (SP.UserBoughtClothing(userID, clothingID))
+                        {
+                            btnAddReview.Visible = true;
+                        }
                     }
                 }
                 else if (Session["Role"].ToString() == "Administrator")

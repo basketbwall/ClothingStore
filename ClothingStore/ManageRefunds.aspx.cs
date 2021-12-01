@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Classes;
 using System.Data;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace ClothingStore
 {
@@ -56,7 +58,26 @@ namespace ClothingStore
 
             String orderNumber = myLabel.Text;
 
-            lblDisplay.Text = "You selected orderNumber " + orderNumber;
+            //lblDisplay.Text = "You selected orderNumber " + orderNumber;
+
+            //display gridview using api call to grab order
+            //using order number grab the clothing list and display that in a gridview
+
+            StoredProcedures SP = new StoredProcedures();
+            //retreive the info and put in display text
+            DataSet orderDataSet = SP.RetrieveOrderItems(int.Parse(orderNumber));
+            if (orderDataSet.Tables[0].Rows.Count != 0)
+            {
+                Byte[] byteArray = (Byte[])orderDataSet.Tables[0].Rows[0]["orderItems"];
+                BinaryFormatter deSerializer = new BinaryFormatter();
+                MemoryStream memStream = new MemoryStream(byteArray);
+                List<Classes.Clothing> objOrderItems = (List<Classes.Clothing>)deSerializer.Deserialize(memStream);
+                GridView1.DataSource = objOrderItems;
+                GridView1.DataBind();
+
+                GridView1.UseAccessibleHeader = true;
+                GridView1.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
 
             //call stored procedure to delete a order
             //StoredProcedures SP = new StoredProcedures();
