@@ -73,24 +73,29 @@ namespace ClothingStore
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            if (cbClearance.Checked == false)
+            if (tbName.Text == "" || tbColor.Text == "" || tbDescription.Text == "" || tbURL.Text == "" || tbSmall.Text == "" || tbMed.Text == "" || tbLarge.Text == "" || tbPercentageOff.Text == "" || tbPrice.Text == "" || tbBrand.Text == "")
             {
-                tbPercentageOff.Text = "0";
+
+                if (cbClearance.Checked == false)
+                {
+                    tbPercentageOff.Text = "0";
+                }
+                int clothingID = Int32.Parse(Session["ClothingID"].ToString());
+
+                StoredProcedures storedProc = new StoredProcedures();
+                Classes.Clothing currentClothing = storedProc.GetClothingByID(clothingID);
+
+                string clearanceStatus = "1";
+
+                if (cbClearance.Checked == false)
+                {
+                    clearanceStatus = "0";
+                    tbPercentageOff.Text = "0";
+                }
+
+                storedProc.UpdateClothing(clothingID, tbName.Text, tbColor.Text, tbDescription.Text, tbURL.Text, tbSmall.Text, tbMed.Text, tbLarge.Text, clearanceStatus, tbPercentageOff.Text, tbPrice.Text, tbBrand.Text);
+
             }
-            int clothingID = Int32.Parse(Session["ClothingID"].ToString());
-
-            StoredProcedures storedProc = new StoredProcedures();
-            Classes.Clothing currentClothing = storedProc.GetClothingByID(clothingID);
-
-            string clearanceStatus = "1";
-
-            if (cbClearance.Checked == false)
-            {
-                clearanceStatus = "0";
-                tbPercentageOff.Text = "0";
-            }
-
-            storedProc.UpdateClothing(clothingID, tbName.Text, tbColor.Text, tbDescription.Text, tbURL.Text, tbSmall.Text, tbMed.Text, tbLarge.Text, clearanceStatus, tbPercentageOff.Text, tbPrice.Text, tbBrand.Text);
         }
 
         protected void btnBack_Click(object sender, EventArgs e)

@@ -20,7 +20,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
+        
         /// <summary>
         /// ScriptManager2 control.
         /// </summary>
@@ -29,17 +29,16 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.ScriptManager ScriptManager2;
-
+        
         /// <summary>
-        /// txtClothingID control.
+        /// addClothes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtClothingID;
-
-
+        protected global::System.Web.UI.WebControls.ImageButton addClothes;
+        
         /// <summary>
         /// rptCLothing control.
         /// </summary>

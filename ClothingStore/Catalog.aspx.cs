@@ -82,5 +82,10 @@ namespace ClothingStore
             int id = thisClothing.ClothingID;
             Response.Redirect("ClothingPage.aspx" + "?ClothingID=" + id);
         }
+
+        protected void addClothes_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("AddClothing.aspx");
+        }
     }
 }

@@ -39,8 +39,7 @@ namespace ClothingStore
         protected void btnSubmitOrder_Click(object sender, EventArgs e)
         {
             //create order
-
-
+            
             //appending the list of clothes bought to the orderitems column of the order
             StoredProcedures SP = new StoredProcedures();
             //call stored procedure that sets the order given an order ID
@@ -48,7 +47,6 @@ namespace ClothingStore
             // Serialize the OrderItem List object
 
             BinaryFormatter serializer = new BinaryFormatter();
-
             MemoryStream memStream = new MemoryStream();
 
             Byte[] byteArray;
@@ -56,17 +54,19 @@ namespace ClothingStore
             serializer.Serialize(memStream, Cart);
 
             byteArray = memStream.ToArray();
-            int orderID = int.Parse(txtOrderID.Text);
-            int retVal = SP.StoreOrderItems(orderID, byteArray);
-            // Check to see whether the update was successful
 
-            if (retVal > 0)
+            // Create the Web Service Proxy Object used to talk to the Web Service in SOAP
+            CheckoutService.CheckoutProcessor wsProxy = new CheckoutService.CheckoutProcessor();
 
-                lblCartSubmitDisplay.Text = "The order items were successfully stored for this account.";
+            //bool result = wsProxy.Storing(byteArray, )
+                
 
-            else
+            //if (order.  == true)
+            //    lblCartSubmitDisplay.Text = "The order items were successfully stored for this account.";
 
-                lblCartSubmitDisplay.Text = "A problem occured in storing the order items.";
+            //else
+
+            //    lblCartSubmitDisplay.Text = "A problem occured in storing the order items.";
         }
     }
 }
