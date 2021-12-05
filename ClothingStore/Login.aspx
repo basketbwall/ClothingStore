@@ -17,7 +17,7 @@
 <body>
     <form id="form1" runat="server">
         <div align="center" runat="server" id="logo">
-            <asp:Image ID="imgLogo"  Width="1000" Height="150" ImageUrl="Images/clothingLogo.jpg" runat="server" />
+            <asp:Image ID="imgLogo"  Width="1100" Height="200" ImageUrl="Images/clothingLogo.jpg" runat="server" />
         </div>
         <div id="login" class="text-center col-md-5" style="border-radius: 2.5px">
             <h1>Log In</h1>

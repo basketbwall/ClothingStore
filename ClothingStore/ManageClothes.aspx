@@ -18,7 +18,7 @@
         <div align="center" runat="server">
             <br />
             <br />
-            <asp:Label ID="lblName" runat="server" Text="Name: "></asp:Label>
+            <asp:Label ID="lblName" runat="server" Text="Name: " class="col-sm-2 col-form-label"></asp:Label>
 &nbsp;<asp:TextBox ID="tbName" runat="server" class="col-sm-2 col-form-label" Height="30px" Width="200px"></asp:TextBox>
             &nbsp;&nbsp;<br />
             <span id="nameValidator" runat="server" style="color: red;" visible="false">* Required Field</span><br />
