@@ -4,11 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 using System.Data;              // import needed for DataSet and other data classes
-
 using System.Data.SqlClient;    // import needed for ADO.NET classes
-
 using Utilities;                // import needed for DBConnect class
 using ReviewsAPI.Models;
 namespace ReviewsAPI.Controllers
