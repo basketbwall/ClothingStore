@@ -89,6 +89,7 @@
     <Content Include="ManageClothes.aspx" />
     <Content Include="ManageRefunds.aspx" />
     <Content Include="Navbar.ascx" />
+    <Content Include="NavBarStyle.css" />
     <Content Include="PastOrders.aspx" />
     <Content Include="Registration.aspx" />
     <None Include="Properties\Settings.settings">
