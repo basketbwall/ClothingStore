@@ -55,7 +55,7 @@
             </asp:ScriptManager>
         <div class="text-center form-inline" style="margin-top: 10%;">
 
-            <asp:ImageButton ID="addClothes" Width="1000" Height="150" ImageUrl="Images/addClothing.jpeg" runat="server" OnClick="addClothes_Click" />
+            <asp:ImageButton ID="addClothes" Width="1000" Height="150" ImageUrl="Images/addClothing.jpeg" runat="server" OnClick="addClothes_Click" Visible="false"/>
             <br />
             <br />
             <asp:Repeater ID="rptCLothing" runat="server" OnItemCommand="rptCLothing_ItemCommand">

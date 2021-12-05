@@ -28,6 +28,20 @@ namespace ClothingStore
         {
             if (IsPostBack == false)
             {
+                if (Session["Role"].ToString() == "RewardsCustomer")
+                {
+                }
+                else if (Session["Role"].ToString() == "Administrator")
+                {
+                    addClothes.Visible = true;
+
+                }
+                else
+                {
+                    //visitor
+
+                }
+
                 DataSet Clothes = new DataSet();
                 StoredProcedures StoredProc = new StoredProcedures();
                 ArrayList mainClothes = new ArrayList();

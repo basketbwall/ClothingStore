@@ -27,6 +27,22 @@ namespace ClothingStore
         {
             if (IsPostBack == false)
             {
+                if (Session["Role"].ToString() == "RewardsCustomer")
+                {
+                }
+                else if (Session["Role"].ToString() == "Administrator")
+                {
+                    addClothes.Visible = true;
+
+                }
+                else
+                {
+                    //visitor
+
+                }
+
+
+
                 DataSet Clothes = new DataSet();
                 StoredProcedures StoredProc = new StoredProcedures();
                 ArrayList mainClothes = new ArrayList();
@@ -47,8 +63,8 @@ namespace ClothingStore
                         objClothing.ClothingName = (string)record["clothingName"];
                         objClothing.ClothingDescription = (string)record["clothingDescription"];
                         objClothing.ClothingPrice = (decimal)record["clothingPrice"];
+                        objClothing.ClearanceDiscountPercent = (int)record["clearanceDiscountPercent"];
                         mainClothes.Add(objClothing);
-
                     }
                     else
                     {

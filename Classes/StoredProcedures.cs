@@ -149,7 +149,7 @@ namespace Classes
                 c.MediumStock = int.Parse(record["MediumStock"].ToString());
                 c.LargeStock = int.Parse(record["LargeStock"].ToString());
                 c.OnClearance = bool.Parse(record["onClearance"].ToString());
-                c.ClearanceDiscountPercent = decimal.Parse(record["clearanceDiscountPercent"].ToString());
+                c.ClearanceDiscountPercent = int.Parse(record["clearanceDiscountPercent"].ToString());
                 c.ClothingPrice = decimal.Parse(record["clothingPrice"].ToString());
                 c.ClothingBrand = record["clothingBrand"].ToString();
 
