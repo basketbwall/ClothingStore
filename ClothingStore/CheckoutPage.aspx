@@ -88,6 +88,7 @@
                         <asp:TextBox ID="txtOrderID" runat="server"></asp:TextBox>
                         <asp:Button ID="btnSubmitOrder" runat="server" Text="Submit Order" class="btn btn-primary" OnClick="btnSubmitOrder_Click"/>
         </div>
+
     </form>
 </body>
 </html>

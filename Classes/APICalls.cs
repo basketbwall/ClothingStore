@@ -17,8 +17,8 @@ namespace Classes
         public bool UserWroteReview(int UserID, int ClothingID)
         {
             //if they already have a review for this clothing, then only show edit otherwise show the write review
-            //WebRequest request = WebRequest.Create("https://localhost:44385/api/Reviews/GetReviews");
-            WebRequest request = WebRequest.Create("https://cis-iis2.temple.edu/Fall2021/CIS3342_tuj10861/WebAPI/api/Reviews/GetReviews");
+            WebRequest request = WebRequest.Create("https://localhost:44385/api/Reviews/GetReviews");
+            //WebRequest request = WebRequest.Create("https://cis-iis2.temple.edu/Fall2021/CIS3342_tuj10861/WebAPI/api/Reviews/GetReviews");
             WebResponse response = request.GetResponse();
 
             Stream theDataStream = response.GetResponseStream();

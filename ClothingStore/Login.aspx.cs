@@ -115,12 +115,13 @@ namespace ClothingStore
 
         protected void btnSubmitEmail_Click(object sender, EventArgs e)
         {
+            Validation val = new Validation();
             string email = txtEmail.Text;
             //if email exists find security question and set visible
                 //select statement for finding user with email
                 //select statement for finding all security questions, randomly choose 1 to display
             //check for blank
-            if (email == "")
+            if (email == "" || val.IsEmail(email) == false)
             {
                 emailValidator.Visible = true;
             } else
@@ -241,6 +242,16 @@ namespace ClothingStore
         protected void btnRegister_Click(object sender, EventArgs e)
         {
             Response.Redirect("Registration.aspx");
+        }
+
+        protected void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

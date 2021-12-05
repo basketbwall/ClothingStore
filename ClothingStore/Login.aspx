@@ -21,7 +21,7 @@
             <h1>Log In</h1>
             <div>
                 <asp:Label ID="lblUsername" runat="server" Text="Enter Your Username:" class="col-sm-2 col-form-label"></asp:Label>
-                <asp:TextBox ID="txtUsername" runat="server" class="form-control col-4"></asp:TextBox>
+                <asp:TextBox ID="txtUsername" runat="server" class="form-control col-4" OnTextChanged="txtUsername_TextChanged"></asp:TextBox>
                 <span runat="server" visible="false" id="usernameValidator" style="color: red;">* Required Field</span>
                 <br />
                 <asp:LinkButton ID="btnUsername" runat="server" OnClick="btnUsername_Click">Forgot Your Username?</asp:LinkButton>
@@ -29,7 +29,7 @@
             <br />
             <div>
                 <asp:Label ID="lblPassword" runat="server" Text="Enter Your Password:" class="col-sm-2 col-form-label"></asp:Label>
-                <asp:TextBox ID="txtPassword" runat="server" class="form-control col-4" type="password"></asp:TextBox>
+                <asp:TextBox ID="txtPassword" runat="server" class="form-control col-4" type="password" OnTextChanged="txtPassword_TextChanged"></asp:TextBox>
                 <span runat="server" visible="false" id="passwordValidator" style="color: red;">* Required Field</span>
                 <br />
 

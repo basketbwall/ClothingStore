@@ -48,8 +48,43 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:ScriptManager ID="ScriptManager1" runat="server">
-        </asp:ScriptManager>
+
+
+                    <asp:ScriptManager ID="ScriptManager2" runat="server">
+            </asp:ScriptManager>
+        <div class="text-center form-inline" style="margin-top: 10%;">
+
+            <asp:ImageButton ID="addClothes" Width="1000" Height="150" ImageUrl="Images/addClothing.jpeg" runat="server" OnClick="addClothes_Click" />
+            <br />
+            <br />
+            <asp:Repeater ID="rptCLothing" runat="server" OnItemCommand="rptCLothing_ItemCommand">
+                    <ItemTemplate>
+                        <div class="card text-start col-md-3"  style="margin:1%; display:inline-block; width:300px" >
+
+                            <asp:Image ID="Image1" runat="server" Width="300" Height="300" ImageUrl='<%# Eval("clothingImage") %>'/>
+
+                            <div class="card-body">
+                                <h5 class="card-title"></h5>
+                                <p class="card-text">
+                                    
+                                    <asp:Label ID="lblclothingID" Visible="false" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "clothingID") %>'></asp:Label>
+                                    <br />
+                                    <asp:Label ID="lblName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "clothingName") %>'></asp:Label>
+                                    <br />
+                                    <asp:Label ID="lblDescription" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "clothingDescription", "{0:c}") %>'></asp:Label>
+                                    <br />
+                                    $<asp:Label ID="lblPrice" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "clothingPrice") %>'></asp:Label>
+                                    <br />
+                                    <asp:Label class="text-danger" ID="lblDiscount" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "clearanceDiscountPercent") %>'></asp:Label>
+                                   <span class="text-danger">% OFF</span>
+                                    <br />
+                                </p>
+                                <asp:Button ID="Button3" runat="server" Text="View Order" class="btn btn-dark" />
+                            </div>
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
+        </div>
     </form>
 </body>
 </html>
