@@ -28,7 +28,7 @@
             <asp:Image ID="clothingImage" runat="server" ImageUrl="~/Images/Preppy V Neck.png" />
         </div>
 
-        <div id="clothesInfoDiv" style="display:inline-block;" class="col-md-6 text-start">
+        <div id="clothesInfoDiv" style="display:inline-block;" class="col-md-5 text-start">
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingOne">
@@ -130,7 +130,7 @@
                                         <div runat="server" id="writereview" class="" style="margin: auto;" visible="false">
 
                                             <asp:Label ID="lblReviewContent" runat="server" Text="Write Your Review: " class="form-label"></asp:Label>
-                                            <asp:TextBox ID="txtReviewContent" runat="server" class="form-control" TextMode="MultiLine" Rows="3"></asp:TextBox>
+                                            <asp:TextBox ID="txtReviewContent" runat="server" class="form-control" placeholder="Write Your Review Here." TextMode="MultiLine" Rows="3"></asp:TextBox>
                                             <span runat="server" visible="false" id="reviewContentValidator" style="color: red;">* Required Field</span>
              <br />
 

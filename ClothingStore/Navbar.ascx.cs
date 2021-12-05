@@ -57,5 +57,10 @@ namespace ClothingStore
                 lblCartTotalQuantity.Text = quantity.ToString();
             }
         }
+
+        protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("Catalog.aspx");
+        }
     }
 }

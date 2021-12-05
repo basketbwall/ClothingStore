@@ -46,10 +46,11 @@
             <asp:Label ID="lblLogin" runat="server"></asp:Label>
             <br />
             <asp:Button ID="btnContinue" runat="server" Text="Continue Without Account" class="btn btn-success" OnClick="btnContinue_Click" />
-        </div>
 
-        <div runat="server" visible="false" id="divRecovery" class="col-md-5 text-center" style="margin: auto;">
-            <asp:Label ID="lblEmail" runat="server" Text="To retreive your username and/or password, enter the email associated with your account:"></asp:Label>
+
+            <div runat="server" visible="false" id="divRecovery" class="col-md-5 text-center" style="margin: auto;">
+            <span runat="server" id="Span1" style="color: red;">*</span>
+                <asp:Label ID="lblEmail" runat="server" Text="To retreive your username and/or password, enter the email associated with your account:"></asp:Label>
             <asp:TextBox ID="txtEmail" runat="server" class="form-control"></asp:TextBox>
             <span runat="server" visible="false" id="emailValidator" style="color: red;">* Required Field</span>
                 <br />
@@ -57,6 +58,8 @@
         </div>
         <br />
         <div runat="server" visible="false" id="securityQuestion" class="col-md-5 text-center" style="margin: auto;">
+                        <span runat="server" id="Span2" style="color: red;">*</span>
+
             <asp:Label ID="lblSecurityQuestion" runat="server" Text="Security Question"></asp:Label>
             <asp:TextBox ID="txtSecurityAnswer" runat="server" class="form-control"></asp:TextBox>
              <span runat="server" visible="false" id="securityQuestionValidator" style="color: red;">* Required Field</span>
@@ -72,8 +75,11 @@
             <asp:Button ID="btnRecoverPassword" runat="server" Text="Recover Password" class="btn btn-success" OnClick="btnRecoverPassword_Click" />
             <asp:Button ID="btnRecoverUsername" runat="server" Text="Recover Username" class="btn btn-success" OnClick="btnRecoverUsername_Click1" />
             <br />
-            <asp:Label ID="lblEmailDisplay" runat="server" Text="Label"></asp:Label>
+            &nbsp;<asp:Label ID="lblEmailDisplay" runat="server" Text=""></asp:Label>
         </div>
+        </div>
+
+        
         &nbsp;
     </form>
 </body>

@@ -44,10 +44,10 @@
                                     On Clearance
                                     <br />
                                     <asp:Label class="text-danger" ID="lblDiscount" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "clearanceDiscountPercent") %>'></asp:Label>
-                                   <span class="text-danger">% OFF</span>
+                                   <span class="text-danger">% OFF (Discount Applied At Checkout)</span>
                                    <br />
                                 </p>
-                                <asp:Button ID="Button3" runat="server" Text="View Order" class="btn btn-dark" />
+                                <asp:Button ID="Button3" runat="server" Text="View Clothing" class="btn btn-dark" />
                             </div>
                     <asp:Label ID="lblCartTotalQuantity" runat="server" Text=""></asp:Label>
                 </span>
