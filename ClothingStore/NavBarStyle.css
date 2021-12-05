@@ -1,6 +1,6 @@
 ﻿
 body {
-    background-color: #C7FA5F;
+    background-color: #3A6547;
 }
 
 #login {
@@ -74,7 +74,8 @@ nav {
 }
 
 #navbar {
-    background-color: #C7FA5F;
+    background-color: #C2863C;
+    padding: 0;
 }
 
 #lblCompany {
