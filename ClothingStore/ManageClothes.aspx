@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="NavBarStyle.css"/>
 </head>
 <body>
-       
+             
     <form id="form1" runat="server">
          <div id="ClothesManagement" class="text-center col-md-5" style="border-radius: 2.5px">
             <h1>Clothes Management</h1>

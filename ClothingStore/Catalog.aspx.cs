@@ -18,6 +18,8 @@ namespace ClothingStore
 {
     public partial class Catalog : System.Web.UI.Page
     {
+        ArrayList mainClothes = new ArrayList();
+
         protected void Page_Init(object sender, EventArgs e)
         {
             //check role and update label on top right and set visibility of buttons
@@ -101,6 +103,44 @@ namespace ClothingStore
         protected void addClothes_Click(object sender, ImageClickEventArgs e)
         {
             Response.Redirect("AddClothing.aspx");
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchValue = tbSearch.Text;
+
+            DataSet Clothes = new DataSet();
+            StoredProcedures StoredProc = new StoredProcedures();
+            ArrayList clearance = new ArrayList();
+            Classes.Clothing objClothing;
+
+
+            Clothes = StoredProc.GetClothing();
+
+            foreach (DataRow record in Clothes.Tables[0].Rows)
+            {
+                if (record["clothingName"].ToString().Contains(searchValue))
+                {
+                        //dude don't keep the || true exp purposes only
+                        if (record["onClearance"].ToString() == "False")
+                        {
+                            objClothing = new Classes.Clothing();
+                            objClothing.ClothingImage = (string)record["clothingImage"];
+                            objClothing.ClothingID = (int)record["clothingID"];
+                            objClothing.ClothingName = (string)record["clothingName"];
+                            objClothing.ClothingDescription = (string)record["clothingDescription"];
+                            objClothing.ClothingPrice = (decimal)record["clothingPrice"];
+                            mainClothes.Add(objClothing);
+
+                        }
+                        else
+                        {
+                            clearance.Add(record);
+                        }
+                }
+            }
+            rptCLothing.DataSource = mainClothes;
+            rptCLothing.DataBind();
         }
     }
 }

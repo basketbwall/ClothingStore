@@ -8,11 +8,11 @@
     <title></title>
     <link rel="stylesheet" type="text/css" href="NavBarStyle.css">
 
-    <style>
+<%--    <style>
         body{
             background-color: #C7FA5F;
         }
-    </style>
+    </style>--%>
 </head>
 <body>
     <form id="form1" runat="server">

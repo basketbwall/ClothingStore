@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClothingStore
-{
-
-
-    public partial class ManageRefunds
-    {
-
+namespace ClothingStore {
+    
+    
+    public partial class ManageRefunds {
+        
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -22,7 +20,7 @@ namespace ClothingStore
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
+        
         /// <summary>
         /// ScriptManager1 control.
         /// </summary>
@@ -31,7 +29,7 @@ namespace ClothingStore
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.ScriptManager ScriptManager1;
-
+        
         /// <summary>
         /// UpdatePanel1 control.
         /// </summary>
@@ -40,7 +38,7 @@ namespace ClothingStore
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-
+        
         /// <summary>
         /// GridView1 control.
         /// </summary>
@@ -49,7 +47,7 @@ namespace ClothingStore
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView1;
-
+        
         /// <summary>
         /// btnConfirmRefund control.
         /// </summary>
@@ -58,7 +56,7 @@ namespace ClothingStore
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnConfirmRefund;
-
+        
         /// <summary>
         /// lblRefundResult control.
         /// </summary>
@@ -67,7 +65,7 @@ namespace ClothingStore
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblRefundResult;
-
+        
         /// <summary>
         /// Repeater1 control.
         /// </summary>
@@ -76,7 +74,7 @@ namespace ClothingStore
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater Repeater1;
-
+        
         /// <summary>
         /// rptOrders control.
         /// </summary>

@@ -12,17 +12,11 @@
     <link rel="stylesheet" href="NavBarStyle.css"/>
 
     <title></title>
-        <style>
-        #registration {
-            margin: auto;
-            margin-top: 10%;
-            margin-bottom: 10%;
-            border: solid black 0.5px;
-            padding: 5%;
-        }
-    </style>
 </head>
 <body>
+            <div align="center" runat="server" id="logo">
+            <asp:Image ID="imgLogo"  Width="1000" Height="150" ImageUrl="Images/clothingLogo.jpg" runat="server" />
+        </div>
             <div id="registration" class="text-center col-md-5" style="border-radius: 2.5px">
             <h1>Registration</h1>
             <div>

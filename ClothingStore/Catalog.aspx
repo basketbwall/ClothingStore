@@ -18,9 +18,14 @@
 
                     <asp:ScriptManager ID="ScriptManager2" runat="server">
             </asp:ScriptManager>
-        <div class="text-center form-inline" style="margin-top: 10%;">
+        <div class="text-center form-inline" style="margin-top: 3%;">
 
             <asp:ImageButton ID="addClothes" Width="1000" Height="150" ImageUrl="Images/addClothing.jpeg" runat="server" OnClick="addClothes_Click" Visible="false"/>
+            <br />
+            <br />
+            <asp:TextBox ID="tbSearch" runat="server"></asp:TextBox>
+&nbsp;
+            <asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="Search" />
             <br />
             <br />
             <asp:Repeater ID="rptCLothing" runat="server" OnItemCommand="rptCLothing_ItemCommand">
