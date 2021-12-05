@@ -1,0 +1,45 @@
+﻿#ClothesManagement {
+    margin: auto;
+    margin-top: 10%;
+    border: solid black 0.5px;
+    padding: 5%;
+}
+
+.imgStar {
+    width: 50px;
+}
+
+nav {
+    padding-top: 10px;
+}
+
+#imageDiv {
+    text-align: center;
+}
+
+#clothingImage {
+    width: 100%;
+    padding: 10%;
+}
+
+#clothesInfoDiv {
+    display: inline-block;
+    padding: 2.5%;
+}
+
+#reviews {
+    padding-left: 5%;
+}
+
+#btnCheckOut {
+    position: relative;
+    top: 20px;
+}
+
+#navbar {
+    background-color: lightgrey;
+}
+
+#lblCompany {
+    margin-left: 2rem;
+}

@@ -18,7 +18,7 @@ namespace Classes
         public int MediumStock { get; set; }
         public int LargeStock { get; set; }
         public bool OnClearance { get; set; }
-        public decimal ClearanceDiscountPercent { get; set; }
+        public int ClearanceDiscountPercent { get; set; }
         public decimal ClothingPrice { get; set; }
         public string ClothingBrand { get; set; }
         public String ClothingSize { get; set; }
