@@ -1,4 +1,17 @@
-﻿#ClothesManagement {
+﻿#login {
+    background-color: white;
+    margin: auto;
+    margin-top: 3%;
+    border: solid black 0.5px;
+    padding: 5%;
+}
+
+#logo {
+    margin: 3%;
+}
+
+
+#ClothesManagement {
     margin: auto;
     margin-top: 10%;
     border: solid black 0.5px;
@@ -37,7 +50,8 @@ nav {
 }
 
 #navbar {
-    background-color: lightgrey;
+    background-color: #C7FA5F;
+    color: #46B3D8;
 }
 
 #lblCompany {
