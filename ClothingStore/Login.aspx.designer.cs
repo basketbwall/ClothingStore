@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClothingStore {
-    
-    
-    public partial class Login {
-        
+namespace ClothingStore
+{
+
+
+    public partial class Login
+    {
+
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+
         /// <summary>
         /// logo control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl logo;
-        
+
         /// <summary>
         /// imgLogo control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image imgLogo;
-        
+
         /// <summary>
         /// lblUsername control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblUsername;
-        
+
         /// <summary>
         /// txtUsername control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtUsername;
-        
+
         /// <summary>
         /// usernameValidator control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl usernameValidator;
-        
+
         /// <summary>
         /// btnUsername control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnUsername;
-        
+
         /// <summary>
         /// lblPassword control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPassword;
-        
+
         /// <summary>
         /// txtPassword control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
-        
+
         /// <summary>
         /// passwordValidator control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl passwordValidator;
-        
+
         /// <summary>
         /// btnForgotPassword control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnForgotPassword;
-        
+
         /// <summary>
         /// chkSaveUsername control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkSaveUsername;
-        
+
         /// <summary>
         /// btnRegister control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRegister;
-        
+
         /// <summary>
         /// btnLogin control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnLogin;
-        
+
         /// <summary>
         /// lblLogin control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblLogin;
-        
+
         /// <summary>
         /// btnContinue control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnContinue;
-        
+
         /// <summary>
         /// divRecovery control.
         /// </summary>
@@ -164,7 +166,16 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divRecovery;
-        
+
+        /// <summary>
+        /// Span1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Span1;
+
         /// <summary>
         /// lblEmail control.
         /// </summary>
@@ -173,7 +184,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblEmail;
-        
+
         /// <summary>
         /// txtEmail control.
         /// </summary>
@@ -182,7 +193,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
-        
+
         /// <summary>
         /// emailValidator control.
         /// </summary>
@@ -191,7 +202,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl emailValidator;
-        
+
         /// <summary>
         /// btnSubmitEmail control.
         /// </summary>
@@ -200,7 +211,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSubmitEmail;
-        
+
         /// <summary>
         /// securityQuestion control.
         /// </summary>
@@ -209,7 +220,16 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl securityQuestion;
-        
+
+        /// <summary>
+        /// Span2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Span2;
+
         /// <summary>
         /// lblSecurityQuestion control.
         /// </summary>
@@ -218,7 +238,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSecurityQuestion;
-        
+
         /// <summary>
         /// txtSecurityAnswer control.
         /// </summary>
@@ -227,7 +247,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSecurityAnswer;
-        
+
         /// <summary>
         /// securityQuestionValidator control.
         /// </summary>
@@ -236,7 +256,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl securityQuestionValidator;
-        
+
         /// <summary>
         /// btnAnswerSecurity control.
         /// </summary>
@@ -245,7 +265,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAnswerSecurity;
-        
+
         /// <summary>
         /// recoveryOptions control.
         /// </summary>
@@ -254,7 +274,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl recoveryOptions;
-        
+
         /// <summary>
         /// btnRecoverPassword control.
         /// </summary>
@@ -263,7 +283,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRecoverPassword;
-        
+
         /// <summary>
         /// btnRecoverUsername control.
         /// </summary>
@@ -272,7 +292,7 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRecoverUsername;
-        
+
         /// <summary>
         /// lblEmailDisplay control.
         /// </summary>

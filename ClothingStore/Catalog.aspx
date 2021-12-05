@@ -42,7 +42,7 @@
                                     $<asp:Label ID="lblPrice" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "clothingPrice") %>'></asp:Label>
                                     <br />
                                 </p>
-                                <asp:Button ID="Button3" runat="server" Text="View Order" class="btn btn-dark" />
+                                <asp:Button ID="Button3" runat="server" Text="View Clothing" class="btn btn-dark" />
                             </div>
                         </div>
                     </ItemTemplate>
