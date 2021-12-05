@@ -26,7 +26,7 @@
             </a>
         </li>
 
-        <asp:Label ID="lblUser" runat="server" Text="" Style="margin-right: 1rem;"></asp:Label>
+        <asp:Label ID="lblUser" runat="server" Text="" style="margin-right: 1rem;position: relative;top: -20px;"></asp:Label>
 
         <li style="display: inline-block;"><a runat="server" id="navSignIn" visible="false" href="Login.aspx" class="btn btn-outline-success">Sign In</a></li>
         <li style="display: inline-block;"><a runat="server" id="navSignOut" visible="false" href="Login.aspx" class="btn btn-outline-danger">Sign Out</a></li>

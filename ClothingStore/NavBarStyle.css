@@ -22,6 +22,7 @@ body {
 
 #logo {
     margin: 3%;
+    height: 100%;
 }
 
 #ClothesAdding {
@@ -74,10 +75,34 @@ nav {
 }
 
 #navbar {
-    background-color: #C7FA5F;
+    background-color: white;
+    padding: 0;
+    margin: 0;
+    height: 5em;
+}
+
+#li {
+    height: 3em;
+}
+
+a {
+    margin-bottom: 4em;
+}
+
+#lblUser {
+    margin-bottom: 3em;
+    position: relative;
+    top: -20px;
 }
 
 #lblCompany {
     margin-left: 2rem;
 }
 
+@media only screen and (max-width: 850px) {
+    #navbar {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+    }
+}

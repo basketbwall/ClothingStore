@@ -13,7 +13,7 @@
 
 </head>
 <body runat="server" align="center">
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" defaultbutton="btnSearch">
 
 
                     <asp:ScriptManager ID="ScriptManager2" runat="server">
@@ -23,14 +23,17 @@
             <asp:ImageButton ID="addClothes" Width="1000" Height="150" ImageUrl="Images/addClothing.jpeg" runat="server" OnClick="addClothes_Click" Visible="false"/>
             <br />
             <br />
-            <asp:TextBox ID="tbSearch" runat="server"></asp:TextBox>
+            <div class="col-5" style="margin: auto;">
+                <asp:TextBox ID="tbSearch" runat="server" style="margin-top:20%"></asp:TextBox>
+                <asp:Button ID="btnSearch" runat="server" class="btn btn-primary" OnClick="btnSearch_Click" Text="Search" />
+            </div>
 &nbsp;
-            <asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="Search" />
+            
             <br />
             <br />
             <asp:Repeater ID="rptCLothing" runat="server" OnItemCommand="rptCLothing_ItemCommand">
                     <ItemTemplate>
-                        <div class="card text-start col-md-3"  style="margin:1%; display:inline-block; width:300px" >
+                        <div class="card text-start  h-100 col-md-3"  style="margin:1%; display:inline-block; width:300px" >
 
                             <asp:Image ID="Image1" runat="server" Width="300" Height="300" ImageUrl='<%# Eval("clothingImage") %>'/>
 

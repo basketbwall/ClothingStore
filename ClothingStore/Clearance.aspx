@@ -13,7 +13,7 @@
 
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" defaultbutton="btnSearch">
 
 
                     <asp:ScriptManager ID="ScriptManager2" runat="server">
@@ -23,6 +23,12 @@
             <asp:ImageButton ID="addClothes" Width="20%" Height="10%" ImageUrl="Images/addClothing.jpeg" runat="server" OnClick="addClothes_Click" Visible="false" />
             <br />
             <br />
+
+                        <div class="col-5" style="margin: auto;">
+                <asp:TextBox ID="tbSearch" runat="server"></asp:TextBox>
+                <asp:Button ID="btnSearch" runat="server" class="btn btn-primary" OnClick="btnSearch_Click" Text="Search" />
+            </div>
+
             <asp:Repeater ID="rptCLothing" runat="server" OnItemCommand="rptCLothing_ItemCommand">
                     <ItemTemplate>
                         <div class="card text-start col-md-3"  style="margin:1%; display:inline-block; width:300px" >

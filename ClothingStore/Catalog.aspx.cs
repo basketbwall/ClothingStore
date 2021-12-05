@@ -119,7 +119,7 @@ namespace ClothingStore
 
             foreach (DataRow record in Clothes.Tables[0].Rows)
             {
-                if (record["clothingName"].ToString().Contains(searchValue))
+                if (record["clothingName"].ToString().ToLower().Contains(searchValue.ToLower()))
                 {
                         //dude don't keep the || true exp purposes only
                         if (record["onClearance"].ToString() == "False")

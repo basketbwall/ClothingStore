@@ -75,7 +75,7 @@ namespace ClothingStore
 
             //Get the row that contains this button
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
-            Response.Write("Clothing Name: " + gvr.Cells[0]);
+            Response.Write("Clothing Name: " + gvr.Cells[0].Text);
             //grab the cart from session. remove the clothing item using name + size to locate which to remove
             List<Classes.Clothing> Cart = (List<Classes.Clothing>)Session["Cart"];
             foreach(Classes.Clothing clothing in Cart)
