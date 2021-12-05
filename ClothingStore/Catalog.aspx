@@ -23,6 +23,11 @@
             <asp:ImageButton ID="addClothes" Width="1000" Height="150" ImageUrl="Images/addClothing.jpeg" runat="server" OnClick="addClothes_Click" Visible="false"/>
             <br />
             <br />
+            <asp:TextBox ID="tbSearch" runat="server"></asp:TextBox>
+&nbsp;
+            <asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="Search" />
+            <br />
+            <br />
             <asp:Repeater ID="rptCLothing" runat="server" OnItemCommand="rptCLothing_ItemCommand">
                     <ItemTemplate>
                         <div class="card text-start col-md-3"  style="margin:1%; display:inline-block; width:300px" >
