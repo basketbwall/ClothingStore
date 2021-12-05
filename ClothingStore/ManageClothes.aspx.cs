@@ -73,7 +73,7 @@ namespace ClothingStore
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            if (tbName.Text == "" || tbColor.Text == "" || tbDescription.Text == "" || tbURL.Text == "" || tbSmall.Text == "" || tbMed.Text == "" || tbLarge.Text == "" || tbPercentageOff.Text == "" || tbPrice.Text == "" || tbBrand.Text == "")
+            if (tbName.Text != "" && tbColor.Text != "" && tbDescription.Text != "" && tbURL.Text != "" && tbSmall.Text != "" && tbMed.Text != "" && tbLarge.Text != "" && tbPercentageOff.Text != "" && tbPrice.Text != "" && tbBrand.Text != "")
             {
 
                 if (cbClearance.Checked == false)

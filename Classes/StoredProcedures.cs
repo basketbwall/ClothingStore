@@ -406,11 +406,11 @@ namespace Classes
             myCommand.CommandType = CommandType.StoredProcedure;
             myCommand.CommandText = "TP_UpdateClothing";
 
-            Boolean clearance = false;
+            int clearance = 0;
 
             if (onClearance == "1")
             {
-                clearance = true;
+                clearance = 1;
             }
 
 

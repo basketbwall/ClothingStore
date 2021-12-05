@@ -51,8 +51,6 @@ namespace Classes
             return expression.IsMatch(expiryDate);
         }
 
-
-
         //check for all numbers
         public bool IsNumeric(string text)
         {
