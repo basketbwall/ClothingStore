@@ -79,6 +79,7 @@
     <Content Include="Images\addClothing.jpeg" />
     <Content Include="Images\black-24dp\1x\outline_shopping_bag_black_24dp.png" />
     <Content Include="Images\black-24dp\2x\outline_shopping_bag_black_24dp.png" />
+    <Content Include="Images\clothingLogo.jpg" />
     <Content Include="Images\Preppy V Neck.png" />
     <Content Include="Images\seashell.png" />
     <Content Include="Images\seashellGray.png" />

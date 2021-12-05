@@ -7,16 +7,26 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
     <title></title>
     <style>
+        body{
+            background-color: #C7FA5F;
+        }
         #login {
+            background-color: white;
             margin: auto;
-            margin-top: 10%;
+            margin-top: 3%;
             border: solid black 0.5px;
             padding: 5%;
+        }
+        #logo{
+            margin: 3%;
         }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
+        <div align="center" runat="server" id="logo">
+            <asp:Image ID="imgLogo"  Width="1000" Height="150" ImageUrl="Images/clothingLogo.jpg" runat="server" />
+        </div>
         <div id="login" class="text-center col-md-5" style="border-radius: 2.5px">
             <h1>Log In</h1>
             <div>
