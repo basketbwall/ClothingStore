@@ -40,6 +40,15 @@ namespace ClothingStore {
         protected global::System.Web.UI.WebControls.TextBox tbName;
         
         /// <summary>
+        /// nameValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl nameValidator;
+        
+        /// <summary>
         /// lblPrice control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbPrice;
+        
+        /// <summary>
+        /// priceValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl priceValidator;
         
         /// <summary>
         /// lblColor control.
@@ -76,6 +94,15 @@ namespace ClothingStore {
         protected global::System.Web.UI.WebControls.TextBox tbColor;
         
         /// <summary>
+        /// colorValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl colorValidator;
+        
+        /// <summary>
         /// lblBrand control.
         /// </summary>
         /// <remarks>
@@ -92,6 +119,15 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbBrand;
+        
+        /// <summary>
+        /// brandValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl brandValidator;
         
         /// <summary>
         /// lblURL control.
@@ -112,6 +148,15 @@ namespace ClothingStore {
         protected global::System.Web.UI.WebControls.TextBox tbURL;
         
         /// <summary>
+        /// urlValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl urlValidator;
+        
+        /// <summary>
         /// lblDescription control.
         /// </summary>
         /// <remarks>
@@ -128,6 +173,15 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbDescription;
+        
+        /// <summary>
+        /// descriptionValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl descriptionValidator;
         
         /// <summary>
         /// lblClearance control.
@@ -164,6 +218,15 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbPercentageOff;
+        
+        /// <summary>
+        /// percentageValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl percentageValidator;
         
         /// <summary>
         /// lblSmall control.
@@ -229,13 +292,13 @@ namespace ClothingStore {
         protected global::System.Web.UI.WebControls.TextBox tbLarge;
         
         /// <summary>
-        /// lblWarning control.
+        /// stockValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblWarning;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl stockValidator;
         
         /// <summary>
         /// btnBack control.

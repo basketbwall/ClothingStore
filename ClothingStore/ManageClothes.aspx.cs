@@ -96,6 +96,20 @@ namespace ClothingStore
                 storedProc.UpdateClothing(clothingID, tbName.Text, tbColor.Text, tbDescription.Text, tbURL.Text, tbSmall.Text, tbMed.Text, tbLarge.Text, clearanceStatus, tbPercentageOff.Text, tbPrice.Text, tbBrand.Text);
 
             }
+            else
+            {
+                if(cbClearance.Checked == true)
+                {
+                    percentageValidator.Visible = true;
+                }
+                nameValidator.Visible = true;
+                priceValidator.Visible = true;
+                colorValidator.Visible = true;
+                brandValidator.Visible = true;
+                urlValidator.Visible = true;
+                descriptionValidator.Visible = true;
+                stockValidator.Visible = true;
+            }
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
