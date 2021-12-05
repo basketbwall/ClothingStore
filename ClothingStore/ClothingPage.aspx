@@ -154,10 +154,12 @@
                                                             <tr>
                                                                 <td>User Review: <%#Eval("reviewContent")%></td>
                                                             </tr>
-                                                            <tr class="">
+<%--                                                            <tr class="">
                                                                 <td><asp:Button ID="btnFlag" runat="server" Text="Flag Review" class="btn btn-danger"/></td>
-                                                            </tr>
+                                                            </tr>--%>
                                                         </table>
+                                                                                                                    <br />
+
                                                     </div>
                                                 </ItemTemplate>
                                             </asp:ListView>

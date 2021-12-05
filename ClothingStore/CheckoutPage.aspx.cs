@@ -38,7 +38,7 @@ namespace ClothingStore
 
         protected void btnSubmitOrder_Click(object sender, EventArgs e)
         {
-            //create order
+            //create order using add order stored procedure
             
             //appending the list of clothes bought to the orderitems column of the order
             StoredProcedures SP = new StoredProcedures();
@@ -67,6 +67,42 @@ namespace ClothingStore
             //else
 
             //    lblCartSubmitDisplay.Text = "A problem occured in storing the order items.";
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+
+            //Get the row that contains this button
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            Response.Write("Clothing Name: " + gvr.Cells[0]);
+            //grab the cart from session. remove the clothing item using name + size to locate which to remove
+            List<Classes.Clothing> Cart = (List<Classes.Clothing>)Session["Cart"];
+            foreach(Classes.Clothing clothing in Cart)
+            {
+                
+            }
+
+        }
+
+        protected void btnIncrease_Click(object sender, EventArgs e)
+        {
+            //grab the cart from session. increment quantity of the clothing item using name + size to locate which to remove
+            List<Classes.Clothing> Cart = (List<Classes.Clothing>)Session["Cart"];
+            foreach (Classes.Clothing clothing in Cart)
+            {
+
+            }
+        }
+
+        protected void btnDecrease_Click(object sender, EventArgs e)
+        {
+            //grab the cart from session. decrement quantity of the clothing item using name + size to locate which to remove
+            List<Classes.Clothing> Cart = (List<Classes.Clothing>)Session["Cart"];
+            foreach (Classes.Clothing clothing in Cart)
+            {
+
+            }
         }
     }
 }

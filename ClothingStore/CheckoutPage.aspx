@@ -69,9 +69,9 @@
                 <asp:BoundField DataField="ClothingQuantity" HeaderText="Quantity" />
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:Button ID="btnDecrease" runat="server" Text="-" class="btn btn-success"/>
-                        <asp:Button ID="btnIncrease" runat="server" Text="+" class="btn btn-danger" />
-                        <asp:Button ID="btnDelete" runat="server" Text="Remove" class="btn btn-dark"/>
+                        <asp:Button ID="btnDecrease" runat="server" Text="-" class="btn btn-success" OnClick="btnDecrease_Click"/>
+                        <asp:Button ID="btnIncrease" runat="server" Text="+" class="btn btn-danger" OnClick="btnIncrease_Click" />
+                        <asp:Button ID="btnDelete" runat="server" Text="Remove" class="btn btn-dark" OnClick="btnDelete_Click"/>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
