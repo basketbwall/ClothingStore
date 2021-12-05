@@ -20,7 +20,7 @@
             </asp:ScriptManager>
         <div class="text-center form-inline" style="margin-top: 3%;">
 
-            <asp:ImageButton ID="addClothes" Width="1000" Height="150" ImageUrl="Images/addClothing.jpeg" runat="server" OnClick="addClothes_Click" Visible="false"/>
+            <asp:ImageButton ID="addClothes" Width="1100" Height="200" ImageUrl="Images/addClothing.jpeg" runat="server" OnClick="addClothes_Click" Visible="false"/>
             <br />
             <br />
             <asp:TextBox ID="tbSearch" runat="server"></asp:TextBox>
