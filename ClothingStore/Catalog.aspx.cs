@@ -45,6 +45,7 @@ namespace ClothingStore
                 DataSet Clothes = new DataSet();
                 StoredProcedures StoredProc = new StoredProcedures();
                 ArrayList mainClothes = new ArrayList();
+
                 ArrayList clearance = new ArrayList();
                 Classes.Clothing objClothing;
 

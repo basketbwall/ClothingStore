@@ -2,10 +2,7 @@
 
 
             <nav id="navbar" class="text-start">
-    <a href="Catalog.aspx" style="text-decoration: none;">
-        <asp:Label ID="lblCompany" runat="server" Text="QuickClothes" class="h6" style="margin-left:1.5%; color: black;">
-    </asp:Label>
-    </a>
+                <asp:ImageButton ID="ImageButton1" src="images/clothingLogo.jpg" href="Catalog.aspx" style="text-decoration: none; width: 15%;" runat="server" OnClick="ImageButton1_Click" />
     <ul class="col-md-5" style="display: inline-block; list-style-type: none;">
         <li style="display: inline-block;"><a href="Catalog.aspx" class="btn btn-outline-dark">Catalog</a></li>
 
