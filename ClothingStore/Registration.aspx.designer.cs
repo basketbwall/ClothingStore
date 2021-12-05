@@ -40,6 +40,15 @@ namespace ClothingStore {
         protected global::System.Web.UI.WebControls.TextBox tbName;
         
         /// <summary>
+        /// usernameValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl usernameValidator;
+        
+        /// <summary>
         /// lblPassword control.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,15 @@ namespace ClothingStore {
         protected global::System.Web.UI.WebControls.TextBox tbPassword;
         
         /// <summary>
+        /// passwordValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl passwordValidator;
+        
+        /// <summary>
         /// lblEmail control.
         /// </summary>
         /// <remarks>
@@ -74,6 +92,15 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbEmail;
+        
+        /// <summary>
+        /// emailValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl emailValidator;
         
         /// <summary>
         /// lblRole control.
@@ -121,6 +148,15 @@ namespace ClothingStore {
         protected global::System.Web.UI.WebControls.TextBox tbQuestion1;
         
         /// <summary>
+        /// question1Validator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl question1Validator;
+        
+        /// <summary>
         /// lblQuestion2 control.
         /// </summary>
         /// <remarks>
@@ -148,6 +184,15 @@ namespace ClothingStore {
         protected global::System.Web.UI.WebControls.TextBox tbQuestion2;
         
         /// <summary>
+        /// question2Validator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl question2Validator;
+        
+        /// <summary>
         /// lblQuestion3 control.
         /// </summary>
         /// <remarks>
@@ -173,6 +218,15 @@ namespace ClothingStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbQuestion3;
+        
+        /// <summary>
+        /// question3Validator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl question3Validator;
         
         /// <summary>
         /// btnBack1 control.

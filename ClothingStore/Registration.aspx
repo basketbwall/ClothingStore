@@ -16,6 +16,7 @@
         #registration {
             margin: auto;
             margin-top: 10%;
+            margin-bottom: 10%;
             border: solid black 0.5px;
             padding: 5%;
         }
@@ -33,16 +34,16 @@
             <asp:Label ID="lblName" runat="server" Text="Name: " class="col-sm-2 col-form-label"></asp:Label>
             &nbsp;<asp:TextBox ID="tbName" runat="server" class="col-sm-2 col-form-label" Height="30px" Width="200px"></asp:TextBox>
             <br />
-            <br />
+            <span id="usernameValidator" runat="server" style="color: red;" visible="false">* Required Field</span><br />
 &nbsp;<asp:Label ID="lblPassword" runat="server" Text="Password: " class="col-sm-2 col-form-label"></asp:Label>
 &nbsp;<asp:TextBox ID="tbPassword" runat="server" class="col-sm-2 col-form-label" Height="30px" Width="200px"></asp:TextBox>
             <br />
-            <br />
+            <span id="passwordValidator" runat="server" style="color: red;" visible="false">* Required Field</span><br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Label ID="lblEmail" runat="server" Text="Email: " class="col-sm-2 col-form-label"></asp:Label>
 &nbsp;<asp:TextBox ID="tbEmail" runat="server" class="col-sm-2 col-form-label" Height="30px" Width="200px"></asp:TextBox>
             <br />
-            <br />
+            <span id="emailValidator" runat="server" style="color: red;" visible="false">* Required Field</span><br />
 &nbsp;&nbsp;
             <asp:Label ID="lblRole" runat="server" Text="Role: " class="col-sm-2 col-form-label"></asp:Label>
 &nbsp;<asp:DropDownList ID="ddlRole" runat="server" class="btn btn-primary dropdown-toggle">
@@ -64,7 +65,7 @@
             </asp:DropDownList>
 &nbsp;<br />
 &nbsp;<asp:TextBox ID="tbQuestion1" align="center" runat="server" class="form-control col-4"></asp:TextBox>
-            <br />
+            <span id="question1Validator" runat="server" style="color: red;" visible="false">* Required Field</span><br />
             <asp:Label ID="lblQuestion2" runat="server" Text="Sercurity Question 2: " class="col-sm-2 col-form-label"></asp:Label>
             <br />
             <br />
@@ -75,7 +76,7 @@
             </asp:DropDownList>
 &nbsp;<br />
 &nbsp;<asp:TextBox ID="tbQuestion2" runat="server"  class="form-control col-4"></asp:TextBox>
-            <br />
+            <span id="question2Validator" runat="server" style="color: red;" visible="false">* Required Field</span><br />
             <asp:Label ID="lblQuestion3" runat="server" Text="Sercurity Question 3: " class="col-sm-2 col-form-label"></asp:Label>
             <br />
             <br />
@@ -86,7 +87,7 @@
             </asp:DropDownList>
 &nbsp;<br />
 &nbsp;<asp:TextBox ID="tbQuestion3" runat="server" class="form-control col-4"></asp:TextBox>
-            <br />
+            <span id="question3Validator" runat="server" style="color: red;" visible="false">* Required Field</span><br />
             <br />
             <asp:Button ID="btnBack1" runat="server" class="btn btn-dark" Height="40px" Width="75px" OnClick="btnBack1_Click" Text="Back" />
 &nbsp;&nbsp;&nbsp;

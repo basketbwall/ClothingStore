@@ -28,33 +28,61 @@ namespace ClothingStore
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            string userName = tbName.Text;
-            string userEmail = tbEmail.Text;
-            string userPassword = tbPassword.Text;
-            decimal totalSpent = 0.00m;
-            string role = ddlRole.SelectedValue;       //roleID
-            string question1 = ddlQuestion1.SelectedValue;
-            string answer1 = tbQuestion1.Text;
-            string question2 = ddlQuestion2.SelectedValue;
-            string answer2 = tbQuestion2.Text;
-            string question3 = ddlQuestion3.SelectedValue;
-            string answer3 = tbQuestion3.Text;
-
-            StoredProcedures store = new StoredProcedures();
-            int roleID = 2;
-            string ver = (string)(Session["ver"]);
-
-            if (role == "Rewards Member")
+            if (tbName.Text != "" && tbEmail.Text != "" && tbPassword.Text != "" && tbQuestion1.Text != "" && tbQuestion2.Text != "" && tbQuestion3.Text != "")
             {
-               roleID = 1;
+                string email = tbEmail.Text;
+                Classes.Validation val = new Classes.Validation();
+
+                if (val.IsEmail(email))
+                { //checks that the email text is an email
+
+                    string userName = tbName.Text;
+                    string userEmail = tbEmail.Text;
+                    string userPassword = tbPassword.Text;
+                    decimal totalSpent = 0.00m;
+                    string role = ddlRole.SelectedValue;       //roleID
+                    string question1 = ddlQuestion1.SelectedValue;
+                    string answer1 = tbQuestion1.Text;
+                    string question2 = ddlQuestion2.SelectedValue;
+                    string answer2 = tbQuestion2.Text;
+                    string question3 = ddlQuestion3.SelectedValue;
+                    string answer3 = tbQuestion3.Text;
+
+                    StoredProcedures store = new StoredProcedures();
+                    int roleID = 2;
+                    string ver = (string)(Session["ver"]);
+
+                    if (role == "Rewards Member")
+                    {
+                        roleID = 1;
+                    }
+
+
+                    if (tbVerificationCode.Text == ver)
+                    {
+                        // stored procedure to add the user into the database
+                        store.AddUser(userName, userEmail, userPassword, totalSpent, roleID, question1, answer1, question2, answer2, question3, answer3);
+                        Response.Redirect("Login.aspx");
+                    }
+                }
+                else
+                {
+                    usernameValidator.Visible = true;
+                    passwordValidator.Visible = true;
+                    emailValidator.Visible = true;
+                    question1Validator.Visible = true;
+                    question2Validator.Visible = true;
+                    question3Validator.Visible = true;
+                }
             }
-                
-
-            if (tbVerificationCode.Text == ver)
+            else
             {
-                // stored procedure to add the user into the database
-                store.AddUser(userName, userEmail, userPassword, totalSpent, roleID, question1, answer1, question2, answer2, question3, answer3);
-                Response.Redirect("Login.aspx");
+                usernameValidator.Visible = true;
+                passwordValidator.Visible = true;
+                emailValidator.Visible = true;
+                question1Validator.Visible = true;
+                question2Validator.Visible = true;
+                question3Validator.Visible = true;
             }
 
         }
@@ -71,54 +99,74 @@ namespace ClothingStore
 
         protected void btnSubmit1_Click(object sender, EventArgs e)
         {
+
             if (tbName.Text != "" && tbEmail.Text != "" && tbPassword.Text != "" && tbQuestion1.Text != "" && tbQuestion2.Text != "" && tbQuestion3.Text != "")
             {
+                string email = tbEmail.Text;
+                Classes.Validation val = new Classes.Validation();
 
-                btnSubmit1.Visible = false;
-                btnBack1.Visible = false;
-                tbVerificationCode.Visible = true;
-                lblEndMsg.Visible = true;
-                btnBack2.Visible = true;
-                btnSubmit.Visible = true;
-                lblWarning.Visible = true;
-                btnResend.Visible = true;
+                if (val.IsEmail(email)) { //checks that the email text is an email
 
-                var rand = new Random();
-                verificationCode = rand.Next(1000, 9999);    //Creates a random number to be used as the verifaction code
+                    btnSubmit1.Visible = false;
+                    btnBack1.Visible = false;
+                    tbVerificationCode.Visible = true;
+                    lblEndMsg.Visible = true;
+                    btnBack2.Visible = true;
+                    btnSubmit.Visible = true;
+                    lblWarning.Visible = true;
+                    btnResend.Visible = true;
 
-                Session["ver"] = verificationCode.ToString();
+                    var rand = new Random();
+                    verificationCode = rand.Next(1000, 9999);    //Creates a random number to be used as the verifaction code
 
-                string strTo = tbEmail.Text;
-                string strFrom = "3342Clothing@gmail.com";
-                string subjectEmail = "QuickClothes Verification Code";
-                string bodyEmail = tbName.Text + " thanks for signing up. The verification code is " + verificationCode + ".";
+                    Session["ver"] = verificationCode.ToString();
 
-                SmtpClient smtp = new SmtpClient();
-                smtp.Host = "smtp.gmail.com";
-                smtp.Port = 587;
-                smtp.EnableSsl = true;
-                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                smtp.Credentials = new NetworkCredential(strFrom, "clothing123!");
-                smtp.Timeout = 20000;
+                    string strTo = tbEmail.Text;
+                    string strFrom = "3342Clothing@gmail.com";
+                    string subjectEmail = "QuickClothes Verification Code";
+                    string bodyEmail = tbName.Text + " thanks for signing up. The verification code is " + verificationCode + ".";
 
-                try
-                {
-                    //email.SendMail(strTO, strFROM, strSubject, strMessage);
-                    MailMessage message = new MailMessage(strFrom, strTo);
-                    message.Subject = subjectEmail;
-                    message.Body = bodyEmail;
-                    smtp.Send(message);
-                    lblWarning.Text = "Email was sent";
+                    SmtpClient smtp = new SmtpClient();
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    smtp.Credentials = new NetworkCredential(strFrom, "clothing123!");
+                    smtp.Timeout = 20000;
+
+                    try
+                    {
+                        //email.SendMail(strTO, strFROM, strSubject, strMessage);
+                        MailMessage message = new MailMessage(strFrom, strTo);
+                        message.Subject = subjectEmail;
+                        message.Body = bodyEmail;
+                        smtp.Send(message);
+                        lblWarning.Text = "Email was sent";
+                    }
+                    catch (Exception ex)
+                    {
+                        lblWarning.Text = "Error: " + ex.Message;
+
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    lblWarning.Text = "Error: " + ex.Message;
-
+                    usernameValidator.Visible = true;
+                    passwordValidator.Visible = true;
+                    emailValidator.Visible = true;
+                    question1Validator.Visible = true;
+                    question2Validator.Visible = true;
+                    question3Validator.Visible = true;
                 }
             }
             else
             {
-                Response.Write("Please make sure that all information was filled out below");
+                usernameValidator.Visible = true;
+                passwordValidator.Visible = true;
+                emailValidator.Visible = true;
+                question1Validator.Visible = true;
+                question2Validator.Visible = true;
+                question3Validator.Visible = true;
             }
         }
 
@@ -126,44 +174,64 @@ namespace ClothingStore
         {
             if (tbName.Text != "" && tbEmail.Text != "" && tbPassword.Text != "" && tbQuestion1.Text != "" && tbQuestion2.Text != "" && tbQuestion3.Text != "")
             {
+                string email = tbEmail.Text;
+                Classes.Validation val = new Classes.Validation();
 
-            var rand = new Random();
-            verificationCode = rand.Next(1000, 9999);    //Creates a random number to be used as the verifaction code
+                if (val.IsEmail(email))
+                { //checks that the email text is an email
 
-            Session["ver"] = verificationCode.ToString();
+                    var rand = new Random();
+                    verificationCode = rand.Next(1000, 9999);    //Creates a random number to be used as the verifaction code
 
-            string strTo = tbEmail.Text;
-            string strFrom = "3342Clothing@gmail.com";
-            string subjectEmail = "QuickClothes Verification Code";
-            string bodyEmail = tbName.Text + " thanks for signing up. The verification code is " + verificationCode + ".";
+                    Session["ver"] = verificationCode.ToString();
 
-            SmtpClient smtp = new SmtpClient();
-            smtp.Host = "smtp.gmail.com";
-            smtp.Port = 587;
-            smtp.EnableSsl = true;
-            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-            smtp.Credentials = new NetworkCredential(strFrom, "clothing123!");
-            smtp.Timeout = 20000;
+                    string strTo = tbEmail.Text;
+                    string strFrom = "3342Clothing@gmail.com";
+                    string subjectEmail = "QuickClothes Verification Code";
+                    string bodyEmail = tbName.Text + " thanks for signing up. The verification code is " + verificationCode + ".";
 
-            try
-            {
-                //email.SendMail(strTO, strFROM, strSubject, strMessage);
-                MailMessage message = new MailMessage(strFrom, strTo);
-                message.Subject = subjectEmail;
-                message.Body = bodyEmail;
-                smtp.Send(message);
-                lblWarning.Text = "Email was sent";
+                    SmtpClient smtp = new SmtpClient();
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    smtp.Credentials = new NetworkCredential(strFrom, "clothing123!");
+                    smtp.Timeout = 20000;
+
+                    try
+                    {
+                        //email.SendMail(strTO, strFROM, strSubject, strMessage);
+                        MailMessage message = new MailMessage(strFrom, strTo);
+                        message.Subject = subjectEmail;
+                        message.Body = bodyEmail;
+                        smtp.Send(message);
+                        lblWarning.Text = "Email was sent";
+                    }
+                    catch (Exception ex)
+                    {
+                        lblWarning.Text = "Error: " + ex.Message;
+
+                    }
+                }
+                else
+                {
+                    usernameValidator.Visible = true;
+                    passwordValidator.Visible = true;
+                    emailValidator.Visible = true;
+                    question1Validator.Visible = true;
+                    question2Validator.Visible = true;
+                    question3Validator.Visible = true;
+                }
             }
-            catch (Exception ex)
-            {
-                lblWarning.Text = "Error: " + ex.Message;
-
-            }
-        }
             else
             {
-                Response.Write("Please make sure that all information was filled out below");
+                usernameValidator.Visible = true;
+                passwordValidator.Visible = true;
+                emailValidator.Visible = true;
+                question1Validator.Visible = true;
+                question2Validator.Visible = true;
+                question3Validator.Visible = true;
             }
-}
+        }
     }
 }
