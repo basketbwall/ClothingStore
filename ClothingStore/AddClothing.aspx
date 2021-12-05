@@ -5,53 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
-
+      <link rel="stylesheet" href="NavBarStyle.css"/>
     <title></title>
-
-    <style>
-        #ClothesManagement {
-            margin: auto;
-            margin-top: 10%;
-            margin-bottom: 10%;
-            border: solid black 0.5px;
-            padding: 5%;
-        }
-        nav {
-            padding-top: 10px;
-        }
-
-        #imageDiv {
-            text-align: center;
-        }
-
-        #clothingImage {
-            width: 100%;
-            padding: 10%;
-        }
-
-        #clothesInfoDiv {
-            display: inline-block;
-            padding: 2.5%;
-        }
-
-        #reviews {
-            padding-left: 5%;
-        }
-
-        #btnCheckOut {
-            position: relative;
-            top: 20px;
-        }
-
-        #navbar {
-            background-color: lightgrey;
-        }
-
-        #lblCompany {
-            margin-left: 2rem;
-        }
-
-    </style>
 </head>
 <body>
        

@@ -9,42 +9,8 @@
     <link rel="stylesheet" href="assets/css/styles.css/" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
     <title></title>
+    <link rel="stylesheet" href="NavBarStyle.css"/>
 
-    <style>
-        nav {
-            padding-top: 10px;
-        }
-        #imageDiv {
-            text-align: center;
-        }
-
-        #clothingImage {
-            width: 100%;
-            padding: 10%;
-        }
-
-        #clothesInfoDiv {
-            display: inline-block;
-            padding: 2.5%;
-        }
-
-        #reviews {
-            padding-left: 5%;
-        }
-
-        #btnCheckOut {
-            position: relative;
-            top: 20px;
-        }
-
-        #navbar {
-            background-color: lightgrey;
-        }
-
-        #lblCompany {
-            margin-left: 2rem;
-        }
-    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -54,7 +20,7 @@
             </asp:ScriptManager>
         <div class="text-center form-inline" style="margin-top: 10%;">
 
-            <asp:ImageButton ID="addClothes" Width="1000" Height="150" ImageUrl="Images/addClothing.jpeg" runat="server" OnClick="addClothes_Click" />
+            <asp:ImageButton ID="addClothes" Width="20%" Height="10%" ImageUrl="Images/addClothing.jpeg" runat="server" OnClick="addClothes_Click" Visible="false" />
             <br />
             <br />
             <asp:Repeater ID="rptCLothing" runat="server" OnItemCommand="rptCLothing_ItemCommand">
@@ -75,12 +41,16 @@
                                     <br />
                                     $<asp:Label ID="lblPrice" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "clothingPrice") %>'></asp:Label>
                                     <br />
+                                    On Clearance
+                                    <br />
                                     <asp:Label class="text-danger" ID="lblDiscount" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "clearanceDiscountPercent") %>'></asp:Label>
                                    <span class="text-danger">% OFF</span>
-                                    <br />
+                                   <br />
                                 </p>
                                 <asp:Button ID="Button3" runat="server" Text="View Order" class="btn btn-dark" />
                             </div>
+                    <asp:Label ID="lblCartTotalQuantity" runat="server" Text=""></asp:Label>
+                </span>
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>

@@ -43,6 +43,7 @@ namespace ClothingStore
                 if (currentClothing.OnClearance.ToString() == "True")
                 {
                     cbClearance.Checked = true;
+                    tbPercentageOff.Visible = true;
                 }
                 else
                 {
