@@ -24,8 +24,9 @@
             <br />
             <br />
             <div class="col-5" style="margin: auto;">
-                <asp:TextBox ID="tbSearch" runat="server" style="margin-top:20%"></asp:TextBox>
-                <asp:Button ID="btnSearch" runat="server" class="btn btn-primary" OnClick="btnSearch_Click" Text="Search" />
+                <asp:TextBox ID="tbSearch" runat="server"></asp:TextBox>
+                &nbsp;
+                <asp:Button ID="btnSearch" runat="server" class="btn btn-warning" OnClick="btnSearch_Click" Text="Search" />
             </div>
 &nbsp;
             

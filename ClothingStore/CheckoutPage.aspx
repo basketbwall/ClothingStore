@@ -17,7 +17,7 @@
         <div>
                 <asp:Label ID="lblCartSubmitDisplay" runat="server" Text=""></asp:Label>
         </div>
-        <asp:GridView ID="gvOrder" runat="server" AutoGenerateColumns="False" style="margin:auto; width:75%; margin-top: 2.5%; margin-bottom: 2.5%" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
+        <asp:GridView ID="gvOrder" runat="server" AutoGenerateColumns="False" style="margin:auto; width:75%; margin-top: 2.5%; margin-bottom: 2.5%" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" ShowFooter="True">
                                         <emptydatatemplate>
                                 There are no items in your cart.
                             </emptydatatemplate>
@@ -50,7 +50,7 @@
                                         <SortedDescendingHeaderStyle BackColor="#242121" />
         </asp:GridView>
         <div class="text-center">
-                        <asp:Button ID="btnSubmitOrder" runat="server" Text="Submit Order" class="btn btn-primary" OnClick="btnSubmitOrder_Click"/>
+                        <asp:Button ID="btnSubmitOrder" runat="server" Text="Submit Order" class="btn btn-warning" OnClick="btnSubmitOrder_Click"/>
                         <br />
                         <asp:Label ID="lblPayment" runat="server" Text="Payment Information" Visible="False" Font-Size="24px"></asp:Label>
                         <br />
@@ -61,7 +61,7 @@
                         <span id="nameValidator" runat="server" style="color: red;" visible="false">* Required Field</span><br />
                         <asp:Label ID="lblCardNumber" runat="server" Text="Card Number: " Visible="False"></asp:Label>
 &nbsp;
-                        <asp:TextBox ID="tbCardNumber" runat="server" class="col-sm-2 col-form-label" Height="30px" Width="200px" Visible="False" ></asp:TextBox>
+                        <asp:TextBox ID="tbCardNumber" runat="server" class="col-sm-2 col-form-label" Height="30px" Width="200px" Visible="False" MaxLength="16" ></asp:TextBox>
                         <br />
                         <span id="cardNumberValidator" runat="server" style="color: red;" visible="false">* Required Field</span><br />
                         <asp:Label ID="lblExpirationDate" runat="server" Text="Expiration Date: " Visible="False"></asp:Label>
@@ -96,7 +96,7 @@
                         </asp:DropDownList>
 &nbsp;
                         <asp:Label ID="lblCVV" runat="server" Text="CVV: " Visible="False"></asp:Label>
-&nbsp;<asp:TextBox ID="tbCVV" runat="server" class="col-sm-2 col-form-label" Height="30px" Width="70px" Visible="False"></asp:TextBox>
+&nbsp;<asp:TextBox ID="tbCVV" runat="server" class="col-sm-2 col-form-label" Height="30px" Width="70px" Visible="False" MaxLength="4"></asp:TextBox>
                         <br />
                         <span id="cvvValidator" runat="server" style="color: red;" visible="false">* Required Field</span><br />
                         <br />
@@ -192,11 +192,11 @@
                         <br />
                         <span id="stateValidator" runat="server" style="color: red;" visible="false">* Required Field</span><br />
                         <asp:Label ID="lblZip" runat="server" Text="ZIP/Postal code: " Visible="False"></asp:Label>
-&nbsp;<asp:TextBox ID="tbZip" runat="server" Visible="False" class="col-sm-2 col-form-label" Height="30px" Width="200px"></asp:TextBox>
+&nbsp;<asp:TextBox ID="tbZip" runat="server" Visible="False" class="col-sm-2 col-form-label" Height="30px" Width="200px" MaxLength="10"></asp:TextBox>
                         <br />
                         <span id="zipValidator" runat="server" style="color: red;" visible="false">* Required Field</span><br />
                         <asp:Label ID="lblPhoneNumber" runat="server" Text="Phone Number: " Visible="False"></asp:Label>
-&nbsp;<asp:TextBox ID="tbPhoneNumber" runat="server" Visible="False" class="col-sm-2 col-form-label" Height="30px" Width="200px"></asp:TextBox>
+&nbsp;<asp:TextBox ID="tbPhoneNumber" runat="server" Visible="False" class="col-sm-2 col-form-label" Height="30px" Width="200px" MaxLength="10"></asp:TextBox>
                         <br />
                         <span id="phoneNumberValidator" runat="server" style="color: red;" visible="false">* Required Field</span><br />
                         <asp:Label ID="lblEmail" runat="server" Text="Email: " Visible="False"></asp:Label>
@@ -204,7 +204,7 @@
                         <br />
                         <span id="emailValidator" runat="server" style="color: red;" visible="false">* Required Field</span><br />
                         <br />
-                        <asp:Button ID="btnSubmitFinal" runat="server" Text="Submit Order" class="btn btn-primary" OnClick="btnSubmitFinal_Click" Visible="False" />
+                        <asp:Button ID="btnSubmitFinal" runat="server" Text="Submit Order" class="btn btn-warning" OnClick="btnSubmitFinal_Click" Visible="False" />
         </div>
 
     </form>

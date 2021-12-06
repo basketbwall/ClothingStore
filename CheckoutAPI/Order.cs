@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CheckoutAPI
+namespace OrderAPI
 {
     public class Order
     {
@@ -13,7 +13,12 @@ namespace CheckoutAPI
         public int refundRequested { get; set; }
         public int userID { get; set; }
         public byte[] orderItems { get; set; }
-        
+
+        public Order()
+        {
+
+        }
+
         public Order(decimal OrderTotal, DateTime OrderDate, int RefundRequested, int UserID, byte[] OrderItems)
         {
             orderTotal = OrderTotal;
@@ -22,10 +27,7 @@ namespace CheckoutAPI
             userID = UserID;
             orderItems = OrderItems;
         }
-           
-        public Order()
-        {
 
-        }
+          
     }
 }

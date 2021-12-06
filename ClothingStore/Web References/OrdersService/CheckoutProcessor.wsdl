@@ -5,15 +5,39 @@
       <s:element name="Storing">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="orderList" type="s:base64Binary" />
-            <s:element minOccurs="1" maxOccurs="1" name="orderID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="currentOrder" type="tns:Order" />
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="Order">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="orderTotal" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="orderDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="refundRequested" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="orderItems" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="StoringResponse">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="StoringResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TotalCaluator">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="discountPrecent" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="price" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="quantity" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TotalCaluatorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TotalCaluatorResult" type="s:decimal" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -25,16 +49,35 @@
   <wsdl:message name="StoringSoapOut">
     <wsdl:part name="parameters" element="tns:StoringResponse" />
   </wsdl:message>
+  <wsdl:message name="TotalCaluatorSoapIn">
+    <wsdl:part name="parameters" element="tns:TotalCaluator" />
+  </wsdl:message>
+  <wsdl:message name="TotalCaluatorSoapOut">
+    <wsdl:part name="parameters" element="tns:TotalCaluatorResponse" />
+  </wsdl:message>
   <wsdl:portType name="CheckoutProcessorSoap">
     <wsdl:operation name="Storing">
       <wsdl:input message="tns:StoringSoapIn" />
       <wsdl:output message="tns:StoringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TotalCaluator">
+      <wsdl:input message="tns:TotalCaluatorSoapIn" />
+      <wsdl:output message="tns:TotalCaluatorSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="CheckoutProcessorSoap" type="tns:CheckoutProcessorSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="Storing">
       <soap:operation soapAction="http://tempuri.org/Storing" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TotalCaluator">
+      <soap:operation soapAction="http://tempuri.org/TotalCaluator" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -54,13 +97,22 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TotalCaluator">
+      <soap12:operation soapAction="http://tempuri.org/TotalCaluator" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="CheckoutProcessor">
     <wsdl:port name="CheckoutProcessorSoap" binding="tns:CheckoutProcessorSoap">
-      <soap:address location="http://localhost:52390/CheckoutProcessor.asmx" />
+      <soap:address location="http://localhost:52183/CheckoutProcessor.asmx" />
     </wsdl:port>
     <wsdl:port name="CheckoutProcessorSoap12" binding="tns:CheckoutProcessorSoap12">
-      <soap12:address location="http://localhost:52390/CheckoutProcessor.asmx" />
+      <soap12:address location="http://localhost:52183/CheckoutProcessor.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

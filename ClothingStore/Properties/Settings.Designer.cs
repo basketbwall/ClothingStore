@@ -26,10 +26,10 @@ namespace ClothingStore.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:52390/CheckoutProcessor.asmx")]
-        public string ClothingStore_CheckoutService_CheckoutProcessor {
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:52183/CheckoutProcessor.asmx")]
+        public string ClothingStore_OrdersService_CheckoutProcessor {
             get {
-                return ((string)(this["ClothingStore_CheckoutService_CheckoutProcessor"]));
+                return ((string)(this["ClothingStore_OrdersService_CheckoutProcessor"]));
             }
         }
     }

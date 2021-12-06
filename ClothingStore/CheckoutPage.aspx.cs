@@ -20,6 +20,10 @@ namespace ClothingStore
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            List<Classes.Clothing> Cart = (List<Classes.Clothing>)Session["Cart"];
+            decimal price = 0.00m;
+            int quantity = 0;
+
             if (Session["Role"] != null && Session["Role"].ToString() == "Administrator")
             {
                 //prevent the page to load the html and give a warning somehow
@@ -34,6 +38,21 @@ namespace ClothingStore
                 gvOrder.DataBind();
             }
 
+            foreach (Classes.Clothing clothing in Cart)
+            {
+
+                OrdersService.CheckoutProcessor wsProxy = new OrdersService.CheckoutProcessor();
+
+                 price += wsProxy.TotalCaluator(clothing.ClearanceDiscountPercent, clothing.ClothingPrice, clothing.ClothingQuantity);
+
+
+                quantity += clothing.ClothingQuantity;
+            }
+            price = price + (price * 0.06m);
+
+            gvOrder.FooterRow.Cells[0].Text = "Total: ";
+                gvOrder.FooterRow.Cells[5].Text = "$" + price.ToString("0.00");
+                gvOrder.FooterRow.Cells[7].Text = quantity.ToString();
         }
 
         protected void btnSubmitOrder_Click(object sender, EventArgs e)
@@ -126,13 +145,15 @@ namespace ClothingStore
 
                 StoredProcedures StoredProc = new StoredProcedures();
                 List<Classes.Clothing> Cart = (List<Classes.Clothing>)Session["Cart"];
-                decimal price = 0.00m;
+                decimal totalPrice = 0.00m;
 
                 foreach (Classes.Clothing clothing in Cart)
                 {
-                  price +=  clothing.ClothingPrice;
+                    OrdersService.CheckoutProcessor CalcWSProxy = new OrdersService.CheckoutProcessor();
+
+                    totalPrice += CalcWSProxy.TotalCaluator(clothing.ClearanceDiscountPercent, clothing.ClothingPrice, clothing.ClothingQuantity);
                 }
-                price = price - (price * 0.06m);
+                totalPrice = totalPrice + (totalPrice * 0.06m);
 
                 DateTime localDate = DateTime.Now; //gets current datetime
                 int refundRequest = 0;
@@ -149,10 +170,18 @@ namespace ClothingStore
 
                 byteArray = memStream.ToArray();
 
-                Order currentOrder = new Order(price, localDate, refundRequest, userID, byteArray); // makes an order obj of the current order
+                // price, localDate, refundRequest, userID, byteArray
 
                 // Create the Web Service Proxy Object used to talk to the Web Service in SOAP
-                CheckoutService.CheckoutProcessor wsProxy = new CheckoutService.CheckoutProcessor();
+                OrdersService.CheckoutProcessor wsProxy = new OrdersService.CheckoutProcessor();
+
+                OrdersService.Order currentOrder = new OrdersService.Order(); // makes an order obj of the current order
+
+                currentOrder.orderTotal = totalPrice;
+                currentOrder.orderDate = localDate;
+                currentOrder.refundRequested = refundRequest;
+                currentOrder.userID = userID;
+                currentOrder.orderItems = byteArray;
 
                 bool result = wsProxy.Storing(currentOrder);
 

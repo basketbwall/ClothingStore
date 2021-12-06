@@ -42,7 +42,7 @@
             <br />
             <asp:Label ID="lblDescription" runat="server" Text="Description: "></asp:Label>
             <br />
-            <asp:TextBox ID="tbDescription" runat="server" Height="70px" Width="350px" maxlength="40" class="form-control" ></asp:TextBox>
+            <asp:TextBox ID="tbDescription" runat="server" Height="70px" Width="350px" maxlength="20" class="form-control" ></asp:TextBox>
             <span id="descriptionValidator" runat="server" style="color: red;" visible="false">* Required Field</span><br />
             <br />
             <asp:Label ID="lblClearance" runat="server" Text="On Clearance: "></asp:Label>

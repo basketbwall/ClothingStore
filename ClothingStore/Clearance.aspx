@@ -26,7 +26,8 @@
 
                         <div class="col-5" style="margin: auto;">
                 <asp:TextBox ID="tbSearch" runat="server"></asp:TextBox>
-                <asp:Button ID="btnSearch" runat="server" class="btn btn-primary" OnClick="btnSearch_Click" Text="Search" />
+                &nbsp;
+                <asp:Button ID="btnSearch" runat="server" class="btn btn-warning" OnClick="btnSearch_Click" Text="Search" />
             </div>
 
             <asp:Repeater ID="rptCLothing" runat="server" OnItemCommand="rptCLothing_ItemCommand">

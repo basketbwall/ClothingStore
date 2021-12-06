@@ -97,7 +97,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Web References\CheckoutService\CheckoutProcessor.disco" />
+    <None Include="Web References\OrdersService\CheckoutProcessor.disco" />
     <Content Include="Web.config" />
     <Content Include="SizePicker.ascx" />
     <Content Include="QuantityPicker.ascx" />
@@ -200,7 +200,7 @@
     <Compile Include="QuantityPicker.ascx.designer.cs">
       <DependentUpon>QuantityPicker.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Web References\CheckoutService\Reference.cs">
+    <Compile Include="Web References\OrdersService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -208,8 +208,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Web References\CheckoutService\CheckoutProcessor.wsdl" />
-    <Content Include="Web References\CheckoutService\Reference.map">
+    <None Include="Web References\OrdersService\CheckoutProcessor.wsdl" />
+    <Content Include="Web References\OrdersService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
@@ -237,16 +237,16 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:52390/CheckoutProcessor.asmx%3fop=Storing">
+    <WebReferenceUrl Include="http://localhost:52183/CheckoutProcessor.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\CheckoutService\</RelPath>
-      <UpdateFromURL>http://localhost:52390/CheckoutProcessor.asmx%3fop=Storing</UpdateFromURL>
+      <RelPath>Web References\OrdersService\</RelPath>
+      <UpdateFromURL>http://localhost:52183/CheckoutProcessor.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>ClothingStore_CheckoutService_CheckoutProcessor</CachedSettingsPropName>
+      <CachedSettingsPropName>ClothingStore_OrdersService_CheckoutProcessor</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>

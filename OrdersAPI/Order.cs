@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Classes
+namespace OrdersAPI
 {
     public class Order
     {
@@ -27,6 +27,7 @@ namespace Classes
             userID = UserID;
             orderItems = OrderItems;
         }
-           
+
+          
     }
 }
