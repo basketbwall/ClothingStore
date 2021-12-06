@@ -140,12 +140,11 @@ namespace ClothingStore
 
                 //create order using add order stored procedure
 
-               // StoredProc.AddOrder(price, localDate, refundRequest, userID);
+               // Classes.
+               //     (price, localDate, refundRequest, userID);
 
 
                 //appending the list of clothes bought to the orderitems column of the order
-                StoredProcedures SP = new StoredProcedures();
-                //call stored procedure that sets the order given an order ID
 
 
                 // Serialize the OrderItem List object

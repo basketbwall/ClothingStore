@@ -479,29 +479,7 @@ namespace Classes
             return objDB.DoUpdateUsingCmdObj(myCommand);
 
         }
-
-        public int AddOrder(decimal orderTotal, DateTime orderDate, int refundRequested, string userID, string orderItems)
-        {
-
-            DataSet searchDataSet = new DataSet();
-            DBConnect objDB = new DBConnect();
-
-            SqlCommand myCommand = new SqlCommand();
-
-            myCommand.CommandType = CommandType.StoredProcedure;
-            myCommand.CommandText = "TP_AddOrder";
-
-            
-
-            myCommand.Parameters.AddWithValue("@orderTotal", orderTotal);
-            myCommand.Parameters.AddWithValue("@orderDate", orderDate);
-            myCommand.Parameters.AddWithValue("@refundRequested", refundRequested);
-            myCommand.Parameters.AddWithValue("@userID", Int32.Parse(userID));
-            myCommand.Parameters.AddWithValue("@orderItems", Int32.Parse(orderItems));
-
-            return objDB.DoUpdateUsingCmdObj(myCommand);
-
-        }
+        
     }
 }
 

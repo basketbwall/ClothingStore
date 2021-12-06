@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="APICalls.cs" />
     <Compile Include="Clothing.cs" />
+    <Compile Include="Order.cs" />
     <Compile Include="Review.cs" />
     <Compile Include="ReviewList.cs" />
     <Compile Include="StoredProcedures.cs" />
