@@ -136,17 +136,8 @@ namespace ClothingStore
 
                 DateTime localDate = DateTime.Now; //gets current datetime
                 int refundRequest = 0;
-                string userID = Session["UserID"].ToString();
-
-                //create order using add order stored procedure
-
-               // Classes.
-               //     (price, localDate, refundRequest, userID);
-
-
-                //appending the list of clothes bought to the orderitems column of the order
-
-
+                int userID = Int32.Parse(Session["UserID"].ToString());
+                
                 // Serialize the OrderItem List object
 
                 BinaryFormatter serializer = new BinaryFormatter();
@@ -158,10 +149,12 @@ namespace ClothingStore
 
                 byteArray = memStream.ToArray();
 
+                Order currentOrder = new Order(price, localDate, refundRequest, userID, byteArray); // makes an order obj of the current order
+
                 // Create the Web Service Proxy Object used to talk to the Web Service in SOAP
                 CheckoutService.CheckoutProcessor wsProxy = new CheckoutService.CheckoutProcessor();
 
-                //bool result = wsProxy.Storing(byteArray, )
+                bool result = wsProxy.Storing(currentOrder);
 
 
                 //if (order.  == true)
@@ -171,7 +164,7 @@ namespace ClothingStore
 
                 //    lblCartSubmitDisplay.Text = "A problem occured in storing the order items.";
             }
-            else //11
+            else 
             {
                 nameValidator.Visible = true;
                 emailValidator.Visible = true;

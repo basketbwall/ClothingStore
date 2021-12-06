@@ -20,12 +20,18 @@ namespace CheckoutAPI
     public class CheckoutProcessor : System.Web.Services.WebService
     {
         [WebMethod]
-        public bool Storing(byte[] orderList,)
+        public bool Storing(Order currentOrder)
         {
             DataSet searchDataSet = new DataSet();
             DBConnect objDB = new DBConnect();
 
             SqlCommand myCommand = new SqlCommand();
+
+            decimal orderTotal = currentOrder.orderTotal;
+            DateTime orderDate = currentOrder.orderDate;
+            int refundRequested = currentOrder.refundRequested;
+            int userID = currentOrder.userID;
+            byte[] orderItems = currentOrder.orderItems;
 
             myCommand.CommandType = CommandType.StoredProcedure;
             myCommand.CommandText = "TP_AddOrder";
@@ -33,10 +39,10 @@ namespace CheckoutAPI
             myCommand.Parameters.AddWithValue("@orderTotal", orderTotal);
             myCommand.Parameters.AddWithValue("@orderDate", orderDate);
             myCommand.Parameters.AddWithValue("@refundRequested", refundRequested);
-            myCommand.Parameters.AddWithValue("@userID", Int32.Parse(userID));
-            myCommand.Parameters.AddWithValue("@orderItems", Int32.Parse(orderItems));
+            myCommand.Parameters.AddWithValue("@userID", userID);
+            myCommand.Parameters.AddWithValue("@orderItems", orderItems);
 
-            return objDB.DoUpdateUsingCmdObj(myCommand);
+            int retVal = objDB.DoUpdateUsingCmdObj(myCommand);
 
             //Check to see whether the update was successful
 
