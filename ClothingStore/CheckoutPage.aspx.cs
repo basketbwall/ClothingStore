@@ -20,39 +20,50 @@ namespace ClothingStore
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<Classes.Clothing> Cart = (List<Classes.Clothing>)Session["Cart"];
-            decimal price = 0.00m;
-            int quantity = 0;
-
-            if (Session["Role"] != null && Session["Role"].ToString() == "Administrator")
+            if (Session["Cart"] != null)
             {
-                //prevent the page to load the html and give a warning somehow
-                this.Controls.Clear();
-                Response.Write("You are not allowed here buddy");
-                return;
-            }
+                List<Classes.Clothing> Cart = (List<Classes.Clothing>)Session["Cart"];
+                decimal price = 0.00m;
+                int quantity = 0;
 
-            if (!IsPostBack)
-            {
-                gvOrder.DataSource = Session["Cart"];
-                gvOrder.DataBind();
-            }
+                if (Session["Role"] != null && Session["Role"].ToString() == "Administrator")
+                {
+                    //prevent the page to load the html and give a warning somehow
+                    this.Controls.Clear();
+                    Response.Write("You are not allowed here buddy");
+                    return;
+                }
 
-            foreach (Classes.Clothing clothing in Cart)
-            {
+                if (!IsPostBack)
+                {
+                    gvOrder.DataSource = Session["Cart"];
+                    gvOrder.DataBind();
+                }
 
-                OrdersService.CheckoutProcessor wsProxy = new OrdersService.CheckoutProcessor();
+                foreach (Classes.Clothing clothing in Cart)
+                {
 
-                 price += wsProxy.TotalCaluator(clothing.ClearanceDiscountPercent, clothing.ClothingPrice, clothing.ClothingQuantity);
+                    OrdersService.CheckoutProcessor wsProxy = new OrdersService.CheckoutProcessor();
+
+                    price += wsProxy.TotalCaluator(clothing.ClearanceDiscountPercent, clothing.ClothingPrice, clothing.ClothingQuantity);
 
 
-                quantity += clothing.ClothingQuantity;
-            }
-            price = price + (price * 0.06m);
+                    quantity += clothing.ClothingQuantity;
+                }
+                price = price + (price * 0.06m);
 
-            gvOrder.FooterRow.Cells[0].Text = "Total: ";
+                gvOrder.FooterRow.Cells[0].Text = "Total: ";
                 gvOrder.FooterRow.Cells[5].Text = "$" + price.ToString("0.00");
                 gvOrder.FooterRow.Cells[7].Text = quantity.ToString();
+            }
+            else
+            {
+                lblWarning.Visible = true;
+                gvOrder.Visible = false;
+                btnSubmitOrder.Visible = false;
+                lblWarning.Text = "There is nothing in your cart";
+                return;
+            }
         }
 
         protected void btnSubmitOrder_Click(object sender, EventArgs e)
@@ -95,103 +106,181 @@ namespace ClothingStore
 
             //Get the row that contains this button
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+
             Response.Write("Clothing Name: " + gvr.Cells[0].Text);
             //grab the cart from session. remove the clothing item using name + size to locate which to remove
             List<Classes.Clothing> Cart = (List<Classes.Clothing>)Session["Cart"];
             foreach(Classes.Clothing clothing in Cart)
             {
-                
+                Cart.Remove(clothing);
+                Session["Cart"] = Cart;
+
+                if (Cart.Count == 0)
+                {
+                    Session["Cart"] = null;
+                }
+
+                Response.Redirect("CheckoutPage.aspx");
             }
 
         }
 
         protected void btnIncrease_Click(object sender, EventArgs e)
         {
+            Button btn = (Button)sender;
+
+            //Get the row that contains this button
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            OrdersService.CheckoutProcessor wsProxy = new OrdersService.CheckoutProcessor();
+
+            Response.Write("Clothing Name: " + gvr.Cells[0].Text);
             //grab the cart from session. increment quantity of the clothing item using name + size to locate which to remove
             List<Classes.Clothing> Cart = (List<Classes.Clothing>)Session["Cart"];
             foreach (Classes.Clothing clothing in Cart)
             {
+                int clothingID = Int32.Parse(gvr.Cells[0].Text);
+                string sizeName = gvr.Cells[7].Text;
+                int quantity = Int32.Parse(gvr.Cells[8].Text);
+
+                if (clothing.ClothingQuantity != wsProxy.MaxStock(clothingID, sizeName))
+                {
+                    clothing.ClothingQuantity++;
+                }
+
+                Session["Cart"] = Cart;
+
+                Response.Redirect("CheckoutPage.aspx");
 
             }
         }
 
         protected void btnDecrease_Click(object sender, EventArgs e)
         {
+            Button btn = (Button)sender;
+
+            //Get the row that contains this button
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+
+            Response.Write("Clothing Name: " + gvr.Cells[0].Text);
             //grab the cart from session. decrement quantity of the clothing item using name + size to locate which to remove
             List<Classes.Clothing> Cart = (List<Classes.Clothing>)Session["Cart"];
             foreach (Classes.Clothing clothing in Cart)
             {
+                if (clothing.ClothingID == Int32.Parse(gvr.Cells[0].Text) && clothing.ClothingSize == gvr.Cells[7].Text)
+                {
+                    if (clothing.ClothingQuantity == 1)
+                    {
+                        Cart.Remove(clothing);
+                    }
+                    else
+                    {
+                        clothing.ClothingQuantity--;
+                    }
+                    Session["Cart"] = Cart;
 
+                    if (Cart.Count == 0)
+                    {
+                        Session["Cart"] = null;
+                    }
+                    
+                    Response.Redirect("CheckoutPage.aspx");
+                    
+                }
             }
         }
 
         protected void btnSubmitFinal_Click(object sender, EventArgs e)
         {
-            if (tbName.Text != "" && tbAddress1.Text != "" && tbAddress2.Text != "" && tbCardNumber.Text != "" && tbCity.Text != "" && tbCVV.Text != "" && tbEmail.Text != "" && tbPhoneNumber.Text != "" && tbState.Text != "" && tbZip.Text != "" && ddlCountry.SelectedValue != "Select a country")
+            if (tbName.Text != "" && tbAddress1.Text != "" && tbCardNumber.Text != "" && tbCity.Text != "" && tbCVV.Text != "" && tbEmail.Text != "" && tbPhoneNumber.Text != "" && tbState.Text != "" && tbZip.Text != "" && ddlCountry.SelectedValue != "Select a country")
             {
-                string name = tbName.Text;
-                string address1 = tbAddress1.Text;
-                string address2 = tbAddress2.Text;
-                string cardNumber = tbCardNumber.Text;
-                string city = tbCity.Text;
-                string cvv = tbCVV.Text;
                 string email = tbEmail.Text;
-                string phoneNumber = tbPhoneNumber.Text;
-                string state = tbState.Text;
-                string zip = tbZip.Text;
-                string country = ddlCountry.SelectedValue;
-                string month = ddlMonth.SelectedValue;
-                string year = ddlYear.SelectedValue;
+                Classes.Validation val = new Classes.Validation();
 
-                StoredProcedures StoredProc = new StoredProcedures();
-                List<Classes.Clothing> Cart = (List<Classes.Clothing>)Session["Cart"];
-                decimal totalPrice = 0.00m;
-
-                foreach (Classes.Clothing clothing in Cart)
+                if (val.IsEmail(email))
                 {
-                    OrdersService.CheckoutProcessor CalcWSProxy = new OrdersService.CheckoutProcessor();
+                    string name = tbName.Text;
+                    string address1 = tbAddress1.Text;
+                    string address2 = tbAddress2.Text;
+                    string cardNumber = tbCardNumber.Text;
+                    string city = tbCity.Text;
+                    string cvv = tbCVV.Text;
+                    string phoneNumber = tbPhoneNumber.Text;
+                    string state = tbState.Text;
+                    string zip = tbZip.Text;
+                    string country = ddlCountry.SelectedValue;
+                    string month = ddlMonth.SelectedValue;
+                    string year = ddlYear.SelectedValue;
 
-                    totalPrice += CalcWSProxy.TotalCaluator(clothing.ClearanceDiscountPercent, clothing.ClothingPrice, clothing.ClothingQuantity);
+                    StoredProcedures StoredProc = new StoredProcedures();
+                    List<Classes.Clothing> Cart = (List<Classes.Clothing>)Session["Cart"];
+                    OrdersService.CheckoutProcessor wsProxy = new OrdersService.CheckoutProcessor();
+                   
+                    
+                    foreach (GridViewRow row in gvOrder.Rows)
+                    {
+                        int clothingID = Int32.Parse(row.Cells[0].Text);
+                        string sizeName = row.Cells[7].Text;
+                        int quantity = Int32.Parse(row.Cells[8].Text);
+                        int stockUpdated = wsProxy.StockReturn(clothingID, quantity, sizeName);
+                    }
+
+
+                    decimal totalPrice = 0.00m;
+
+                    foreach (Classes.Clothing clothing in Cart)
+                    {
+                        OrdersService.CheckoutProcessor CalcWSProxy = new OrdersService.CheckoutProcessor();
+
+                        totalPrice += CalcWSProxy.TotalCaluator(clothing.ClearanceDiscountPercent, clothing.ClothingPrice, clothing.ClothingQuantity);
+                    }
+                    totalPrice = totalPrice + (totalPrice * 0.06m);
+
+                    DateTime localDate = DateTime.Now; //gets current datetime
+                    int refundRequest = 0;
+                    int userID = Int32.Parse(Session["UserID"].ToString());
+                    // Serialize the OrderItem List object
+
+                    BinaryFormatter serializer = new BinaryFormatter();
+                    MemoryStream memStream = new MemoryStream();
+
+                    Byte[] byteArray;
+
+                    serializer.Serialize(memStream, Cart);
+
+                    byteArray = memStream.ToArray();
+
+                    // price, localDate, refundRequest, userID, byteArray
+
+                    // Create the Web Service Proxy Object used to talk to the Web Service in SOAP
+                    
+
+                    OrdersService.Order currentOrder = new OrdersService.Order(); // makes an order obj of the current order
+
+                    currentOrder.orderTotal = totalPrice;
+                    currentOrder.orderDate = localDate;
+                    currentOrder.refundRequested = refundRequest;
+                    currentOrder.userID = userID;
+                    currentOrder.orderItems = byteArray;
+
+                    bool result = wsProxy.Storing(currentOrder);
+
+
+                    Session["Cart"] = null;
+                    Response.Redirect("Catalog.aspx");
                 }
-                totalPrice = totalPrice + (totalPrice * 0.06m);
-
-                DateTime localDate = DateTime.Now; //gets current datetime
-                int refundRequest = 0;
-                int userID = Int32.Parse(Session["UserID"].ToString());
-                
-                // Serialize the OrderItem List object
-
-                BinaryFormatter serializer = new BinaryFormatter();
-                MemoryStream memStream = new MemoryStream();
-
-                Byte[] byteArray;
-
-                serializer.Serialize(memStream, Cart);
-
-                byteArray = memStream.ToArray();
-
-                // price, localDate, refundRequest, userID, byteArray
-
-                // Create the Web Service Proxy Object used to talk to the Web Service in SOAP
-                OrdersService.CheckoutProcessor wsProxy = new OrdersService.CheckoutProcessor();
-
-                OrdersService.Order currentOrder = new OrdersService.Order(); // makes an order obj of the current order
-
-                currentOrder.orderTotal = totalPrice;
-                currentOrder.orderDate = localDate;
-                currentOrder.refundRequested = refundRequest;
-                currentOrder.userID = userID;
-                currentOrder.orderItems = byteArray;
-
-                bool result = wsProxy.Storing(currentOrder);
-
-
-                //if (order.  == true)
-                //    lblCartSubmitDisplay.Text = "The order items were successfully stored for this account.";
-
-                //else
-
-                //    lblCartSubmitDisplay.Text = "A problem occured in storing the order items.";
+                else
+                {
+                    nameValidator.Visible = true;
+                    emailValidator.Visible = true;
+                    cvvValidator.Visible = true;
+                    countryValidator.Visible = true;
+                    address1Validator.Visible = true;
+                    zipValidator.Visible = true;
+                    phoneNumberValidator.Visible = true;
+                    stateValidator.Visible = true;
+                    cityValidator.Visible = true;
+                    cardNumberValidator.Visible = true;
+                }
             }
             else 
             {
@@ -200,7 +289,6 @@ namespace ClothingStore
                 cvvValidator.Visible = true;
                 countryValidator.Visible = true;
                 address1Validator.Visible = true;
-                addresss2Validator.Visible = true;
                 zipValidator.Visible = true;
                 phoneNumberValidator.Visible = true;
                 stateValidator.Visible = true;

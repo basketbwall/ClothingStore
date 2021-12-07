@@ -17,11 +17,16 @@
         <div>
                 <asp:Label ID="lblCartSubmitDisplay" runat="server" Text=""></asp:Label>
         </div>
+        <div align="center" runat="server">
+            <br />
+            <asp:Label ID="lblWarning" align="center" runat="server" Text="Label" Style="font-size:28px"></asp:Label>
+        </div>
         <asp:GridView ID="gvOrder" runat="server" AutoGenerateColumns="False" style="margin:auto; width:75%; margin-top: 2.5%; margin-bottom: 2.5%" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" ShowFooter="True">
                                         <emptydatatemplate>
                                 There are no items in your cart.
                             </emptydatatemplate>
             <Columns>
+                <asp:BoundField DataField="ClothingID" HeaderText="ID" />
                 <asp:BoundField DataField="ClothingName" HeaderText="Name" />
                 <asp:BoundField DataField="ClothingColor" HeaderText="Color" />
                 <asp:ImageField DataImageUrlField="ClothingImage" HeaderText="Image">
@@ -182,7 +187,7 @@
                         <asp:Label ID="lblAddress2" runat="server" Text="Address 2: " Visible="False"></asp:Label>
 &nbsp;<asp:TextBox ID="tbAddress2" runat="server" Visible="False" class="col-sm-2 col-form-label" Height="30px" Width="200px"></asp:TextBox>
                         <br />
-                        <span id="addresss2Validator" runat="server" style="color: red;" visible="false">* Required Field</span><br />
+                        <br />
                         <asp:Label ID="lblCity" runat="server" Text="City: " Visible="False"></asp:Label>
 &nbsp;<asp:TextBox ID="tbCity" runat="server" Visible="False" class="col-sm-2 col-form-label" Height="30px" Width="200px"></asp:TextBox>
 &nbsp;<br />

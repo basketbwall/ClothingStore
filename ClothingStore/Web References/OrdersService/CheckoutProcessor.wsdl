@@ -41,6 +41,37 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="StockReturn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clothingID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="stockPurchased" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="stockSize" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StockReturnResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="StockReturnResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MaxStock">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clothingID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="stockSize" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MaxStockResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MaxStockResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="StoringSoapIn">
@@ -55,6 +86,18 @@
   <wsdl:message name="TotalCaluatorSoapOut">
     <wsdl:part name="parameters" element="tns:TotalCaluatorResponse" />
   </wsdl:message>
+  <wsdl:message name="StockReturnSoapIn">
+    <wsdl:part name="parameters" element="tns:StockReturn" />
+  </wsdl:message>
+  <wsdl:message name="StockReturnSoapOut">
+    <wsdl:part name="parameters" element="tns:StockReturnResponse" />
+  </wsdl:message>
+  <wsdl:message name="MaxStockSoapIn">
+    <wsdl:part name="parameters" element="tns:MaxStock" />
+  </wsdl:message>
+  <wsdl:message name="MaxStockSoapOut">
+    <wsdl:part name="parameters" element="tns:MaxStockResponse" />
+  </wsdl:message>
   <wsdl:portType name="CheckoutProcessorSoap">
     <wsdl:operation name="Storing">
       <wsdl:input message="tns:StoringSoapIn" />
@@ -63,6 +106,14 @@
     <wsdl:operation name="TotalCaluator">
       <wsdl:input message="tns:TotalCaluatorSoapIn" />
       <wsdl:output message="tns:TotalCaluatorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StockReturn">
+      <wsdl:input message="tns:StockReturnSoapIn" />
+      <wsdl:output message="tns:StockReturnSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MaxStock">
+      <wsdl:input message="tns:MaxStockSoapIn" />
+      <wsdl:output message="tns:MaxStockSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="CheckoutProcessorSoap" type="tns:CheckoutProcessorSoap">
@@ -85,6 +136,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="StockReturn">
+      <soap:operation soapAction="http://tempuri.org/StockReturn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MaxStock">
+      <soap:operation soapAction="http://tempuri.org/MaxStock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="CheckoutProcessorSoap12" type="tns:CheckoutProcessorSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -99,6 +168,24 @@
     </wsdl:operation>
     <wsdl:operation name="TotalCaluator">
       <soap12:operation soapAction="http://tempuri.org/TotalCaluator" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StockReturn">
+      <soap12:operation soapAction="http://tempuri.org/StockReturn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MaxStock">
+      <soap12:operation soapAction="http://tempuri.org/MaxStock" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

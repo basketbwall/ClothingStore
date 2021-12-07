@@ -33,6 +33,10 @@ namespace ClothingStore.OrdersService {
         
         private System.Threading.SendOrPostCallback TotalCaluatorOperationCompleted;
         
+        private System.Threading.SendOrPostCallback StockReturnOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback MaxStockOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -76,6 +80,12 @@ namespace ClothingStore.OrdersService {
         
         /// <remarks/>
         public event TotalCaluatorCompletedEventHandler TotalCaluatorCompleted;
+        
+        /// <remarks/>
+        public event StockReturnCompletedEventHandler StockReturnCompleted;
+        
+        /// <remarks/>
+        public event MaxStockCompletedEventHandler MaxStockCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Storing", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -136,6 +146,70 @@ namespace ClothingStore.OrdersService {
             if ((this.TotalCaluatorCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.TotalCaluatorCompleted(this, new TotalCaluatorCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/StockReturn", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int StockReturn(int clothingID, int stockPurchased, string stockSize) {
+            object[] results = this.Invoke("StockReturn", new object[] {
+                        clothingID,
+                        stockPurchased,
+                        stockSize});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void StockReturnAsync(int clothingID, int stockPurchased, string stockSize) {
+            this.StockReturnAsync(clothingID, stockPurchased, stockSize, null);
+        }
+        
+        /// <remarks/>
+        public void StockReturnAsync(int clothingID, int stockPurchased, string stockSize, object userState) {
+            if ((this.StockReturnOperationCompleted == null)) {
+                this.StockReturnOperationCompleted = new System.Threading.SendOrPostCallback(this.OnStockReturnOperationCompleted);
+            }
+            this.InvokeAsync("StockReturn", new object[] {
+                        clothingID,
+                        stockPurchased,
+                        stockSize}, this.StockReturnOperationCompleted, userState);
+        }
+        
+        private void OnStockReturnOperationCompleted(object arg) {
+            if ((this.StockReturnCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.StockReturnCompleted(this, new StockReturnCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/MaxStock", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int MaxStock(int clothingID, string stockSize) {
+            object[] results = this.Invoke("MaxStock", new object[] {
+                        clothingID,
+                        stockSize});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void MaxStockAsync(int clothingID, string stockSize) {
+            this.MaxStockAsync(clothingID, stockSize, null);
+        }
+        
+        /// <remarks/>
+        public void MaxStockAsync(int clothingID, string stockSize, object userState) {
+            if ((this.MaxStockOperationCompleted == null)) {
+                this.MaxStockOperationCompleted = new System.Threading.SendOrPostCallback(this.OnMaxStockOperationCompleted);
+            }
+            this.InvokeAsync("MaxStock", new object[] {
+                        clothingID,
+                        stockSize}, this.MaxStockOperationCompleted, userState);
+        }
+        
+        private void OnMaxStockOperationCompleted(object arg) {
+            if ((this.MaxStockCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.MaxStockCompleted(this, new MaxStockCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -276,6 +350,58 @@ namespace ClothingStore.OrdersService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((decimal)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void StockReturnCompletedEventHandler(object sender, StockReturnCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class StockReturnCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal StockReturnCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void MaxStockCompletedEventHandler(object sender, MaxStockCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class MaxStockCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal MaxStockCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }

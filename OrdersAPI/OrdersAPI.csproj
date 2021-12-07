@@ -75,6 +75,7 @@
       <DependentUpon>CheckoutProcessor.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Clothing.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
