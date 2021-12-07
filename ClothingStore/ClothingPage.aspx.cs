@@ -29,7 +29,16 @@ namespace ClothingStore
 
             if (!IsPostBack)
             {
-
+                if (Session["Bought"] == null)
+                {
+                    Session.Add("Bought", 0);
+                }
+                //lblPurchaseWarning.Text = "Items successfully added to cart.";
+                if (Session["Bought"].ToString() == "1")
+                {
+                    lblPurchaseWarning.Text = "Items successfully added to cart.";
+                    Session["Bought"] = 0;
+                }
                 //check role and update label on top right and set visibility of buttons
                 if (Session["Role"].ToString() == "RewardsCustomer")
                 {
@@ -71,6 +80,9 @@ namespace ClothingStore
                 Session.Add("ReviewOperation", null);
                 //update labels
                 displayClothingInfo();
+            } else
+            {
+
             }
         }
         protected void displayClothingInfo()
@@ -80,7 +92,7 @@ namespace ClothingStore
             lblName.Text = lblName.Text + c.ClothingName;
             lblColor.Text = lblColor.Text + c.ClothingColor;
             lblDescription.Text = lblDescription.Text + c.ClothingDescription;
-            lblPrice.Text = lblPrice.Text + c.ClothingPrice;
+            lblPriceValue.Text = c.ClothingPrice.ToString();
             lblBrand.Text = lblBrand.Text + c.ClothingBrand;
             clothingImage.ImageUrl = c.ClothingImage;
             DataSet avgReviews = SP.GetAverages(c.ClothingID);
@@ -238,7 +250,7 @@ namespace ClothingStore
         protected void btnAdd_Click(object sender, EventArgs e)
         {
             Classes.Clothing clothing = SP.GetClothingByID(int.Parse(Request.QueryString["ClothingID"].ToString()));
-            string size = SizePicker.CurrentSize;
+            string size = rdbSize.SelectedValue;
             clothing.ClothingSize = size;
             int quantity = QuantityPicker.CurrentQuantity;
             clothing.ClothingQuantity = quantity;
@@ -339,10 +351,18 @@ namespace ClothingStore
             {
                 //create cart item with clothing
                 //do the same check at this stage to check
+                if(clothing.ClothingSize == "Medium")
+                {
+                    clothing.ClothingPrice = clothing.ClothingPrice + (.10m * clothing.ClothingPrice);
+                } else if (clothing.ClothingSize == "Large")
+                {
+                    clothing.ClothingPrice = clothing.ClothingPrice + (.20m * clothing.ClothingPrice);
+                }
                 Cart.Add(clothing);
                 lblPurchaseWarning.Text = "Items were successfully added to your cart";
             }
 
+            Session["Bought"] = "1";
 
             //save into session
             Session["Cart"] = Cart;
@@ -359,6 +379,26 @@ namespace ClothingStore
             //forcing postback for certain items
             int id = int.Parse(Request.QueryString["ClothingID"].ToString());
             Response.Redirect("ClothingPage.aspx" + "?ClothingID=" + id);
+        }
+
+        protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            decimal basePrice = Convert.ToDecimal(lblPriceValue.Text);
+            if (rdbSize.SelectedIndex == 0)
+            {
+                lblRatioedPrice.Text = basePrice.ToString("0.00");
+               
+            }
+            else if (rdbSize.SelectedIndex == 1)
+            {
+                basePrice = basePrice + (basePrice * .10m);
+                lblRatioedPrice.Text = basePrice.ToString("0.00");
+            }
+            else
+            {
+                basePrice = basePrice + (basePrice * .20m);
+                lblRatioedPrice.Text = basePrice.ToString("0.00");
+            }
         }
     }
 }

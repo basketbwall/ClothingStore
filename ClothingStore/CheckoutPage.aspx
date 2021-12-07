@@ -19,7 +19,7 @@
         </div>
         <div align="center" runat="server">
             <br />
-            <asp:Label ID="lblWarning" align="center" runat="server" Text="Label" Style="font-size:28px"></asp:Label>
+            <asp:Label ID="lblWarning" align="center" runat="server" Text="" Style="font-size:28px"></asp:Label>
         </div>
         <asp:GridView ID="gvOrder" runat="server" AutoGenerateColumns="False" style="margin:auto; width:75%; margin-top: 2.5%; margin-bottom: 2.5%" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" ShowFooter="True">
                                         <emptydatatemplate>
@@ -34,7 +34,7 @@
                 </asp:ImageField>
                 <asp:BoundField DataField="OnClearance" HeaderText="Clearance" />
                 <asp:BoundField DataField="ClearanceDiscountPercent" HeaderText="Discount Percent" />
-                <asp:BoundField DataField="ClothingPrice" HeaderText="Price" />
+                <asp:BoundField DataField="ClothingPrice" DataFormatString="{0:n}" HeaderText="Price" />
                 <asp:BoundField DataField="ClothingSize" HeaderText="Size" />
                 <asp:BoundField DataField="ClothingQuantity" HeaderText="Quantity" />
                 <asp:TemplateField>

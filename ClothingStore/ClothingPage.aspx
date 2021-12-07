@@ -44,15 +44,19 @@
                             <br />
                             <asp:Label ID="lblDescription" runat="server" Text="Description: "></asp:Label>
                             <br />
-                            <asp:Label ID="lblPrice" runat="server" Text="Price: "></asp:Label>
-                            <br />
                             <asp:Label ID="lblBrand" runat="server" Text="Brand: "></asp:Label><br />
                             <asp:Button ID="btnManage" runat="server" Text="Edit Clothing Item" Visible="false" class="btn btn-dark col-sm-5" OnClick="btnManage_Click" />
                             <div runat="server" id="shoppingOptions" visible="false">
                                 <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                                     <ContentTemplate>
-                                        <asp:Label ID="lblSize" runat="server" Text="Choose Size: "></asp:Label>
-                                        <uc1:SizePicker ID="SizePicker" runat="server" />
+                                                                    <asp:Label ID="lblPriceLabel" runat="server" Text="Price: "></asp:Label>
+                            <asp:Label ID="lblPriceValue" runat="server" Visible="false" Text=""></asp:Label>
+                                        <asp:Label ID="lblRatioedPrice" runat="server" Text="Choose Size: "></asp:Label>
+                                        <asp:RadioButtonList ID="rdbSize" runat="server" AutoPostBack="True" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged" RepeatDirection="Horizontal">
+                                            <asp:ListItem>Small</asp:ListItem>
+                                            <asp:ListItem>Medium</asp:ListItem>
+                                            <asp:ListItem>Large</asp:ListItem>
+                                        </asp:RadioButtonList>
                                         <asp:Label ID="lblQuantity" runat="server" Text="Choose Quantity To Add: "></asp:Label>
                                         <uc1:QuantityPicker ID="QuantityPicker" runat="server" />
                                         <br />
