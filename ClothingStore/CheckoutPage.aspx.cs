@@ -46,8 +46,6 @@ namespace ClothingStore
                     OrdersService.CheckoutProcessor wsProxy = new OrdersService.CheckoutProcessor();
 
                     price += wsProxy.TotalCaluator(clothing.ClearanceDiscountPercent, clothing.ClothingPrice, clothing.ClothingQuantity);
-
-
                     quantity += clothing.ClothingQuantity;
                 }
                 price = price + (price * 0.06m);

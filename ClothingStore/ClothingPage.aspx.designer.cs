@@ -69,15 +69,6 @@ namespace ClothingStore
         protected global::System.Web.UI.WebControls.Label lblDescription;
 
         /// <summary>
-        /// lblPrice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPrice;
-
-        /// <summary>
         /// lblBrand control.
         /// </summary>
         /// <remarks>
@@ -114,22 +105,40 @@ namespace ClothingStore
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
-        /// lblSize control.
+        /// lblPriceLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSize;
+        protected global::System.Web.UI.WebControls.Label lblPriceLabel;
 
         /// <summary>
-        /// SizePicker control.
+        /// lblPriceValue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::ClothingStore.WebUserControl1 SizePicker;
+        protected global::System.Web.UI.WebControls.Label lblPriceValue;
+
+        /// <summary>
+        /// lblRatioedPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRatioedPrice;
+
+        /// <summary>
+        /// rdbSize control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rdbSize;
 
         /// <summary>
         /// lblQuantity control.
